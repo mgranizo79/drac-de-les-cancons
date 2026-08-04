@@ -109,6 +109,7 @@ export function Mesa() {
                 <p className="panel__ayuda">Toca a alguien cuando lo hayáis conocido</p>
                 <GaleriaPersonajes
                   encontrados={estado.personajes}
+                  cancionesRescatadas={estado.canciones}
                   onTocar={alternarPersonaje}
                   onVerDetalle={verPersonaje}
                 />

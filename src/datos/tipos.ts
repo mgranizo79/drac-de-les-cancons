@@ -91,6 +91,15 @@ export interface Personaje {
   descripcion: string
   /** Qué hace si hay pelea. Para resolver dudas a mitad de partida. */
   enCombate: string
+  /**
+   * No se puede destapar hasta haber rescatado estas canciones.
+   *
+   * Hace falta porque el otro candado —que alguna escena escrita lo presente—
+   * dejó de servir en cuanto se escribieron los cinco episodios: la escena que
+   * presenta al dragón ya existe desde el primer día. Esto sí sigue el ritmo
+   * real de la partida, que es lo que se quería.
+   */
+  requiereCanciones?: number
 }
 
 export type IdHeroe = 'paula' | 'luca'

@@ -81,6 +81,7 @@ export const personajes: Personaje[] = [
       'Una urraca viejísima y muy digna, con una pluma blanca en la cabeza. Vive en el árbol de los mil nidos y conoció a Flamarada cuando era pequeña. Es la única que sabe por qué se llevó las canciones.',
     enCombate:
       'No pelea, que para eso está mayor. Lo suyo es saber cosas que no sabe nadie más, y eso resuelve más que una espada.',
+    requiereCanciones: 2,
   },
   {
     id: 'gemelas',
@@ -91,6 +92,7 @@ export const personajes: Personaje[] = [
       'Dos hermanas gemelas de cinco años que no se parecen en nada. A Gala le hacen caso las plantas y cuida el único jardín que queda en la isla. A Abril la siguen los gatos a todas partes, y les entiende cuando maúllan.',
     enCombate:
       'Son pequeñas y no pelean. Pero Gala te da lo que hay que plantar y Abril te trae al gato que lo vio todo.',
+    requiereCanciones: 3,
   },
   {
     id: 'ferran',
@@ -101,6 +103,7 @@ export const personajes: Personaje[] = [
       'El pescador más viejo de la cala, con las manos llenas de cicatrices de cuerda. Estaba pescando la mañana en que una ola le dio en la cara al dragón, y no se le ha olvidado nunca.',
     enCombate:
       'Ya no pelea. Lo que hace es llenaros los odres de agua del mar, que es lo que de verdad gana la última batalla.',
+    requiereCanciones: 3,
   },
   {
     id: 'dragon',
@@ -111,24 +114,37 @@ export const personajes: Personaje[] = [
       'Nadie lo ha visto todavía. Vive en una cueva en lo alto de la montaña, llena de monedas de oro con una canción atrapada dentro de cada una. Los demás dragones acumulan tesoros; este acumula canciones.',
     enCombate:
       'Todavía no toca. Cuando llegue el momento harán falta las cinco canciones: la del Mar apaga su fuego, el escudo aguanta su aliento y el Grito de Plata es el golpe final.',
+    requiereCanciones: 4,
   },
 ]
 
 /**
- * Un personaje solo se puede destapar en /mesa si alguna escena ya escrita lo
- * presenta. Es lo que impide abrir la carta del dragón en el episodio 1: si la
- * niña le viera el color, se acabaría la deducción de qué tipo de dragón es,
- * que es todo el sentido del episodio. El día que una escena lleve
- * `presenta: 'dragon'`, se desbloqueará solo.
+ * Qué personajes se pueden destapar en /mesa ahora mismo. Hacen falta dos
+ * condiciones:
+ *
+ *   1. Que alguna escena escrita lo presente.
+ *   2. Que la partida haya llegado a su episodio, contado en canciones
+ *      rescatadas.
+ *
+ * La primera sola no basta, y es un error que ya se cometió: mientras solo
+ * existían dos episodios, el dragón no se podía destapar porque ninguna escena
+ * lo presentaba. Al escribir el episodio 5 esa escena pasó a existir y su
+ * carta quedó abierta desde el primer día, que es justo lo que no se quería:
+ * si la niña le ve el color, se acaba la deducción de qué tipo de dragón es.
+ *
+ * La segunda condición sí sigue el ritmo real de la partida, porque el
+ * contador de canciones lo llevan ellos en el propio iPad.
  */
-export function personajesPresentables(): IdPersonaje[] {
-  const vistos = new Set<IdPersonaje>()
+export function personajesPresentables(cancionesRescatadas: number): IdPersonaje[] {
+  const presentados = new Set<IdPersonaje>()
   episodios.forEach((ep) =>
     ep.escenas.forEach((es) => {
-      if (es.presenta) vistos.add(es.presenta)
+      if (es.presenta) presentados.add(es.presenta)
     }),
   )
-  return [...vistos]
+  return personajes
+    .filter((p) => presentados.has(p.id) && (p.requiereCanciones ?? 0) <= cancionesRescatadas)
+    .map((p) => p.id)
 }
 
 export const heroes: Heroe[] = [

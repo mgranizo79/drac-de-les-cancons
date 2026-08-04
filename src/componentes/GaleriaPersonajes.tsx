@@ -5,6 +5,8 @@ import { despertarAudio, sonarPersonaje } from '../audio/sonidos'
 
 interface Props {
   encontrados: IdPersonaje[]
+  /** Marca por dónde va la partida: cada carta se abre al llegar su episodio. */
+  cancionesRescatadas: number
   onTocar: (id: IdPersonaje) => void
   onVerDetalle: (id: IdPersonaje) => void
 }
@@ -18,8 +20,16 @@ interface Props {
 // que su carta no se abre por mucho que la toquen. Si se abriera, la niña le
 // vería el color y se acabaría la deducción de qué tipo de dragón es.
 
-export function GaleriaPersonajes({ encontrados, onTocar, onVerDetalle }: Props) {
-  const presentables = useMemo(() => personajesPresentables(), [])
+export function GaleriaPersonajes({
+  encontrados,
+  cancionesRescatadas,
+  onTocar,
+  onVerDetalle,
+}: Props) {
+  const presentables = useMemo(
+    () => personajesPresentables(cancionesRescatadas),
+    [cancionesRescatadas],
+  )
 
   // Tapado: el toque lo destapa. Ya destapado: el toque abre la ficha en
   // grande. Volver a taparlo se hace desde el botón de dentro de la ficha.
