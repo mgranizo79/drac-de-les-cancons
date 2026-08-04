@@ -22,37 +22,22 @@ como está y te enseña el error en el log del despliegue.
 
 ## 1. Subir el repo a GitHub
 
-Desde la carpeta del proyecto:
+El repositorio local **ya está hecho**: `git init`, primer commit y rama `main`.
+Solo falta crearlo en GitHub y subirlo.
 
-```bash
-git init
-```
+**Que el repositorio sea privado**: así la ruta del DM tampoco se pasea por ahí.
 
-```bash
-git add .
-```
-
-```bash
-git commit -m "Campaña El Drac de les Cançons: web de mesa y guion del DM"
-```
-
-Crea el repositorio en GitHub. **Que sea privado**: así la ruta del DM tampoco
-se pasea por ahí.
-
-- Con GitHub CLI:
+- Si tienes GitHub CLI, un solo comando lo crea y lo sube:
 
 ```bash
 gh repo create drac-de-les-cancons --private --source=. --remote=origin --push
 ```
 
-- O a mano: crea el repo vacío en github.com y luego:
+- Si no, crea el repo vacío en github.com (**sin** README ni .gitignore, que ya
+  los tenemos) y luego:
 
 ```bash
 git remote add origin https://github.com/TU-USUARIO/drac-de-les-cancons.git
-```
-
-```bash
-git branch -M main
 ```
 
 ```bash
