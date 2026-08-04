@@ -1,4 +1,4 @@
-import { EscudoSantJordi, FiguraLuca, FiguraPaula } from './arte/figuras'
+import { EscudoSantJordi } from './arte/figuras'
 import { despertarAudio, sonarValentia } from '../audio/sonidos'
 
 interface PropsLuca {
@@ -21,7 +21,7 @@ export function FichaLuca({ valentia, onGastar }: PropsLuca) {
       </header>
 
       <div className="ficha__cuerpo">
-        <FiguraLuca className="ficha__figura" />
+        <img className="ficha__figura" src="/imagenes/luca.png" alt="Sir Luca, caballero pirata" />
         <div className="ficha__escudo">
           <EscudoSantJordi />
           <p className="ficha__poder">¡NADA LO ATRAVIESA!</p>
@@ -64,7 +64,11 @@ export function FichaPaula({ gritoUsado, onGrito }: PropsPaula) {
       </header>
 
       <div className="ficha__cuerpo">
-        <FiguraPaula className="ficha__figura" />
+        <img
+          className="ficha__figura"
+          src="/imagenes/paula.png"
+          alt="Paula, cazadragones de la Luna"
+        />
         <div className="ficha__poderes">
           <button
             type="button"

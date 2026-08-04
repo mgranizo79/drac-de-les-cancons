@@ -432,6 +432,11 @@ button {
   max-width: 100%;
   max-height: 100%;
   min-height: 0;
+  /* Las figuras son PNG con fondo blanco. `contain` evita que se deformen al
+     encajarlas en la caja, y `multiply` funde ese blanco con el pergamino:
+     blanco × fondo = fondo, así que el recuadro desaparece solo. */
+  object-fit: contain;
+  mix-blend-mode: multiply;
 }
 
 .ficha__escudo,
@@ -629,6 +634,88 @@ button {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* ── galería de personajes ── */
+
+.panel__personajes {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.galeria {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.7rem;
+}
+
+.personaje {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  /* Sin esto la rejilla no deja encoger la tarjeta y se sale del panel. */
+  min-height: 0;
+  padding: 0.6rem 0.4rem;
+  background: #fffdf6;
+  border: 3px solid var(--marron);
+  border-radius: 18px;
+  transition: transform 0.12s ease, border-color 0.3s ease;
+}
+
+.personaje:active {
+  transform: translateY(2px);
+}
+
+.personaje--visto {
+  border-color: var(--tinta);
+  animation: aparecer 0.45s ease;
+}
+
+.personaje__imagen {
+  flex: 1 1 auto;
+  min-height: 0;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.personaje__nombre {
+  flex: 0 0 auto;
+  font-family: var(--titulo);
+  font-size: clamp(0.75rem, 1.5vw, 1.05rem);
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.15;
+  color: var(--tinta);
+}
+
+.personaje__detalle {
+  flex: 0 0 auto;
+  font-family: var(--mano);
+  font-size: clamp(0.7rem, 1.3vw, 0.95rem);
+  text-align: center;
+  line-height: 1.2;
+  color: var(--tinta-suave);
+}
+
+/* todavía sin descubrir */
+.personaje:not(.personaje--visto) {
+  background: rgba(255, 255, 255, 0.45);
+  border-style: dashed;
+}
+
+.personaje__tapado {
+  font-family: var(--titulo);
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  font-weight: 700;
+  color: var(--marron);
+  opacity: 0.55;
 }
 
 /* ── cuaderno de pistas ── */

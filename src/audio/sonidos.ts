@@ -130,3 +130,12 @@ export function sonarValentia(): void {
   nota(440, t, 0.12, 'square', 0.1)
   nota(660, t + 0.07, 0.26, 'triangle', 0.16)
 }
+
+/** Un personaje nuevo aparece: dos notas, como un «¡tachán!» pequeño. */
+export function sonarPersonaje(): void {
+  const c = contexto()
+  if (!c) return
+  const t = c.currentTime
+  nota(587.33, t, 0.14, 'triangle', 0.15) // re
+  nota(880.0, t + 0.1, 0.32, 'sine', 0.16) // la
+}

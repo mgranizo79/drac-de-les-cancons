@@ -70,6 +70,7 @@ export const episodio1: Episodio = {
         '«Luca, ¡haz tú de gaviota enfadada! Enséñanos cómo se enfada.»',
         '«Sir Luca, ponle nombre a la gaviota. ¿Cómo se llama?»',
       ],
+      presenta: 'migas',
     },
 
     {
@@ -154,6 +155,7 @@ export const episodio1: Episodio = {
         '«Luca, haz tú el chillido del kobold cuando se escapa.»',
       ],
       desbloquea: 'cueva',
+      presenta: 'kobold',
     },
 
     {

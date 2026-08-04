@@ -1,6 +1,6 @@
-import { useCallback } from 'react'
+import { useCallback, useMemo } from 'react'
 import { useAlmacenLocal } from './almacenLocal'
-import type { IdLugar } from '../datos/tipos'
+import type { IdLugar, IdPersonaje } from '../datos/tipos'
 
 export interface EstadoPartida {
   /** true = ficha de Valentía ya gastada. */
@@ -15,6 +15,8 @@ export interface EstadoPartida {
   apuesta: string
   /** Lugares del mapa ya descubiertos. */
   lugares: IdLugar[]
+  /** Personajes que ya han aparecido en la historia. */
+  personajes: IdPersonaje[]
 }
 
 const ESTADO_INICIAL: EstadoPartida = {
@@ -24,13 +26,19 @@ const ESTADO_INICIAL: EstadoPartida = {
   pistas: ['', '', '', '', ''],
   apuesta: '',
   lugares: [],
+  personajes: [],
 }
 
 export function usePartida() {
-  const [estado, setEstado, reiniciar] = useAlmacenLocal<EstadoPartida>(
+  const [guardado, setEstado, reiniciar] = useAlmacenLocal<EstadoPartida>(
     'drac:partida',
     ESTADO_INICIAL,
   )
+
+  // Una partida empezada antes de que existiera un campo no lo trae al
+  // recuperarla del localStorage. Sin esto, el iPad de una partida a medias
+  // se quedaría en blanco al estrenar la galería de personajes.
+  const estado = useMemo<EstadoPartida>(() => ({ ...ESTADO_INICIAL, ...guardado }), [guardado])
 
   const gastarValentia = useCallback(
     (indice: number) => {
@@ -83,6 +91,19 @@ export function usePartida() {
     [setEstado],
   )
 
+  const alternarPersonaje = useCallback(
+    (id: IdPersonaje) => {
+      setEstado((e) => {
+        const vistos = e.personajes ?? []
+        return {
+          ...e,
+          personajes: vistos.includes(id) ? vistos.filter((p) => p !== id) : [...vistos, id],
+        }
+      })
+    },
+    [setEstado],
+  )
+
   /** Nuevo episodio: se recuperan la Valentía y el Grito, se conserva todo lo demás. */
   const nuevoEpisodio = useCallback(() => {
     setEstado((e) => ({ ...e, valentia: [false, false, false], gritoUsado: false }))
@@ -96,6 +117,7 @@ export function usePartida() {
     escribirPista,
     escribirApuesta,
     alternarLugar,
+    alternarPersonaje,
     nuevoEpisodio,
     reiniciarTodo: reiniciar,
   }

@@ -28,6 +28,9 @@ export interface Tirada {
 /** Localizaciones del mapa. Añade aquí las de los episodios siguientes. */
 export type IdLugar = 'playa' | 'puente' | 'cueva' | 'montana'
 
+/** Personajes que van apareciendo en la historia. Añade aquí los nuevos. */
+export type IdPersonaje = 'migas' | 'kobold' | 'dragon'
+
 export interface Escena {
   id: string
   titulo: string
@@ -47,6 +50,8 @@ export interface Escena {
   siSeTuerce: string[]
   /** Lugar del mapa que esta escena desbloquea en /mesa. */
   desbloquea?: IdLugar
+  /** Personaje que esta escena presenta en /mesa. */
+  presenta?: IdPersonaje
   /** Número de canción (1-5) que se rescata al terminar la escena. */
   rescataCancion?: number
 }
@@ -72,4 +77,14 @@ export interface Lugar {
   nombre: string
   /** Se muestra bajo el nombre cuando está desbloqueado. */
   detalle: string
+}
+
+export interface Personaje {
+  id: IdPersonaje
+  /** Cuidado con los spoilers: esto lo leen ellos. */
+  nombre: string
+  /** Se muestra bajo el nombre cuando ya ha aparecido. */
+  detalle: string
+  /** Ruta de la imagen dentro de public/. */
+  imagen: string
 }

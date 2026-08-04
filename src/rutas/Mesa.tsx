@@ -3,14 +3,16 @@ import { Dado } from '../componentes/Dado'
 import { FichaLuca, FichaPaula } from '../componentes/FichasHeroes'
 import { ContadorCanciones } from '../componentes/ContadorCanciones'
 import { CuadernoPistas } from '../componentes/CuadernoPistas'
+import { GaleriaPersonajes } from '../componentes/GaleriaPersonajes'
 import { MapaIsla } from '../componentes/arte/MapaIsla'
 import { usePartida } from '../estado/usePartida'
 
-type Pestana = 'heroes' | 'mapa' | 'pistas'
+type Pestana = 'heroes' | 'mapa' | 'personajes' | 'pistas'
 
 const PESTANAS: Array<{ id: Pestana; etiqueta: string; icono: string }> = [
   { id: 'heroes', etiqueta: 'Héroes', icono: '🛡' },
   { id: 'mapa', etiqueta: 'Mapa', icono: '🧭' },
+  { id: 'personajes', etiqueta: 'Quién hay', icono: '🐾' },
   { id: 'pistas', etiqueta: 'Pistas', icono: '🐉' },
 ]
 
@@ -23,6 +25,7 @@ export function Mesa() {
     escribirPista,
     escribirApuesta,
     alternarLugar,
+    alternarPersonaje,
   } = usePartida()
 
   const [pestana, setPestana] = useState<Pestana>('heroes')
@@ -71,6 +74,13 @@ export function Mesa() {
               <div className="panel__mapa">
                 <p className="panel__ayuda">Toca un sitio cuando lleguéis allí</p>
                 <MapaIsla desbloqueados={estado.lugares} onTocar={alternarLugar} />
+              </div>
+            )}
+
+            {pestana === 'personajes' && (
+              <div className="panel__personajes">
+                <p className="panel__ayuda">Toca a alguien cuando lo hayáis conocido</p>
+                <GaleriaPersonajes encontrados={estado.personajes} onTocar={alternarPersonaje} />
               </div>
             )}
 

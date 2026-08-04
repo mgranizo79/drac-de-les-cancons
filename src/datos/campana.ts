@@ -1,4 +1,4 @@
-import type { Episodio, FilaArco, Lugar } from './tipos'
+import type { Episodio, FilaArco, Lugar, Personaje } from './tipos'
 import { episodio1 } from './episodio1'
 
 // ─────────────────────────────────────────────────────────────
@@ -34,6 +34,30 @@ export const lugares: Lugar[] = [
   { id: 'puente', nombre: 'El puente de cuerdas', detalle: 'Las tablas están quemadas' },
   { id: 'cueva', nombre: 'La cueva del acantilado', detalle: 'Aquí estaba el kobold' },
   { id: 'montana', nombre: 'La montaña del dragón', detalle: 'Algo enorme os mira desde arriba' },
+]
+
+// OJO CON LOS SPOILERS: estos nombres salen en el iPad.
+// El dragón se llama «EL DRAGÓN» hasta el episodio 2, que es donde se
+// descubre su nombre. No lo cambies antes de tiempo.
+export const personajes: Personaje[] = [
+  {
+    id: 'migas',
+    nombre: 'CAPITÁN MIGAS',
+    detalle: 'No le sale ni un sonido',
+    imagen: '/imagenes/migas.png',
+  },
+  {
+    id: 'kobold',
+    nombre: 'EL KOBOLD',
+    detalle: 'Trabaja para el dragón',
+    imagen: '/imagenes/kobold.png',
+  },
+  {
+    id: 'dragon',
+    nombre: 'EL DRAGÓN',
+    detalle: 'Os mira desde la montaña',
+    imagen: '/imagenes/dragon.png',
+  },
 ]
 
 export function totalEscenas(): number {
