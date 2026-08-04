@@ -1,0 +1,102 @@
+import { useCallback } from 'react'
+import { useAlmacenLocal } from './almacenLocal'
+import type { IdLugar } from '../datos/tipos'
+
+export interface EstadoPartida {
+  /** true = ficha de Valentía ya gastada. */
+  valentia: [boolean, boolean, boolean]
+  /** El Grito de Plata: 1 vez por episodio. */
+  gritoUsado: boolean
+  /** Cuántas canciones se han rescatado (0-5). */
+  canciones: number
+  /** El cuaderno de Paula: una teoría por episodio. */
+  pistas: string[]
+  /** ¿Qué dragón cree que es? */
+  apuesta: string
+  /** Lugares del mapa ya descubiertos. */
+  lugares: IdLugar[]
+}
+
+const ESTADO_INICIAL: EstadoPartida = {
+  valentia: [false, false, false],
+  gritoUsado: false,
+  canciones: 0,
+  pistas: ['', '', '', '', ''],
+  apuesta: '',
+  lugares: [],
+}
+
+export function usePartida() {
+  const [estado, setEstado, reiniciar] = useAlmacenLocal<EstadoPartida>(
+    'drac:partida',
+    ESTADO_INICIAL,
+  )
+
+  const gastarValentia = useCallback(
+    (indice: number) => {
+      setEstado((e) => {
+        const valentia = [...e.valentia] as EstadoPartida['valentia']
+        valentia[indice] = !valentia[indice]
+        return { ...e, valentia }
+      })
+    },
+    [setEstado],
+  )
+
+  const alternarGrito = useCallback(() => {
+    setEstado((e) => ({ ...e, gritoUsado: !e.gritoUsado }))
+  }, [setEstado])
+
+  const encenderCancion = useCallback(
+    (numero: number) => {
+      // Tocar una canción ya encendida la apaga (por si se toca sin querer).
+      setEstado((e) => ({ ...e, canciones: e.canciones === numero ? numero - 1 : numero }))
+    },
+    [setEstado],
+  )
+
+  const escribirPista = useCallback(
+    (indice: number, texto: string) => {
+      setEstado((e) => {
+        const pistas = [...e.pistas]
+        pistas[indice] = texto
+        return { ...e, pistas }
+      })
+    },
+    [setEstado],
+  )
+
+  const escribirApuesta = useCallback(
+    (texto: string) => setEstado((e) => ({ ...e, apuesta: texto })),
+    [setEstado],
+  )
+
+  const alternarLugar = useCallback(
+    (id: IdLugar) => {
+      setEstado((e) => ({
+        ...e,
+        lugares: e.lugares.includes(id)
+          ? e.lugares.filter((l) => l !== id)
+          : [...e.lugares, id],
+      }))
+    },
+    [setEstado],
+  )
+
+  /** Nuevo episodio: se recuperan la Valentía y el Grito, se conserva todo lo demás. */
+  const nuevoEpisodio = useCallback(() => {
+    setEstado((e) => ({ ...e, valentia: [false, false, false], gritoUsado: false }))
+  }, [setEstado])
+
+  return {
+    estado,
+    gastarValentia,
+    alternarGrito,
+    encenderCancion,
+    escribirPista,
+    escribirApuesta,
+    alternarLugar,
+    nuevoEpisodio,
+    reiniciarTodo: reiniciar,
+  }
+}

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Sir Luca — Caballero Pirata</title>
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  html, body { margin: 0; padding: 0; }
+  svg { display: block; width: 210mm; height: 297mm; }
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2100 2970" width="210mm" height="297mm">
+
+  <defs>
+    <!-- Torso a rayas de pirata -->
+    <clipPath id="torso">
+      <path d="M150,278 C142,320 144,368 148,404 L252,404 C256,368 258,320 250,278 Z"/>
+    </clipPath>
+    <!-- Recorte del escudo para la cruz de Sant Jordi -->
+    <clipPath id="shieldClip">
+      <path d="M12,12 L288,12 L288,178 C288,278 232,338 150,360 C68,338 12,278 12,178 Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- ===== FONDO Y MARCO ===== -->
+  <rect x="0" y="0" width="2100" height="2970" fill="#FBF3E2"/>
+  <rect x="42" y="42" width="2016" height="2886" rx="52" fill="none" stroke="#C1272D" stroke-width="20"/>
+  <rect x="80" y="80" width="1940" height="2810" rx="34" fill="none" stroke="#E0B84A" stroke-width="8"/>
+
+  <!-- ===== TÍTULO ===== -->
+  <text x="1050" y="330" font-family="Georgia, serif" font-size="216" font-weight="bold"
+        fill="#C1272D" text-anchor="middle" letter-spacing="6">SIR LUCA</text>
+  <text x="1050" y="432" font-family="Trebuchet MS, sans-serif" font-size="84" font-weight="bold"
+        fill="#5C4033" text-anchor="middle" letter-spacing="10">CABALLERO PIRATA</text>
+
+  <!-- estrellitas decorativas -->
+  <g fill="#E0B84A">
+    <path d="M250,300 l18,44 46,4 -36,30 12,46 -40,-26 -40,26 12,-46 -36,-30 46,-4 Z"/>
+    <path d="M1850,300 l18,44 46,4 -36,30 12,46 -40,-26 -40,26 12,-46 -36,-30 46,-4 Z"/>
+  </g>
+
+  <!-- ===== ILUSTRACIÓN DEL HÉROE ===== -->
+  <g transform="translate(215,528) scale(1.70)">
+    <!-- capa -->
+    <path d="M152,272 C86,300 66,410 74,480 L326,480 C334,410 314,300 248,272 Z"
+          fill="#B02128" stroke="#8A1519" stroke-width="5"/>
+    <!-- piernas -->
+    <rect x="162" y="410" width="34" height="60" fill="#3A4A6B"/>
+    <rect x="204" y="410" width="34" height="60" fill="#3A4A6B"/>
+    <!-- botas -->
+    <rect x="150" y="456" width="52" height="36" rx="13" fill="#2A2119"/>
+    <rect x="198" y="456" width="52" height="36" rx="13" fill="#2A2119"/>
+    <!-- torso a rayas -->
+    <g clip-path="url(#torso)">
+      <rect x="130" y="266" width="145" height="150" fill="#FAF6EC"/>
+      <rect x="130" y="288" width="145" height="19" fill="#2E5C8A"/>
+      <rect x="130" y="324" width="145" height="19" fill="#2E5C8A"/>
+      <rect x="130" y="360" width="145" height="19" fill="#2E5C8A"/>
+    </g>
+    <path d="M150,278 C142,320 144,368 148,404 L252,404 C256,368 258,320 250,278 Z"
+          fill="none" stroke="#4A3728" stroke-width="6"/>
+    <!-- cinturón -->
+    <rect x="138" y="384" width="124" height="34" rx="7" fill="#4A3728"/>
+    <rect x="180" y="389" width="40" height="24" rx="5" fill="#E0B84A" stroke="#8A6520" stroke-width="4"/>
+    <!-- brazo izquierdo -->
+    <path d="M150,292 Q120,332 130,374" stroke="#F7CFA6" stroke-width="34" fill="none" stroke-linecap="round"/>
+    <path d="M152,290 Q132,312 130,334" stroke="#FAF6EC" stroke-width="36" fill="none" stroke-linecap="round"/>
+    <circle cx="130" cy="378" r="21" fill="#F7CFA6"/>
+    <!-- brazo derecho, levantado -->
+    <path d="M250,292 Q292,272 314,296" stroke="#F7CFA6" stroke-width="34" fill="none" stroke-linecap="round"/>
+    <path d="M248,290 Q272,278 288,282" stroke="#FAF6EC" stroke-width="36" fill="none" stroke-linecap="round"/>
+    <!-- espada -->
+    <g transform="translate(318,300) rotate(32)">
+      <rect x="-17" y="-212" width="34" height="216" rx="7" fill="#DCE3EC" stroke="#93A0B2" stroke-width="5"/>
+      <path d="M-17,-208 L0,-244 L17,-208 Z" fill="#DCE3EC" stroke="#93A0B2" stroke-width="5" stroke-linejoin="round"/>
+      <line x1="0" y1="-200" x2="0" y2="-10" stroke="#B4BECB" stroke-width="5"/>
+      <rect x="-50" y="2" width="100" height="22" rx="9" fill="#E0B84A" stroke="#8A6520" stroke-width="5"/>
+      <rect x="-14" y="22" width="28" height="60" rx="11" fill="#6B4A2A" stroke="#40291A" stroke-width="5"/>
+      <circle cx="0" cy="90" r="15" fill="#E0B84A" stroke="#8A6520" stroke-width="5"/>
+    </g>
+    <circle cx="318" cy="300" r="22" fill="#F7CFA6"/>
+    <!-- cuello -->
+    <rect x="180" y="248" width="40" height="38" fill="#EFC094"/>
+    <!-- cabeza -->
+    <circle cx="200" cy="175" r="98" fill="#F7CFA6" stroke="#D9A374" stroke-width="5"/>
+    <!-- cara -->
+    <circle cx="148" cy="206" r="18" fill="#F3A6A6" opacity="0.55"/>
+    <circle cx="252" cy="206" r="18" fill="#F3A6A6" opacity="0.55"/>
+    <circle cx="171" cy="176" r="12" fill="#2A2119"/>
+    <circle cx="229" cy="176" r="12" fill="#2A2119"/>
+    <circle cx="175" cy="171" r="4" fill="#FFFFFF"/>
+    <circle cx="233" cy="171" r="4" fill="#FFFFFF"/>
+    <path d="M164,208 Q200,244 236,208" stroke="#8A4A26" stroke-width="9" fill="none" stroke-linecap="round"/>
+    <!-- sombrero pirata -->
+    <path d="M124,134 C128,70 158,44 200,44 C242,44 272,70 276,134 Z" fill="#332820"/>
+    <path d="M124,130 C160,141 240,141 276,130 L278,146 C240,157 160,157 122,146 Z" fill="#E0B84A"/>
+    <path d="M76,148 C76,120 120,134 200,134 C280,134 324,120 324,148 C324,172 270,186 200,186 C130,186 76,172 76,148 Z"
+          fill="#2A2119"/>
+    <!-- calavera -->
+    <circle cx="200" cy="92" r="21" fill="#FAF6EC"/>
+    <circle cx="193" cy="89" r="5" fill="#2A2119"/>
+    <circle cx="207" cy="89" r="5" fill="#2A2119"/>
+    <rect x="195" y="101" width="10" height="8" rx="2" fill="#2A2119"/>
+    <!-- pluma -->
+    <path d="M270,84 C302,48 332,40 348,34 C332,56 326,88 298,106 Z" fill="#C1272D" stroke="#8A1519" stroke-width="4"/>
+  </g>
+
+  <!-- ===== ESCUDO DE SANT JORDI ===== -->
+  <g transform="translate(1230,560) scale(1.98)">
+    <g clip-path="url(#shieldClip)">
+      <rect x="0" y="0" width="300" height="370" fill="#FFFFFF"/>
+      <rect x="122" y="0" width="56" height="370" fill="#C1272D"/>
+      <rect x="0" y="112" width="300" height="56" fill="#C1272D"/>
+    </g>
+    <path d="M12,12 L288,12 L288,178 C288,278 232,338 150,360 C68,338 12,278 12,178 Z"
+          fill="none" stroke="#E0B84A" stroke-width="14"/>
+    <path d="M12,12 L288,12 L288,178 C288,278 232,338 150,360 C68,338 12,278 12,178 Z"
+          fill="none" stroke="#8A6520" stroke-width="4"/>
+  </g>
+
+  <text x="1527" y="1368" font-family="Trebuchet MS, sans-serif" font-size="80" font-weight="bold"
+        fill="#C1272D" text-anchor="middle">¡NADA LO ATRAVIESA!</text>
+  <text x="1527" y="1450" font-family="Trebuchet MS, sans-serif" font-size="58"
+        fill="#5C4033" text-anchor="middle">Ni siquiera el fuego del dragón</text>
+
+  <!-- ===== FICHAS DE VALENTÍA ===== -->
+  <rect x="120" y="1560" width="1860" height="740" rx="44" fill="#FDF4D4" stroke="#E0B84A" stroke-width="10"/>
+  <text x="1050" y="1690" font-family="Trebuchet MS, sans-serif" font-size="96" font-weight="bold"
+        fill="#5C4033" text-anchor="middle">MIS 3 FICHAS DE VALENTÍA</text>
+  <text x="1050" y="1768" font-family="Trebuchet MS, sans-serif" font-size="56"
+        fill="#7A6248" text-anchor="middle">Gasta una y te sale bien seguro</text>
+
+  <g>
+    <circle cx="570" cy="2060" r="178" fill="#FFFFFF" stroke="#C1272D" stroke-width="14" stroke-dasharray="34 24"/>
+    <circle cx="1050" cy="2060" r="178" fill="#FFFFFF" stroke="#C1272D" stroke-width="14" stroke-dasharray="34 24"/>
+    <circle cx="1530" cy="2060" r="178" fill="#FFFFFF" stroke="#C1272D" stroke-width="14" stroke-dasharray="34 24"/>
+    <g fill="#E0B84A" opacity="0.5">
+      <path d="M570,1950 l32,80 86,6 -66,56 21,84 -73,-47 -73,47 21,-84 -66,-56 86,-6 Z"/>
+      <path d="M1050,1950 l32,80 86,6 -66,56 21,84 -73,-47 -73,47 21,-84 -66,-56 86,-6 Z"/>
+      <path d="M1530,1950 l32,80 86,6 -66,56 21,84 -73,-47 -73,47 21,-84 -66,-56 86,-6 Z"/>
+    </g>
+  </g>
+
+  <!-- ===== EL DADO ===== -->
+  <rect x="120" y="2360" width="1860" height="510" rx="44" fill="#FFFFFF" stroke="#2E5C8A" stroke-width="10"/>
+  <text x="1050" y="2478" font-family="Trebuchet MS, sans-serif" font-size="88" font-weight="bold"
+        fill="#2E5C8A" text-anchor="middle">MI DADO</text>
+
+  <!-- caras 1, 2, 3 (gris) -->
+  <g>
+    <rect x="255" y="2530" width="190" height="190" rx="34" fill="#E3DED2" stroke="#A89C86" stroke-width="7"/>
+    <circle cx="350" cy="2625" r="18" fill="#7A6E58"/>
+
+    <rect x="535" y="2530" width="190" height="190" rx="34" fill="#E3DED2" stroke="#A89C86" stroke-width="7"/>
+    <circle cx="580" cy="2575" r="18" fill="#7A6E58"/>
+    <circle cx="680" cy="2675" r="18" fill="#7A6E58"/>
+
+    <rect x="815" y="2530" width="190" height="190" rx="34" fill="#E3DED2" stroke="#A89C86" stroke-width="7"/>
+    <circle cx="860" cy="2575" r="18" fill="#7A6E58"/>
+    <circle cx="910" cy="2625" r="18" fill="#7A6E58"/>
+    <circle cx="960" cy="2675" r="18" fill="#7A6E58"/>
+  </g>
+
+  <!-- caras 4, 5, 6 (verde) -->
+  <g>
+    <rect x="1095" y="2530" width="190" height="190" rx="34" fill="#4A8C46" stroke="#2F6B2C" stroke-width="7"/>
+    <circle cx="1140" cy="2575" r="18" fill="#FFFFFF"/>
+    <circle cx="1240" cy="2575" r="18" fill="#FFFFFF"/>
+    <circle cx="1140" cy="2675" r="18" fill="#FFFFFF"/>
+    <circle cx="1240" cy="2675" r="18" fill="#FFFFFF"/>
+
+    <rect x="1375" y="2530" width="190" height="190" rx="34" fill="#4A8C46" stroke="#2F6B2C" stroke-width="7"/>
+    <circle cx="1420" cy="2575" r="18" fill="#FFFFFF"/>
+    <circle cx="1520" cy="2575" r="18" fill="#FFFFFF"/>
+    <circle cx="1470" cy="2625" r="18" fill="#FFFFFF"/>
+    <circle cx="1420" cy="2675" r="18" fill="#FFFFFF"/>
+    <circle cx="1520" cy="2675" r="18" fill="#FFFFFF"/>
+
+    <rect x="1655" y="2530" width="190" height="190" rx="34" fill="#4A8C46" stroke="#2F6B2C" stroke-width="7"/>
+    <circle cx="1700" cy="2570" r="18" fill="#FFFFFF"/>
+    <circle cx="1800" cy="2570" r="18" fill="#FFFFFF"/>
+    <circle cx="1700" cy="2625" r="18" fill="#FFFFFF"/>
+    <circle cx="1800" cy="2625" r="18" fill="#FFFFFF"/>
+    <circle cx="1700" cy="2680" r="18" fill="#FFFFFF"/>
+    <circle cx="1800" cy="2680" r="18" fill="#FFFFFF"/>
+  </g>
+
+  <text x="1470" y="2820" font-family="Trebuchet MS, sans-serif" font-size="72" font-weight="bold"
+        fill="#4A8C46" text-anchor="middle">4, 5 y 6 = ¡SALE BIEN!</text>
+  <text x="630" y="2820" font-family="Trebuchet MS, sans-serif" font-size="72"
+        fill="#7A6E58" text-anchor="middle">1, 2 y 3 = pasa algo raro</text>
+
+</svg>
+</body>
+</html>

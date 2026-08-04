@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Paula — Cazadragones de la Luna</title>
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  html, body { margin: 0; padding: 0; }
+  svg { display: block; width: 210mm; height: 297mm; }
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2100 2970" width="210mm" height="297mm">
+
+  <defs>
+    <clipPath id="tunica">
+      <path d="M148,276 C136,324 138,372 144,410 L256,410 C262,372 264,324 252,276 Z"/>
+    </clipPath>
+    <g id="nota">
+      <ellipse cx="0" cy="0" rx="18" ry="14" transform="rotate(-22)"/>
+      <rect x="12" y="-66" width="8" height="66"/>
+      <path d="M20,-66 C42,-55 46,-34 34,-18 C42,-38 34,-50 20,-55 Z"/>
+    </g>
+  </defs>
+
+  <!-- ===== FONDO Y MARCO ===== -->
+  <rect x="0" y="0" width="2100" height="2970" fill="#FBF3E2"/>
+  <rect x="42" y="42" width="2016" height="2886" rx="52" fill="none" stroke="#2C3E6B" stroke-width="20"/>
+  <rect x="80" y="80" width="1940" height="2810" rx="34" fill="none" stroke="#C9A227" stroke-width="8"/>
+
+  <!-- ===== TÍTULO ===== -->
+  <text x="1050" y="322" font-family="Georgia, serif" font-size="212" font-weight="bold"
+        fill="#2C3E6B" text-anchor="middle" letter-spacing="8">PAULA</text>
+  <text x="1050" y="424" font-family="Trebuchet MS, sans-serif" font-size="76" font-weight="bold"
+        fill="#7B5EA7" text-anchor="middle" letter-spacing="8">CAZADRAGONES DE LA LUNA</text>
+
+  <!-- lunas decorativas -->
+  <g fill="#C9A227">
+    <path d="M268,232 a58,58 0 1,0 0,116 a44,44 0 1,1 0,-116 Z"/>
+    <path d="M1832,232 a58,58 0 1,0 0,116 a44,44 0 1,1 0,-116 Z"/>
+  </g>
+
+  <!-- ===== RETRATO ===== -->
+  <rect x="120" y="480" width="560" height="760" rx="40" fill="#F3F1FA" stroke="#7B5EA7" stroke-width="8"/>
+  <g transform="translate(158,510) scale(1.20)">
+    <!-- capa estrellada -->
+    <path d="M150,268 C82,296 60,412 68,486 L332,486 C340,412 318,296 250,268 Z"
+          fill="#2C3E6B" stroke="#1C2947" stroke-width="5"/>
+    <g fill="#E8D98A">
+      <path d="M108,344 l9,22 24,2 -18,15 6,24 -21,-13 -21,13 6,-24 -18,-15 24,-2 Z"/>
+      <path d="M292,326 l9,22 24,2 -18,15 6,24 -21,-13 -21,13 6,-24 -18,-15 24,-2 Z"/>
+      <path d="M96,432 l7,18 20,2 -15,12 5,20 -17,-11 -17,11 5,-20 -15,-12 20,-2 Z"/>
+      <path d="M304,436 l7,18 20,2 -15,12 5,20 -17,-11 -17,11 5,-20 -15,-12 20,-2 Z"/>
+    </g>
+    <!-- pelo largo por detrás -->
+    <path d="M112,180 C96,268 100,360 112,412 L152,412 C138,340 136,250 146,186 Z" fill="#4A3327"/>
+    <path d="M288,180 C304,268 300,360 288,412 L248,412 C262,340 264,250 254,186 Z" fill="#4A3327"/>
+    <!-- piernas y botas -->
+    <rect x="164" y="414" width="32" height="56" fill="#5C4A7A"/>
+    <rect x="204" y="414" width="32" height="56" fill="#5C4A7A"/>
+    <rect x="152" y="458" width="50" height="34" rx="12" fill="#3A2C22"/>
+    <rect x="198" y="458" width="50" height="34" rx="12" fill="#3A2C22"/>
+    <!-- túnica -->
+    <g clip-path="url(#tunica)">
+      <rect x="130" y="264" width="145" height="156" fill="#7B5EA7"/>
+      <rect x="130" y="330" width="145" height="18" fill="#9B7FC4"/>
+    </g>
+    <path d="M148,276 C136,324 138,372 144,410 L256,410 C262,372 264,324 252,276 Z"
+          fill="none" stroke="#4C3572" stroke-width="6"/>
+    <rect x="138" y="386" width="124" height="30" rx="7" fill="#C9A227"/>
+    <!-- brazos -->
+    <path d="M150,292 Q118,330 126,372" stroke="#F7CFA6" stroke-width="32" fill="none" stroke-linecap="round"/>
+    <path d="M152,290 Q132,310 130,330" stroke="#7B5EA7" stroke-width="34" fill="none" stroke-linecap="round"/>
+    <circle cx="126" cy="376" r="20" fill="#F7CFA6"/>
+    <path d="M250,292 Q286,278 300,314" stroke="#F7CFA6" stroke-width="32" fill="none" stroke-linecap="round"/>
+    <path d="M248,290 Q272,282 284,290" stroke="#7B5EA7" stroke-width="34" fill="none" stroke-linecap="round"/>
+    <circle cx="302" cy="318" r="20" fill="#F7CFA6"/>
+    <!-- cuello y cabeza -->
+    <rect x="182" y="248" width="36" height="36" fill="#EFC094"/>
+    <circle cx="200" cy="176" r="94" fill="#F7CFA6" stroke="#D9A374" stroke-width="5"/>
+    <!-- flequillo -->
+    <path d="M108,168 C112,92 150,58 200,58 C250,58 288,92 292,168 C270,132 240,116 200,116 C160,116 130,132 108,168 Z"
+          fill="#4A3327"/>
+    <!-- cara -->
+    <circle cx="152" cy="200" r="17" fill="#F3A6A6" opacity="0.55"/>
+    <circle cx="248" cy="200" r="17" fill="#F3A6A6" opacity="0.55"/>
+    <circle cx="173" cy="172" r="11" fill="#2A2119"/>
+    <circle cx="227" cy="172" r="11" fill="#2A2119"/>
+    <circle cx="177" cy="167" r="4" fill="#FFFFFF"/>
+    <circle cx="231" cy="167" r="4" fill="#FFFFFF"/>
+    <!-- boca cantando -->
+    <ellipse cx="200" cy="216" rx="20" ry="26" fill="#8A3A3A"/>
+    <ellipse cx="200" cy="226" rx="13" ry="12" fill="#C9645F"/>
+    <!-- diadema con luna -->
+    <path d="M112,150 C140,128 170,120 200,120 C230,120 260,128 288,150 L284,168 C258,146 230,138 200,138 C170,138 142,146 116,168 Z"
+          fill="#C9D4E5" stroke="#8E9BB0" stroke-width="4"/>
+    <path d="M200,68 a42,42 0 1,0 0,84 a31,31 0 1,1 0,-84 Z" fill="#E8D98A" stroke="#B08F1E" stroke-width="5"
+          transform="rotate(-90 200 110)"/>
+    <!-- notas musicales -->
+    <g fill="#2C3E6B">
+      <use href="#nota" transform="translate(330,190) scale(1.1)"/>
+      <use href="#nota" transform="translate(372,110) scale(0.85)"/>
+      <use href="#nota" transform="translate(316,66) scale(0.7)"/>
+    </g>
+  </g>
+
+  <!-- ===== PODERES ===== -->
+  <!-- Grito de Plata -->
+  <rect x="720" y="480" width="1260" height="360" rx="34" fill="#EEF2FA" stroke="#2C3E6B" stroke-width="8"/>
+  <text x="770" y="580" font-family="Trebuchet MS, sans-serif" font-size="76" font-weight="bold" fill="#2C3E6B">EL GRITO DE PLATA</text>
+  <text x="770" y="654" font-family="Trebuchet MS, sans-serif" font-size="50" fill="#4A5A7A">Canto una nota y la criatura huye. Sin tirar dado.</text>
+  <text x="770" y="716" font-family="Trebuchet MS, sans-serif" font-size="50" fill="#4A5A7A">Yo decido cuándo. <tspan font-weight="bold" fill="#2C3E6B">1 vez por episodio:</tspan></text>
+  <g>
+    <rect x="772" y="742" width="72" height="72" rx="14" fill="#FFFFFF" stroke="#2C3E6B" stroke-width="6"/>
+    <text x="808" y="794" font-family="Trebuchet MS, sans-serif" font-size="44" fill="#8E9BB0" text-anchor="middle">1</text>
+    <rect x="874" y="742" width="72" height="72" rx="14" fill="#FFFFFF" stroke="#2C3E6B" stroke-width="6"/>
+    <text x="910" y="794" font-family="Trebuchet MS, sans-serif" font-size="44" fill="#8E9BB0" text-anchor="middle">2</text>
+    <rect x="976" y="742" width="72" height="72" rx="14" fill="#FFFFFF" stroke="#2C3E6B" stroke-width="6"/>
+    <text x="1012" y="794" font-family="Trebuchet MS, sans-serif" font-size="44" fill="#8E9BB0" text-anchor="middle">3</text>
+    <rect x="1078" y="742" width="72" height="72" rx="14" fill="#FFFFFF" stroke="#2C3E6B" stroke-width="6"/>
+    <text x="1114" y="794" font-family="Trebuchet MS, sans-serif" font-size="44" fill="#8E9BB0" text-anchor="middle">4</text>
+    <rect x="1180" y="742" width="72" height="72" rx="14" fill="#FFFFFF" stroke="#2C3E6B" stroke-width="6"/>
+    <text x="1216" y="794" font-family="Trebuchet MS, sans-serif" font-size="44" fill="#8E9BB0" text-anchor="middle">5</text>
+  </g>
+  <g fill="#C9D4E5">
+    <use href="#nota" transform="translate(1790,806) scale(1.5)"/>
+    <use href="#nota" transform="translate(1900,776) scale(1.1)"/>
+  </g>
+
+  <!-- Ojo de experta -->
+  <rect x="720" y="870" width="1260" height="370" rx="34" fill="#FBF1E4" stroke="#C9A227" stroke-width="8"/>
+  <text x="770" y="972" font-family="Trebuchet MS, sans-serif" font-size="76" font-weight="bold" fill="#A8791A">OJO DE EXPERTA</text>
+  <text x="770" y="1046" font-family="Trebuchet MS, sans-serif" font-size="50" fill="#6B5A38">Sé de dragones más que nadie.</text>
+  <text x="770" y="1108" font-family="Trebuchet MS, sans-serif" font-size="50" fill="#6B5A38">Si acierto qué dragón es, el grupo gana</text>
+  <text x="770" y="1186" font-family="Trebuchet MS, sans-serif" font-size="68" font-weight="bold" fill="#C1272D">UN DADO EXTRA</text>
+  <g transform="translate(1840,1052)">
+    <rect x="-62" y="-62" width="124" height="124" rx="22" fill="#FFFFFF" stroke="#C9A227" stroke-width="8"/>
+    <circle cx="-30" cy="-30" r="13" fill="#C9A227"/>
+    <circle cx="30" cy="-30" r="13" fill="#C9A227"/>
+    <circle cx="0" cy="0" r="13" fill="#C9A227"/>
+    <circle cx="-30" cy="30" r="13" fill="#C9A227"/>
+    <circle cx="30" cy="30" r="13" fill="#C9A227"/>
+  </g>
+
+  <!-- ===== CUADERNO DE PISTAS ===== -->
+  <rect x="120" y="1290" width="1860" height="960" rx="40" fill="#FFFFFF" stroke="#2C3E6B" stroke-width="10"/>
+  <rect x="120" y="1290" width="1860" height="130" rx="40" fill="#2C3E6B"/>
+  <rect x="120" y="1380" width="1860" height="40" fill="#2C3E6B"/>
+  <text x="1050" y="1382" font-family="Trebuchet MS, sans-serif" font-size="80" font-weight="bold"
+        fill="#FFFFFF" text-anchor="middle" letter-spacing="4">MIS PISTAS SOBRE EL DRAGÓN</text>
+
+  <g>
+    <!-- fila 1 -->
+    <circle cx="248" cy="1520" r="52" fill="#C1272D"/>
+    <text x="248" y="1543" font-family="Trebuchet MS, sans-serif" font-size="56" font-weight="bold" fill="#FFFFFF" text-anchor="middle">1</text>
+    <line x1="336" y1="1562" x2="1900" y2="1562" stroke="#B9C4D6" stroke-width="5" stroke-dasharray="14 12"/>
+    <!-- fila 2 -->
+    <circle cx="248" cy="1670" r="52" fill="#7B5EA7"/>
+    <text x="248" y="1693" font-family="Trebuchet MS, sans-serif" font-size="56" font-weight="bold" fill="#FFFFFF" text-anchor="middle">2</text>
+    <line x1="336" y1="1712" x2="1900" y2="1712" stroke="#B9C4D6" stroke-width="5" stroke-dasharray="14 12"/>
+    <!-- fila 3 -->
+    <circle cx="248" cy="1820" r="52" fill="#2E7D8C"/>
+    <text x="248" y="1843" font-family="Trebuchet MS, sans-serif" font-size="56" font-weight="bold" fill="#FFFFFF" text-anchor="middle">3</text>
+    <line x1="336" y1="1862" x2="1900" y2="1862" stroke="#B9C4D6" stroke-width="5" stroke-dasharray="14 12"/>
+    <!-- fila 4 -->
+    <circle cx="248" cy="1970" r="52" fill="#4A8C46"/>
+    <text x="248" y="1993" font-family="Trebuchet MS, sans-serif" font-size="56" font-weight="bold" fill="#FFFFFF" text-anchor="middle">4</text>
+    <line x1="336" y1="2012" x2="1900" y2="2012" stroke="#B9C4D6" stroke-width="5" stroke-dasharray="14 12"/>
+    <!-- fila 5 -->
+    <circle cx="248" cy="2120" r="52" fill="#C9A227"/>
+    <text x="248" y="2143" font-family="Trebuchet MS, sans-serif" font-size="56" font-weight="bold" fill="#FFFFFF" text-anchor="middle">5</text>
+    <line x1="336" y1="2162" x2="1900" y2="2162" stroke="#B9C4D6" stroke-width="5" stroke-dasharray="14 12"/>
+  </g>
+  <text x="336" y="1478" font-family="Trebuchet MS, sans-serif" font-size="44" fill="#8E9BB0" font-style="italic">Una pista por episodio. Apúntalas todas.</text>
+
+  <!-- ===== MI APUESTA ===== -->
+  <rect x="120" y="2290" width="1860" height="380" rx="40" fill="#FDECEC" stroke="#C1272D" stroke-width="10"/>
+  <text x="200" y="2400" font-family="Trebuchet MS, sans-serif" font-size="74" font-weight="bold" fill="#C1272D">MI APUESTA: ¿QUÉ DRAGÓN ES?</text>
+  <line x1="200" y1="2520" x2="1900" y2="2520" stroke="#E09A9A" stroke-width="5"/>
+  <line x1="200" y1="2630" x2="1900" y2="2630" stroke="#E09A9A" stroke-width="5"/>
+  <text x="1900" y="2450" font-family="Trebuchet MS, sans-serif" font-size="42" fill="#B07070"
+        text-anchor="end" font-style="italic">Puedo cambiar de idea cada episodio</text>
+
+  <!-- ===== PIE: DADO + CANCIONES ===== -->
+  <rect x="120" y="2710" width="900" height="180" rx="30" fill="#FFFFFF" stroke="#4A8C46" stroke-width="8"/>
+  <g transform="translate(228,2800)">
+    <rect x="-62" y="-62" width="124" height="124" rx="22" fill="#4A8C46"/>
+    <circle cx="-30" cy="-30" r="12" fill="#FFFFFF"/>
+    <circle cx="30" cy="-30" r="12" fill="#FFFFFF"/>
+    <circle cx="0" cy="0" r="12" fill="#FFFFFF"/>
+    <circle cx="-30" cy="30" r="12" fill="#FFFFFF"/>
+    <circle cx="30" cy="30" r="12" fill="#FFFFFF"/>
+  </g>
+  <text x="330" y="2782" font-family="Trebuchet MS, sans-serif" font-size="56" font-weight="bold" fill="#4A8C46">4, 5 o 6 = SALE BIEN</text>
+  <text x="330" y="2848" font-family="Trebuchet MS, sans-serif" font-size="42" fill="#6B7A68">Ayudándonos, tiramos 2 dados</text>
+
+  <rect x="1080" y="2710" width="900" height="180" rx="30" fill="#FFFFFF" stroke="#2E7D8C" stroke-width="8"/>
+  <text x="1530" y="2778" font-family="Trebuchet MS, sans-serif" font-size="50" font-weight="bold"
+        fill="#2E7D8C" text-anchor="middle">CANCIONES RESCATADAS</text>
+  <g>
+    <circle cx="1250" cy="2838" r="34" fill="none" stroke="#2E7D8C" stroke-width="6"/>
+    <circle cx="1390" cy="2838" r="34" fill="none" stroke="#2E7D8C" stroke-width="6"/>
+    <circle cx="1530" cy="2838" r="34" fill="none" stroke="#2E7D8C" stroke-width="6"/>
+    <circle cx="1670" cy="2838" r="34" fill="none" stroke="#2E7D8C" stroke-width="6"/>
+    <circle cx="1810" cy="2838" r="34" fill="none" stroke="#2E7D8C" stroke-width="6"/>
+  </g>
+
+</svg>
+</body>
+</html>

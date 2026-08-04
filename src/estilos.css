@@ -1,0 +1,1243 @@
+/* ═══════════════════════════════════════════════════════════
+   El Drac de les Cançons — mapa del tesoro dibujado a mano
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  --pergamino: #f3e3be;
+  --pergamino-claro: #fbf3e2;
+  --papel: #faf0d4;
+  --tinta: #4a3728;
+  --tinta-suave: #7a6248;
+  --rojo: #c1272d;
+  --rojo-oscuro: #8a2820;
+  --rojo-palido: #fdecec;
+  --oro: #c9a227;
+  --oro-oscuro: #a8791a;
+  --azul: #2c3e6b;
+  --azul-mar: #2e7d8c;
+  --verde: #4a8c46;
+  --verde-oscuro: #3b7a38;
+  --lila: #7b5ea7;
+  --marron: #8a6a3c;
+
+  --mano: 'Bradley Hand', 'Marker Felt', 'Segoe Script', 'Comic Sans MS', cursive;
+  --titulo: Georgia, 'Times New Roman', serif;
+  --texto: Georgia, 'Times New Roman', serif;
+  --ui: 'Trebuchet MS', 'Segoe UI', system-ui, sans-serif;
+
+  --borde-mano: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  --borde-mano-2: 15px 225px 15px 255px / 225px 15px 255px 15px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--texto);
+  color: var(--tinta);
+  background-color: var(--pergamino);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
+  -webkit-text-size-adjust: 100%;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+  color: inherit;
+  touch-action: manipulation;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   /mesa — iPad en horizontal, apoyado en la mesa
+   ═══════════════════════════════════════════════════════════ */
+
+.mesa {
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0.6rem 0.9rem 0.9rem;
+  gap: 0.6rem;
+}
+
+.mesa__barra {
+  flex: 0 0 auto;
+}
+
+.mesa__cuerpo {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+}
+
+.mesa__izquierda,
+.mesa__derecha {
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── contador de canciones ── */
+
+.canciones {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  background: var(--papel);
+  border: 3px solid var(--marron);
+  border-radius: var(--borde-mano);
+  padding: 0.45rem 1.3rem;
+}
+
+.canciones__titulo {
+  font-family: var(--mano);
+  font-size: clamp(0.85rem, 1.7vw, 1.15rem);
+  font-weight: 700;
+  color: var(--rojo-oscuro);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.canciones__lista {
+  display: flex;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.cancion {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.3rem;
+  background: #fff;
+  border: 3px dashed var(--azul-mar);
+  border-radius: 14px;
+  color: var(--tinta-suave);
+  font-family: var(--ui);
+  font-size: clamp(0.7rem, 1.3vw, 0.95rem);
+  font-weight: 700;
+  transition: transform 0.15s ease, background 0.3s ease, color 0.3s ease;
+}
+
+.cancion__nota {
+  font-size: 1.3em;
+  opacity: 0.35;
+}
+
+.cancion__nombre {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cancion--encendida {
+  background: var(--azul-mar);
+  border-style: solid;
+  color: #fff;
+  box-shadow: 0 0 0 4px rgba(46, 125, 140, 0.18);
+}
+
+.cancion--encendida .cancion__nota {
+  opacity: 1;
+  color: var(--oro);
+}
+
+.cancion:active {
+  transform: scale(0.95);
+}
+
+/* ── el dado, media pantalla ── */
+
+.zona-dado {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--papel);
+  border: 4px solid var(--tinta);
+  border-radius: var(--borde-mano);
+  padding: 1rem;
+}
+
+.dado {
+  flex: 0 1 auto;
+  width: min(46vh, 42vw);
+  height: min(46vh, 42vw);
+  padding: 0;
+  background: none;
+  border: none;
+  transition: transform 0.12s ease;
+}
+
+.dado:active {
+  transform: scale(0.94);
+}
+
+.dado__cara {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: drop-shadow(0 6px 10px rgba(74, 55, 40, 0.28));
+}
+
+.dado__cuerpo {
+  fill: #fffdf6;
+  stroke: var(--tinta);
+  stroke-width: 9;
+  transition: fill 0.3s ease, stroke 0.3s ease;
+}
+
+.dado__punto {
+  fill: var(--tinta);
+  transition: fill 0.3s ease;
+}
+
+.dado--bien .dado__cuerpo {
+  fill: var(--verde);
+  stroke: #2f6b2c;
+}
+
+.dado--bien .dado__punto {
+  fill: #fff;
+}
+
+.dado--mal .dado__cuerpo {
+  fill: var(--rojo);
+  stroke: var(--rojo-oscuro);
+}
+
+.dado--mal .dado__punto {
+  fill: #fff;
+}
+
+.dado--rodando {
+  animation: rodar 0.42s linear infinite;
+}
+
+@keyframes rodar {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(-9deg) scale(1.05);
+  }
+  50% {
+    transform: rotate(6deg) scale(0.97);
+  }
+  75% {
+    transform: rotate(-4deg) scale(1.04);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+.dado__mensaje {
+  min-height: 2.6rem;
+  display: flex;
+  align-items: center;
+  font-family: var(--mano);
+  font-size: clamp(1.4rem, 3.6vw, 2.6rem);
+  font-weight: 700;
+  text-align: center;
+}
+
+.dado__pista {
+  color: var(--tinta-suave);
+  font-size: 0.75em;
+  opacity: 0.7;
+}
+
+.dado__bien {
+  color: var(--verde-oscuro);
+  animation: saltar 0.45s ease;
+}
+
+.dado__mal {
+  color: var(--rojo);
+  animation: saltar 0.45s ease;
+}
+
+@keyframes saltar {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.14);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ── pestañas ── */
+
+.pestanas {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.pestana {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.4rem;
+  background: rgba(255, 255, 255, 0.55);
+  border: 3px solid var(--marron);
+  border-radius: 16px 16px 4px 4px;
+  font-family: var(--mano);
+  font-size: clamp(0.95rem, 2vw, 1.35rem);
+  font-weight: 700;
+  color: var(--tinta-suave);
+  transition: background 0.2s ease, color 0.2s ease, transform 0.12s ease;
+}
+
+.pestana__icono {
+  font-size: 1.15em;
+}
+
+.pestana--activa {
+  background: var(--tinta);
+  border-color: var(--tinta);
+  color: var(--pergamino-claro);
+}
+
+.pestana:active {
+  transform: translateY(2px);
+}
+
+.panel {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: var(--papel);
+  border: 4px solid var(--tinta);
+  border-radius: var(--borde-mano-2);
+  padding: 0.9rem;
+}
+
+.panel__ayuda {
+  margin: 0 0 0.5rem;
+  text-align: center;
+  font-family: var(--mano);
+  font-size: 1.05rem;
+  color: var(--tinta-suave);
+}
+
+/* ── fichas de héroe ── */
+
+.panel__heroes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  height: 100%;
+}
+
+.ficha {
+  display: flex;
+  flex-direction: column;
+  background: #fffdf6;
+  border: 3px solid var(--tinta);
+  border-radius: 18px;
+  padding: 0.7rem;
+  transform: rotate(-0.5deg);
+}
+
+.ficha--paula {
+  transform: rotate(0.6deg);
+  border-color: var(--azul);
+}
+
+.ficha--luca {
+  border-color: var(--rojo);
+}
+
+.ficha__cabecera {
+  text-align: center;
+  margin-bottom: 0.3rem;
+}
+
+.ficha__nombre {
+  margin: 0;
+  font-family: var(--titulo);
+  font-size: clamp(1.3rem, 3vw, 2.1rem);
+  letter-spacing: 0.03em;
+}
+
+.ficha--luca .ficha__nombre {
+  color: var(--rojo);
+}
+
+.ficha--paula .ficha__nombre {
+  color: var(--azul);
+}
+
+.ficha__clase {
+  margin: 0;
+  font-family: var(--mano);
+  font-size: clamp(0.8rem, 1.6vw, 1.05rem);
+  color: var(--tinta-suave);
+}
+
+.ficha__cuerpo {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ficha__figura {
+  width: 46%;
+  max-height: 100%;
+  flex: 0 0 auto;
+}
+
+.ficha__escudo,
+.ficha__poderes {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.ficha__escudo svg {
+  width: 100%;
+  max-width: 130px;
+}
+
+.ficha__poder {
+  margin: 0;
+  text-align: center;
+  font-family: var(--mano);
+  font-size: clamp(0.8rem, 1.6vw, 1.05rem);
+  font-weight: 700;
+  color: var(--rojo);
+  line-height: 1.25;
+}
+
+.ficha__poder--pequeno {
+  color: var(--oro-oscuro);
+  font-weight: 400;
+}
+
+/* fichas de Valentía */
+
+.valentia {
+  flex: 0 0 auto;
+  margin-top: 0.4rem;
+  padding-top: 0.4rem;
+  border-top: 2px dashed var(--oro);
+  text-align: center;
+}
+
+.valentia__titulo {
+  margin: 0 0 0.35rem;
+  font-family: var(--mano);
+  font-size: clamp(0.75rem, 1.5vw, 1rem);
+  font-weight: 700;
+  color: var(--tinta-suave);
+}
+
+.valentia__fichas {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.valentia__ficha {
+  width: clamp(48px, 8vw, 76px);
+  height: clamp(48px, 8vw, 76px);
+  padding: 6px;
+  background: #fff;
+  border: 4px dashed var(--rojo);
+  border-radius: 50%;
+  transition: transform 0.15s ease, opacity 0.3s ease, background 0.3s ease;
+}
+
+.valentia__ficha svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--oro);
+  transition: fill 0.3s ease;
+}
+
+.valentia__ficha:active {
+  transform: scale(0.9);
+}
+
+.valentia__ficha--gastada {
+  background: #ece5d4;
+  border-style: solid;
+  border-color: #c3b79c;
+  opacity: 0.55;
+}
+
+.valentia__ficha--gastada svg {
+  fill: #b5aa92;
+}
+
+/* Grito de Plata */
+
+.grito {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.6rem 0.5rem;
+  background: #eef2fa;
+  border: 3px solid var(--azul);
+  border-radius: 14px;
+  transition: transform 0.15s ease, opacity 0.3s ease;
+}
+
+.grito__titulo {
+  font-family: var(--mano);
+  font-size: clamp(0.85rem, 1.7vw, 1.15rem);
+  font-weight: 700;
+  color: var(--azul);
+}
+
+.grito__estado {
+  font-family: var(--ui);
+  font-size: clamp(0.7rem, 1.3vw, 0.9rem);
+  color: var(--tinta-suave);
+}
+
+.grito:active {
+  transform: scale(0.96);
+}
+
+.grito--usado {
+  background: #ece5d4;
+  border-color: #c3b79c;
+  opacity: 0.55;
+  text-decoration: line-through;
+}
+
+/* ── mapa interactivo ── */
+
+.panel__mapa {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.mapa-isla {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+}
+
+.lugar {
+  cursor: pointer;
+}
+
+.lugar__dibujo {
+  opacity: 0.28;
+  transition: opacity 0.5s ease;
+}
+
+.lugar--abierto .lugar__dibujo {
+  opacity: 1;
+}
+
+.lugar__toque {
+  fill: transparent;
+}
+
+.lugar__cerrado circle {
+  fill: #f0dfb0;
+  fill-opacity: 0.75;
+  stroke: var(--marron);
+  stroke-width: 7;
+  stroke-dasharray: 16 14;
+}
+
+.lugar__cerrado text {
+  font-family: var(--titulo);
+  font-size: 108px;
+  font-weight: 700;
+  fill: var(--marron);
+}
+
+.lugar__texto {
+  font-family: var(--titulo);
+  font-size: 52px;
+  font-weight: 700;
+  fill: #5c4426;
+}
+
+.lugar__texto--peligro {
+  fill: var(--rojo-oscuro);
+}
+
+.lugar__etiqueta {
+  animation: aparecer 0.45s ease;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── cuaderno de pistas ── */
+
+.cuaderno {
+  display: block;
+}
+
+.cuaderno__titulo {
+  margin: 0;
+  font-family: var(--titulo);
+  font-size: clamp(1.1rem, 2.4vw, 1.6rem);
+  color: var(--azul);
+  text-align: center;
+}
+
+.cuaderno__ayuda {
+  margin: 0.15rem 0 0.7rem;
+  text-align: center;
+  font-family: var(--mano);
+  color: var(--tinta-suave);
+  font-size: 0.95rem;
+}
+
+.cuaderno__lista {
+  list-style: none;
+  margin: 0 0 0.9rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cuaderno__linea {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.cuaderno__numero {
+  flex: 0 0 auto;
+  width: 2.1rem;
+  height: 2.1rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  font-family: var(--ui);
+  font-weight: 700;
+  background: var(--tinta-suave);
+}
+
+.cuaderno__numero--1 {
+  background: var(--rojo);
+}
+.cuaderno__numero--2 {
+  background: var(--lila);
+}
+.cuaderno__numero--3 {
+  background: var(--azul-mar);
+}
+.cuaderno__numero--4 {
+  background: var(--verde);
+}
+.cuaderno__numero--5 {
+  background: var(--oro);
+}
+
+.cuaderno__campo,
+.apuesta__campo {
+  flex: 1;
+  min-width: 0;
+  padding: 0.5rem 0.6rem;
+  background: transparent;
+  border: none;
+  border-bottom: 3px dashed #b9c4d6;
+  font-family: var(--mano);
+  font-size: 16px;
+  color: var(--azul);
+}
+
+.cuaderno__campo:focus,
+.apuesta__campo:focus {
+  outline: none;
+  border-bottom-color: var(--azul);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.apuesta {
+  padding: 0.7rem;
+  background: var(--rojo-palido);
+  border: 3px solid var(--rojo);
+  border-radius: 16px;
+}
+
+.apuesta__titulo {
+  display: block;
+  font-family: var(--titulo);
+  font-weight: 700;
+  color: var(--rojo);
+  margin-bottom: 0.3rem;
+}
+
+.apuesta__campo {
+  width: 100%;
+  border-bottom-color: #e09a9a;
+  color: var(--rojo-oscuro);
+}
+
+.apuesta__nota {
+  margin: 0.3rem 0 0;
+  font-family: var(--ui);
+  font-size: 0.78rem;
+  font-style: italic;
+  color: #b07070;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   /dm-x7k2m9 — el portátil del DM
+   ═══════════════════════════════════════════════════════════ */
+
+.dm {
+  max-width: 1700px;
+  margin: 0 auto;
+  padding: 1.2rem 1.4rem 6rem;
+}
+
+.dm__columnas {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(300px, 0.85fr);
+  gap: 1.6rem;
+  align-items: start;
+}
+
+/* min-width:0 es obligatorio: sin él, el texto largo del guion
+   desborda la rejilla y la columna derecha se sale de pantalla. */
+.dm__guion {
+  min-width: 0;
+}
+
+.dm__cabecera {
+  border-bottom: 4px double var(--marron);
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.6rem;
+}
+
+.dm__episodio {
+  margin: 0;
+  font-family: var(--mano);
+  font-size: 1.05rem;
+  color: var(--tinta-suave);
+}
+
+.dm__escena {
+  margin: 0.1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--titulo);
+  font-size: clamp(1.7rem, 3vw, 2.6rem);
+  color: var(--tinta);
+}
+
+.dm__escena-num {
+  display: grid;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  flex: 0 0 auto;
+  background: var(--rojo);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 1.3rem;
+}
+
+.dm__duracion {
+  margin: 0;
+  font-family: var(--ui);
+  font-size: 0.95rem;
+  color: var(--tinta-suave);
+}
+
+/* ── los seis bloques ── */
+
+.bloque {
+  margin-bottom: 1.3rem;
+  padding: 1rem 1.2rem;
+  background: rgba(255, 255, 255, 0.55);
+  border: 3px solid var(--marron);
+  border-radius: 14px;
+}
+
+.bloque__titulo {
+  margin: 0 0 0.6rem;
+  font-family: var(--mano);
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--marron);
+}
+
+/* 1 · leer en voz alta */
+.bloque--leer {
+  background: #fffdf2;
+  border-color: var(--tinta);
+  border-left-width: 12px;
+}
+
+.bloque--leer .bloque__titulo {
+  color: var(--tinta);
+}
+
+.bloque__lectura {
+  margin: 0 0 0.8rem;
+  font-family: var(--texto);
+  font-size: clamp(1.25rem, 1.9vw, 1.72rem);
+  line-height: 1.5;
+  color: #2f2418;
+}
+
+.bloque__acotacion {
+  margin: 0.8rem 0 0;
+  padding-top: 0.7rem;
+  border-top: 2px dashed #d8c9a4;
+  font-family: var(--ui);
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--tinta-suave);
+}
+
+/* 2 · lo que ven */
+.bloque--ven {
+  background: #f4f7f2;
+  border-color: #9bb47c;
+}
+
+.bloque--ven .bloque__titulo {
+  color: #5c7a44;
+}
+
+.bloque__lista {
+  margin: 0;
+  padding-left: 1.2rem;
+  font-family: var(--ui);
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+
+.bloque__lista li {
+  margin-bottom: 0.25rem;
+}
+
+/* 3 · preguntar */
+.bloque--preguntar {
+  background: #f6f2fa;
+  border-color: var(--lila);
+}
+
+.bloque--preguntar .bloque__titulo {
+  color: var(--lila);
+}
+
+.preguntas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.pregunta {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  font-family: var(--texto);
+  font-size: 1.12rem;
+}
+
+.pregunta__quien {
+  flex: 0 0 auto;
+  min-width: 5.4rem;
+  padding: 0.18rem 0.5rem;
+  text-align: center;
+  border-radius: 8px;
+  font-family: var(--ui);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #fff;
+}
+
+.pregunta__texto {
+  line-height: 1.45;
+}
+
+.pregunta--paula .pregunta__quien {
+  background: var(--azul);
+}
+
+.pregunta--luca .pregunta__quien {
+  background: var(--rojo);
+}
+
+.pregunta--mesa .pregunta__quien {
+  background: var(--oro-oscuro);
+}
+
+/* 4 · tiradas */
+.bloque--tiradas {
+  background: #fffaf0;
+  border-color: var(--oro);
+  border-width: 4px;
+}
+
+.bloque--tiradas .bloque__titulo {
+  color: var(--oro-oscuro);
+}
+
+.tirada + .tirada {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 2px dashed #e3d3a8;
+}
+
+.tirada__que {
+  margin: 0 0 0.6rem;
+  font-family: var(--texto);
+  font-size: 1.18rem;
+}
+
+.tirada__resultados {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+}
+
+.tirada__exito,
+.tirada__fallo {
+  margin: 0;
+  padding: 0.6rem 0.7rem;
+  border-radius: 10px;
+  font-family: var(--ui);
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.tirada__exito {
+  background: #e9f4e8;
+  border: 2px solid var(--verde);
+}
+
+.tirada__fallo {
+  background: #fdeeee;
+  border: 2px solid #d98a8a;
+}
+
+.tirada__marca {
+  display: inline-block;
+  margin-right: 0.4rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 6px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.tirada__exito .tirada__marca {
+  background: var(--verde);
+}
+
+.tirada__fallo .tirada__marca {
+  background: #c96a6a;
+}
+
+.tirada__nota {
+  margin: 0.7rem 0 0;
+  font-family: var(--ui);
+  font-size: 0.92rem;
+  font-style: italic;
+  color: var(--tinta-suave);
+}
+
+/* 5 · pista del dragón */
+.bloque--pista {
+  background: var(--rojo-palido);
+  border-color: var(--rojo);
+  border-width: 4px;
+}
+
+.bloque--pista .bloque__titulo {
+  color: var(--rojo);
+}
+
+.bloque__pista {
+  margin: 0;
+  font-family: var(--texto);
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: var(--rojo-oscuro);
+  font-weight: 700;
+}
+
+/* 6 · si se tuerce */
+.bloque--emergencia {
+  background: #f2f4f8;
+  border-color: var(--azul);
+  border-style: dashed;
+}
+
+.bloque--emergencia .bloque__titulo {
+  color: var(--azul);
+}
+
+.bloque__aviso {
+  margin: 0 0 0.6rem;
+  font-family: var(--ui);
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--tinta-suave);
+}
+
+.bloque__lista--frases {
+  list-style: none;
+  padding: 0;
+}
+
+.bloque__lista--frases li {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 0.7rem;
+  background: #fff;
+  border-left: 5px solid var(--azul);
+  border-radius: 0 8px 8px 0;
+  font-family: var(--texto);
+  font-size: 1.08rem;
+}
+
+/* ── columna derecha fija ── */
+
+.dm__lateral {
+  position: sticky;
+  top: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: calc(100vh - 2.4rem);
+  overflow-y: auto;
+}
+
+.lateral__caja {
+  padding: 0.9rem 1rem;
+  background: var(--papel);
+  border: 3px solid var(--marron);
+  border-radius: 12px;
+}
+
+.lateral__titulo {
+  margin: 0 0 0.6rem;
+  font-family: var(--mano);
+  font-size: 1.02rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--marron);
+}
+
+.lateral__vacio {
+  margin: 0;
+  font-family: var(--ui);
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--tinta-suave);
+}
+
+.lateral__pistas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.lateral__pistas li {
+  padding: 0.5rem 0.6rem;
+  background: var(--rojo-palido);
+  border-left: 4px solid var(--rojo);
+  border-radius: 0 8px 8px 0;
+  font-family: var(--ui);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--rojo-oscuro);
+}
+
+.lateral__etiqueta {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.65;
+  margin-bottom: 0.15rem;
+}
+
+.arco {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--ui);
+  font-size: 0.82rem;
+}
+
+.arco th,
+.arco td {
+  padding: 0.35rem 0.4rem;
+  text-align: left;
+  border-bottom: 1px solid #ddcfae;
+  vertical-align: top;
+}
+
+.arco th {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--tinta-suave);
+}
+
+.arco__fila--actual {
+  background: #fff6d8;
+  font-weight: 700;
+}
+
+.lateral__caja--notas {
+  display: flex;
+  flex-direction: column;
+}
+
+.lateral__notas {
+  width: 100%;
+  min-height: 150px;
+  resize: vertical;
+  padding: 0.6rem;
+  background: #fff;
+  border: 2px dashed #c9b98e;
+  border-radius: 8px;
+  font-family: var(--mano);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--azul);
+}
+
+.lateral__notas:focus {
+  outline: none;
+  border-color: var(--azul);
+}
+
+/* ── navegación ── */
+
+.dm__navegacion {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.4rem;
+  padding: 0.7rem 1rem;
+  background: rgba(243, 227, 190, 0.96);
+  border-top: 3px solid var(--marron);
+  backdrop-filter: blur(3px);
+}
+
+.nav-boton {
+  padding: 0.6rem 1.4rem;
+  background: #fff;
+  border: 3px solid var(--tinta);
+  border-radius: 12px;
+  font-family: var(--mano);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--tinta);
+  transition: transform 0.12s ease, background 0.2s ease;
+}
+
+.nav-boton:hover:not(:disabled) {
+  background: #fff9e8;
+}
+
+.nav-boton:active:not(:disabled) {
+  transform: translateY(2px);
+}
+
+.nav-boton:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.nav-boton--principal {
+  background: var(--rojo);
+  border-color: var(--rojo-oscuro);
+  color: #fff;
+}
+
+.nav-boton--principal:hover:not(:disabled) {
+  background: #d33940;
+}
+
+.dm__progreso {
+  font-family: var(--ui);
+  font-size: 0.9rem;
+  color: var(--tinta-suave);
+}
+
+/* ── pantallas estrechas: el DM en una sola columna ── */
+
+@media (max-width: 900px) {
+  .dm__columnas {
+    grid-template-columns: 1fr;
+  }
+
+  .dm__lateral {
+    position: static;
+    max-height: none;
+  }
+}

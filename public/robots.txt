@@ -1,0 +1,5 @@
+# Sitio privado de una campaña de mesa. Nada que indexar.
+# Se bloquea el sitio entero a propósito: así no hace falta
+# nombrar la ruta del DM en ningún fichero público.
+User-agent: *
+Disallow: /

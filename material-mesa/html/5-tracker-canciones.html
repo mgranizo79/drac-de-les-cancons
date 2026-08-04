@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Las Cinco Canciones — Tracker de campaña</title>
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  html, body { margin: 0; padding: 0; }
+  svg { display: block; width: 210mm; height: 297mm; }
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2100 2970" width="210mm" height="297mm">
+
+  <defs>
+    <!-- dragón (silueta amenazadora en lo alto) -->
+    <g id="dragon">
+      <path d="M148,268 C74,196 26,204 14,236 C40,238 56,254 60,282 C86,268 104,272 116,286
+               C110,318 126,342 152,352 Z" fill="#8A1519" stroke="#5E0E12" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M252,268 C326,196 374,204 386,236 C360,238 344,254 340,282 C314,268 296,272 284,286
+               C290,318 274,342 248,352 Z" fill="#8A1519" stroke="#5E0E12" stroke-width="6" stroke-linejoin="round"/>
+      <g stroke="#B94A48" stroke-width="5" fill="none">
+        <path d="M140,286 L60,268"/><path d="M136,318 L104,292"/>
+        <path d="M260,286 L340,268"/><path d="M264,318 L296,292"/>
+      </g>
+      <path d="M252,442 C312,458 348,436 352,396 C338,420 314,428 268,414 Z" fill="#C1272D" stroke="#8A1519" stroke-width="6"/>
+      <path d="M352,396 L392,368 L372,414 Z" fill="#E8A63A" stroke="#B0741A" stroke-width="5" stroke-linejoin="round"/>
+      <g stroke="#C1272D" stroke-width="34" stroke-linecap="round">
+        <path d="M156,432 L150,478"/><path d="M244,432 L250,478"/>
+      </g>
+      <g fill="#E8C87A" stroke="#B0741A" stroke-width="4">
+        <path d="M118,494 L182,494 L176,514 L124,514 Z"/>
+        <path d="M218,494 L282,494 L276,514 L224,514 Z"/>
+      </g>
+      <ellipse cx="200" cy="378" rx="96" ry="92" fill="#C1272D" stroke="#8A1519" stroke-width="7"/>
+      <ellipse cx="200" cy="396" rx="58" ry="64" fill="#E8A63A"/>
+      <g stroke="#C98A22" stroke-width="5">
+        <line x1="146" y1="368" x2="254" y2="368"/>
+        <line x1="148" y1="404" x2="252" y2="404"/>
+        <line x1="156" y1="440" x2="244" y2="440"/>
+      </g>
+      <g fill="#8A1519">
+        <path d="M200,286 L182,246 L218,246 Z"/>
+        <path d="M158,300 L142,266 L176,268 Z"/>
+        <path d="M242,300 L258,266 L224,268 Z"/>
+      </g>
+      <ellipse cx="200" cy="212" rx="92" ry="80" fill="#C1272D" stroke="#8A1519" stroke-width="7"/>
+      <path d="M108,224 C64,232 40,252 34,276 C64,272 92,266 116,258 Z" fill="#C1272D" stroke="#8A1519" stroke-width="6"/>
+      <path d="M40,268 C10,264 -4,282 8,300 C24,290 34,290 46,296 C40,282 40,274 40,268 Z" fill="#E8A63A" stroke="#C1272D" stroke-width="5"/>
+      <path d="M34,276 C16,278 10,288 18,296 C26,290 32,290 38,292 Z" fill="#F5E08A"/>
+      <ellipse cx="168" cy="196" rx="26" ry="28" fill="#F0D24A" stroke="#8A1519" stroke-width="5"/>
+      <ellipse cx="238" cy="196" rx="26" ry="28" fill="#F0D24A" stroke="#8A1519" stroke-width="5"/>
+      <ellipse cx="168" cy="196" rx="8" ry="22" fill="#2A2119"/>
+      <ellipse cx="238" cy="196" rx="8" ry="22" fill="#2A2119"/>
+      <path d="M138,158 L196,174" stroke="#8A1519" stroke-width="9" stroke-linecap="round"/>
+      <path d="M266,158 L212,174" stroke="#8A1519" stroke-width="9" stroke-linecap="round"/>
+      <path d="M148,142 C130,102 138,72 158,54 C158,96 166,124 178,144 Z" fill="#E8C87A" stroke="#B0741A" stroke-width="5"/>
+      <path d="M252,142 C270,102 262,72 242,54 C242,96 234,124 222,144 Z" fill="#E8C87A" stroke="#B0741A" stroke-width="5"/>
+      <circle cx="106" cy="240" r="7" fill="#5E0E12"/>
+    </g>
+  </defs>
+
+  <!-- ===== FONDO ===== -->
+  <rect x="0" y="0" width="2100" height="2970" fill="#FBF3E2"/>
+  <g fill="#F0E2C0" opacity="0.7">
+    <ellipse cx="300" cy="1400" rx="240" ry="320"/>
+    <ellipse cx="1820" cy="2100" rx="200" ry="280"/>
+  </g>
+  <rect x="42" y="42" width="2016" height="2886" rx="50" fill="none" stroke="#C1272D" stroke-width="18"/>
+  <rect x="80" y="80" width="1940" height="2810" rx="32" fill="none" stroke="#C9A227" stroke-width="7"/>
+
+  <!-- ===== TÍTULO ===== -->
+  <text x="1050" y="248" font-family="Georgia, serif" font-size="132" font-weight="bold"
+        fill="#C1272D" text-anchor="middle" letter-spacing="6">LAS CINCO CANCIONES</text>
+  <text x="1050" y="326" font-family="Trebuchet MS, sans-serif" font-size="52"
+        fill="#7A6248" text-anchor="middle">Una pegatina por cada canción que rescatemos</text>
+
+  <!-- ===== EL DRAGÓN ===== -->
+  <g transform="translate(880,392) scale(0.85)">
+    <use href="#dragon"/>
+  </g>
+  <text x="1050" y="880" font-family="Georgia, serif" font-size="66" font-weight="bold"
+        fill="#8A1519" text-anchor="middle">EL DRAGÓN SE LAS ESTÁ TRAGANDO</text>
+  <text x="1050" y="944" font-family="Georgia, serif" font-size="46" font-style="italic"
+        fill="#8A6A3C" text-anchor="middle">Cuando estén las cinco, subiremos a por él</text>
+
+  <!-- camino de puntos que sube -->
+  <g stroke="#C9A227" stroke-width="10" stroke-linecap="round" stroke-dasharray="4 34" fill="none">
+    <path d="M330,2600 L330,1120"/>
+  </g>
+
+  <!-- ===== 5 · DEL CORAZÓN ===== -->
+  <g>
+    <rect x="140" y="1000" width="1820" height="330" rx="34" fill="#FDECEC" stroke="#C1272D" stroke-width="8"/>
+    <circle cx="330" cy="1165" r="128" fill="#FFFFFF" stroke="#C1272D" stroke-width="10" stroke-dasharray="26 20"/>
+    <text x="540" y="1140" font-family="Trebuchet MS, sans-serif" font-size="70" font-weight="bold" fill="#C1272D">5 · LA CANCIÓN DEL CORAZÓN</text>
+    <text x="540" y="1212" font-family="Trebuchet MS, sans-serif" font-size="48" fill="#8A6A5C">vuelve todo lo demás</text>
+    <g transform="translate(1832,1165)">
+      <path d="M0,52 C-64,4 -60,-46 -30,-46 C-14,-46 -4,-34 0,-26 C4,-34 14,-46 30,-46 C60,-46 64,4 0,52 Z"
+            fill="#C1272D" stroke="#8A1519" stroke-width="6"/>
+    </g>
+  </g>
+
+  <!-- ===== 4 · DE LA GENTE ===== -->
+  <g>
+    <rect x="140" y="1370" width="1820" height="330" rx="34" fill="#FBF1E0" stroke="#C9A227" stroke-width="8"/>
+    <circle cx="330" cy="1535" r="128" fill="#FFFFFF" stroke="#C9A227" stroke-width="10" stroke-dasharray="26 20"/>
+    <text x="540" y="1510" font-family="Trebuchet MS, sans-serif" font-size="70" font-weight="bold" fill="#A8791A">4 · LA CANCIÓN DE LA GENTE</text>
+    <text x="540" y="1582" font-family="Trebuchet MS, sans-serif" font-size="48" fill="#8A6A5C">vuelven las voces</text>
+    <g transform="translate(1832,1535)" fill="#C9A227" stroke="#8A6520" stroke-width="5">
+      <circle cx="-52" cy="-18" r="24"/>
+      <path d="M-84,50 C-84,10 -20,10 -20,50 Z"/>
+      <circle cx="8" cy="-30" r="27"/>
+      <path d="M-26,48 C-26,4 42,4 42,48 Z"/>
+      <circle cx="60" cy="-18" r="24"/>
+      <path d="M30,50 C30,10 92,10 92,50 Z"/>
+    </g>
+  </g>
+
+  <!-- ===== 3 · DE LOS PÁJAROS ===== -->
+  <g>
+    <rect x="140" y="1740" width="1820" height="330" rx="34" fill="#EEF6EA" stroke="#4A8C46" stroke-width="8"/>
+    <circle cx="330" cy="1905" r="128" fill="#FFFFFF" stroke="#4A8C46" stroke-width="10" stroke-dasharray="26 20"/>
+    <text x="540" y="1880" font-family="Trebuchet MS, sans-serif" font-size="70" font-weight="bold" fill="#3B7A38">3 · LA CANCIÓN DE LOS PÁJAROS</text>
+    <text x="540" y="1952" font-family="Trebuchet MS, sans-serif" font-size="48" fill="#6B7A68">vuelven a cantar</text>
+    <g transform="translate(1832,1905)" fill="none" stroke="#4A8C46" stroke-width="11" stroke-linecap="round">
+      <path d="M-70,0 q28,-34 56,0 q28,-34 56,0"/>
+      <path d="M-40,54 q20,-26 40,0 q20,-26 40,0"/>
+      <path d="M-24,-52 q16,-20 32,0 q16,-20 32,0"/>
+    </g>
+  </g>
+
+  <!-- ===== 2 · DEL VIENTO ===== -->
+  <g>
+    <rect x="140" y="2110" width="1820" height="330" rx="34" fill="#EDF3F6" stroke="#6E9BB2" stroke-width="8"/>
+    <circle cx="330" cy="2275" r="128" fill="#FFFFFF" stroke="#6E9BB2" stroke-width="10" stroke-dasharray="26 20"/>
+    <text x="540" y="2250" font-family="Trebuchet MS, sans-serif" font-size="70" font-weight="bold" fill="#4E7B94">2 · LA CANCIÓN DEL VIENTO</text>
+    <text x="540" y="2322" font-family="Trebuchet MS, sans-serif" font-size="48" fill="#6B7A82">vuelve el aire a soplar</text>
+    <g transform="translate(1832,2275)" fill="none" stroke="#6E9BB2" stroke-width="12" stroke-linecap="round">
+      <path d="M-80,-40 L34,-40 C64,-40 64,-82 34,-82"/>
+      <path d="M-80,4 L58,4 C92,4 92,-42 58,-42"/>
+      <path d="M-80,48 L24,48 C54,48 54,88 24,88"/>
+    </g>
+  </g>
+
+  <!-- ===== 1 · DEL MAR ===== -->
+  <g>
+    <rect x="140" y="2480" width="1820" height="330" rx="34" fill="#E8F2F5" stroke="#2E7D8C" stroke-width="8"/>
+    <circle cx="330" cy="2645" r="128" fill="#FFFFFF" stroke="#2E7D8C" stroke-width="10" stroke-dasharray="26 20"/>
+    <text x="540" y="2620" font-family="Trebuchet MS, sans-serif" font-size="70" font-weight="bold" fill="#2E7D8C">1 · LA CANCIÓN DEL MAR</text>
+    <text x="540" y="2692" font-family="Trebuchet MS, sans-serif" font-size="48" fill="#5E7A82">vuelven las olas</text>
+    <g transform="translate(1832,2645)" fill="none" stroke="#2E7D8C" stroke-width="12" stroke-linecap="round">
+      <path d="M-84,-44 q28,-24 56,0 q28,24 56,0"/>
+      <path d="M-84,4 q28,-24 56,0 q28,24 56,0"/>
+      <path d="M-84,52 q28,-24 56,0 q28,24 56,0"/>
+    </g>
+  </g>
+
+  <!-- ===== PIE ===== -->
+  <text x="1050" y="2880" font-family="Georgia, serif" font-size="46" font-style="italic"
+        fill="#8A6A3C" text-anchor="middle">El Drac de les Cançons · Paula &amp; Sir Luca</text>
+
+</svg>
+</body>
+</html>

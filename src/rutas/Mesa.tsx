@@ -1,0 +1,90 @@
+import { useEffect, useState } from 'react'
+import { Dado } from '../componentes/Dado'
+import { FichaLuca, FichaPaula } from '../componentes/FichasHeroes'
+import { ContadorCanciones } from '../componentes/ContadorCanciones'
+import { CuadernoPistas } from '../componentes/CuadernoPistas'
+import { MapaIsla } from '../componentes/arte/MapaIsla'
+import { usePartida } from '../estado/usePartida'
+
+type Pestana = 'heroes' | 'mapa' | 'pistas'
+
+const PESTANAS: Array<{ id: Pestana; etiqueta: string; icono: string }> = [
+  { id: 'heroes', etiqueta: 'Héroes', icono: '🛡' },
+  { id: 'mapa', etiqueta: 'Mapa', icono: '🧭' },
+  { id: 'pistas', etiqueta: 'Pistas', icono: '🐉' },
+]
+
+export function Mesa() {
+  const {
+    estado,
+    gastarValentia,
+    alternarGrito,
+    encenderCancion,
+    escribirPista,
+    escribirApuesta,
+    alternarLugar,
+  } = usePartida()
+
+  const [pestana, setPestana] = useState<Pestana>('heroes')
+
+  useEffect(() => {
+    document.title = 'El Drac de les Cançons'
+  }, [])
+
+  return (
+    <div className="mesa">
+      <header className="mesa__barra">
+        <ContadorCanciones rescatadas={estado.canciones} onEncender={encenderCancion} />
+      </header>
+
+      <main className="mesa__cuerpo">
+        <section className="mesa__izquierda">
+          <Dado />
+        </section>
+
+        <section className="mesa__derecha">
+          <nav className="pestanas" aria-label="Secciones">
+            {PESTANAS.map((p) => (
+              <button
+                key={p.id}
+                type="button"
+                className={pestana === p.id ? 'pestana pestana--activa' : 'pestana'}
+                onClick={() => setPestana(p.id)}
+              >
+                <span className="pestana__icono" aria-hidden="true">
+                  {p.icono}
+                </span>
+                {p.etiqueta}
+              </button>
+            ))}
+          </nav>
+
+          <div className="panel">
+            {pestana === 'heroes' && (
+              <div className="panel__heroes">
+                <FichaLuca valentia={estado.valentia} onGastar={gastarValentia} />
+                <FichaPaula gritoUsado={estado.gritoUsado} onGrito={alternarGrito} />
+              </div>
+            )}
+
+            {pestana === 'mapa' && (
+              <div className="panel__mapa">
+                <p className="panel__ayuda">Toca un sitio cuando lleguéis allí</p>
+                <MapaIsla desbloqueados={estado.lugares} onTocar={alternarLugar} />
+              </div>
+            )}
+
+            {pestana === 'pistas' && (
+              <CuadernoPistas
+                pistas={estado.pistas}
+                apuesta={estado.apuesta}
+                onPista={escribirPista}
+                onApuesta={escribirApuesta}
+              />
+            )}
+          </div>
+        </section>
+      </main>
+    </div>
+  )
+}
