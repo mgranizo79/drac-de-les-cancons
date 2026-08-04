@@ -92,7 +92,7 @@ En `material-mesa/` hay cinco PDF A4 a color, listos para la impresora:
 | Fichero | Qué es |
 |---------|--------|
 | `pdf/1-ficha-luca.pdf` | Ficha de Sir Luca: escudo de Sant Jordi y 3 huecos para las fichas de Valentía |
-| `pdf/2-ficha-paula.pdf` | Ficha de Paula, con el cuaderno de pistas sobre el dragón |
+| `pdf/2-ficha-paula.pdf` | Ficha de Paula: sus tres poderes y el cuaderno de pistas sobre el dragón |
 | `pdf/3-mapa-isla.pdf` | Mapa de la isla, con círculos para ir marcando por dónde han pasado |
 | `pdf/4-tokens.pdf` | Figuras recortables que se tienen de pie |
 | `pdf/5-tracker-canciones.pdf` | Tracker de las 5 canciones, para la pared |
@@ -102,8 +102,14 @@ Los fuentes están en `material-mesa/html/`. Son SVG a tamaño A4 exacto: para
 regenerar los PDF después de tocarlos, con Chrome instalado:
 
 ```bash
-chrome --headless --disable-gpu --no-pdf-header-footer --print-to-pdf=salida.pdf entrada.html
+chrome --headless --disable-gpu --no-pdf-header-footer --allow-file-access-from-files --print-to-pdf=salida.pdf entrada.html
 ```
+
+El `--allow-file-access-from-files` hace falta desde que las fichas y las
+figuras llevan ilustraciones: sin él Chrome no carga las imágenes locales y
+salen los huecos en blanco. Las imágenes de impresión están en
+`material-mesa/imagenes/tarjetas/` (las mismas de `public/imagenes/`,
+reescaladas a 750 px y en JPEG para que los PDF no pesen 7 MB).
 
 ---
 
