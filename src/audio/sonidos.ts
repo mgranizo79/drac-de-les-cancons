@@ -240,6 +240,17 @@ export function sonarCancion(numero: number): void {
   tocar(c.currentTime)
 }
 
+/** El Rayo de Luna: el diapasón carga y la luz sale disparada. */
+export function sonarRayo(): void {
+  const c = contexto()
+  if (!c) return
+  const t = c.currentTime
+  nota(1318.51, t, 0.3, 'sine', 0.12) // el diapasón, que suena limpio
+  deslizar(500, 1600, t + 0.04, 0.16, 0.1) // la nota se carga en las manos
+  deslizar(2400, 260, t + 0.2, 0.36, 0.2) // y sale disparada
+  soplo(t + 0.2, 0.45, { desdeHz: 3200, hastaHz: 700, q: 4, volumen: 0.1 })
+}
+
 /** Ficha de Valentía gastada: un golpecito de escudo. */
 export function sonarValentia(): void {
   const c = contexto()

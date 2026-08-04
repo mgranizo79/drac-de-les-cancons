@@ -134,7 +134,7 @@ export const episodio2: Episodio = {
         'Una vela encendida cuya llama está completamente quieta, como pintada.',
       ],
       preguntar: [
-        { para: 'paula', texto: '¿Le cantas, o primero intentas hablar con él?' },
+        { para: 'paula', texto: '¿Hablas con él, le cantas, o directamente Rayo de Luna?' },
         { para: 'luca', texto: '¿Le pides el tarro por favor o se lo quitas?' },
       ],
       tiradas: [
@@ -145,7 +145,7 @@ export const episodio2: Episodio = {
           fallo:
             'El kobold os tacha del cuaderno. Durante el resto de la escena, quien haya fallado no puede decir su propio nombre: hay que llamarle de otra manera.',
           nota:
-            'El Grito de Plata acaba con él al instante, y las fichas de Valentía de Luca valen como acierto automático. Si van justos de paciencia, recuérdaselo tú.',
+            'Si Paula falla con el Rayo de Luna, el rebote enciende una vela de la estantería y el kobold se pone a apagarla a manotazos: turno perdido para él. El Grito de Plata acaba con él al instante, y las fichas de Valentía de Luca valen como acierto automático.',
         },
       ],
       pistaDelDragon:

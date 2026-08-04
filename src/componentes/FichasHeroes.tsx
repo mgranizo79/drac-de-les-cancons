@@ -1,5 +1,5 @@
 import { EscudoSantJordi } from './arte/figuras'
-import { despertarAudio, sonarValentia } from '../audio/sonidos'
+import { despertarAudio, sonarRayo, sonarValentia } from '../audio/sonidos'
 
 interface PropsLuca {
   valentia: [boolean, boolean, boolean]
@@ -92,6 +92,21 @@ export function FichaPaula({ gritoUsado, onGrito, onVerDetalle }: PropsPaula) {
           </span>
         </button>
         <div className="ficha__poderes">
+          {/* El Rayo no se gasta: es su ataque. El botón está para hacer el
+              gesto y que suene, igual que Luca da un espadazo al aire. */}
+          <button
+            type="button"
+            className="rayo"
+            onClick={() => {
+              despertarAudio()
+              sonarRayo()
+            }}
+          >
+            <span className="rayo__icono" aria-hidden="true">
+              ✦
+            </span>
+            <span className="rayo__titulo">EL RAYO DE LUNA</span>
+          </button>
           <button
             type="button"
             className={gritoUsado ? 'grito grito--usado' : 'grito'}
@@ -103,9 +118,6 @@ export function FichaPaula({ gritoUsado, onGrito, onVerDetalle }: PropsPaula) {
             <span className="grito__titulo">EL GRITO DE PLATA</span>
             <span className="grito__estado">{gritoUsado ? 'ya usado hoy' : 'disponible'}</span>
           </button>
-          <p className="ficha__poder ficha__poder--pequeno">
-            Si aciertas qué dragón es, todo el grupo gana <strong>un dado extra</strong>
-          </p>
         </div>
       </div>
     </article>

@@ -570,6 +570,38 @@ button {
   fill: #b5aa92;
 }
 
+/* Rayo de Luna: no se gasta, solo suena. */
+
+.rayo {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.5rem;
+  background: linear-gradient(135deg, #f6f1fb, #e6ddf5);
+  border: 3px solid var(--lila);
+  border-radius: 14px;
+  transition: transform 0.12s ease, box-shadow 0.2s ease;
+}
+
+.rayo:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 0 6px rgba(123, 94, 167, 0.22);
+}
+
+.rayo__icono {
+  font-size: 1.2em;
+  color: var(--oro);
+}
+
+.rayo__titulo {
+  font-family: var(--mano);
+  font-size: clamp(0.8rem, 1.6vw, 1.1rem);
+  font-weight: 700;
+  color: var(--lila);
+}
+
 /* Grito de Plata */
 
 .grito {

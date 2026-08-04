@@ -133,7 +133,7 @@ export const episodio1: Episodio = {
         'Está más asustado que enfadado. Pero no piensa soltar el tarro.',
       ],
       preguntar: [
-        { para: 'paula', texto: '¿Qué le cantas? Cántalo de verdad si quieres.' },
+        { para: 'paula', texto: '¿Le cantas o le lanzas el Rayo de Luna? Tú eliges cada turno.' },
         { para: 'luca', texto: '¡Dale un espadazo! ¿Cómo lo haces?' },
       ],
       tiradas: [
@@ -144,7 +144,7 @@ export const episodio1: Episodio = {
           fallo:
             'El kobold os roba una palabra. Durante el resto de la escena no podéis decirla. Elige una absurda: «sí», «agua», «mamá».',
           nota:
-            'El Grito de Plata de Paula acaba con él AL INSTANTE, sin tirar. Recuérdaselo si se atasca. Luca puede gastar una ficha de Valentía para acertar seguro.',
+            'Paula elige cada turno: cantar o lanzar el Rayo de Luna con las manos. Las dos tiran dado igual. El Grito de Plata acaba con él AL INSTANTE, sin tirar: recuérdaselo si se atasca. Y Luca puede gastar una ficha de Valentía para acertar seguro.',
         },
       ],
       pistaDelDragon:

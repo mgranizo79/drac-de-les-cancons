@@ -105,8 +105,14 @@ export const heroes: Heroe[] = [
     clase: 'Cazadragones de la Luna',
     imagen: '/imagenes/paula.png',
     quienEs:
-      'Sabe de dragones más que nadie: se los ha estudiado todos, uno por uno. No caza con espada, caza cantando: su voz es su arma. Lleva la luna en la frente porque los dragones se ven mejor de noche.',
+      'Sabe de dragones más que nadie: se los ha estudiado todos, uno por uno. No caza con espada, caza cantando: su voz es su arma. Lleva la luna en la frente porque los dragones se ven mejor de noche, y un diapasón de plata colgado del cinturón que le regaló la luna cuando era pequeña.',
     poderes: [
+      {
+        nombre: 'El Rayo de Luna',
+        efecto:
+          'Golpea el diapasón de plata, la nota se le queda en las manos convertida en luz y la lanza. Con 4+ acierta y la criatura sale despedida hacia atrás. Con 1-3 el rayo rebota en una piedra y enciende algo que no tocaba.',
+        usos: 'siempre que quiera',
+      },
       {
         nombre: 'El Grito de Plata',
         efecto: 'Canta una nota y cualquier criatura del dragón huye. Sin tirar dado, ella decide cuándo.',
@@ -118,7 +124,8 @@ export const heroes: Heroe[] = [
           'Cuando aparece una pista, se le pregunta en serio qué dragón cree que es. Si acierta, todo el grupo gana un dado extra.',
       },
     ],
-    enCombate: 'Ataca cantando. Pregúntale siempre qué canta, y déjala cantarlo de verdad si quiere.',
+    enCombate:
+      'Tiene dos maneras de atacar y elige ella: cantando, o lanzando el Rayo de Luna con las manos. Las dos tiran dado igual. Si canta, pregúntale qué canta y déjala cantarlo de verdad.',
   },
   {
     id: 'luca',
