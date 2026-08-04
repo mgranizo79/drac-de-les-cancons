@@ -113,13 +113,131 @@ export function sonarFallo(): void {
   nota(311.13, t + 0.13, 0.3, 'triangle', 0.16) // mi bemol
 }
 
-/** Una canción vuelve a la isla. */
-export function sonarCancion(): void {
+/** Ruido filtrado que barre de una frecuencia a otra: el mar y el viento. */
+function soplo(
+  desde: number,
+  duracion: number,
+  opciones: { desdeHz: number; hastaHz: number; q?: number; volumen?: number },
+): void {
   const c = contexto()
   if (!c) return
-  const t = c.currentTime
-  const escala = [523.25, 587.33, 659.25, 783.99, 880.0]
-  escala.forEach((f, i) => nota(f, t + i * 0.09, 0.5, 'sine', 0.15))
+  const muestras = Math.max(1, Math.floor(c.sampleRate * duracion))
+  const buffer = c.createBuffer(1, muestras, c.sampleRate)
+  const datos = buffer.getChannelData(0)
+  for (let i = 0; i < muestras; i++) datos[i] = Math.random() * 2 - 1
+  const fuente = c.createBufferSource()
+  fuente.buffer = buffer
+  const filtro = c.createBiquadFilter()
+  filtro.type = 'bandpass'
+  filtro.Q.value = opciones.q ?? 3
+  filtro.frequency.setValueAtTime(opciones.desdeHz, desde)
+  filtro.frequency.exponentialRampToValueAtTime(opciones.hastaHz, desde + duracion)
+  const gan = c.createGain()
+  const volumen = opciones.volumen ?? 0.18
+  gan.gain.setValueAtTime(0.0001, desde)
+  gan.gain.exponentialRampToValueAtTime(volumen, desde + duracion * 0.3)
+  gan.gain.exponentialRampToValueAtTime(0.0001, desde + duracion)
+  fuente.connect(filtro)
+  filtro.connect(gan)
+  gan.connect(c.destination)
+  fuente.start(desde)
+  fuente.stop(desde + duracion)
+}
+
+/** Nota que se desliza de una frecuencia a otra: los trinos de los pájaros. */
+function deslizar(desdeHz: number, hastaHz: number, desde: number, duracion: number, volumen = 0.15): void {
+  const c = contexto()
+  if (!c) return
+  const osc = c.createOscillator()
+  const gan = c.createGain()
+  osc.type = 'sine'
+  osc.frequency.setValueAtTime(desdeHz, desde)
+  osc.frequency.exponentialRampToValueAtTime(hastaHz, desde + duracion)
+  gan.gain.setValueAtTime(0.0001, desde)
+  gan.gain.exponentialRampToValueAtTime(volumen, desde + duracion * 0.25)
+  gan.gain.exponentialRampToValueAtTime(0.0001, desde + duracion)
+  osc.connect(gan)
+  gan.connect(c.destination)
+  osc.start(desde)
+  osc.stop(desde + duracion + 0.05)
+}
+
+/** Nota con vaivén lento, como el oleaje. */
+function ondular(frecuencia: number, desde: number, duracion: number, volumen = 0.16): void {
+  const c = contexto()
+  if (!c) return
+  const osc = c.createOscillator()
+  const lfo = c.createOscillator()
+  const profundidad = c.createGain()
+  const gan = c.createGain()
+  osc.type = 'sine'
+  osc.frequency.value = frecuencia
+  lfo.type = 'sine'
+  lfo.frequency.value = 1.5
+  profundidad.gain.value = frecuencia * 0.05
+  lfo.connect(profundidad)
+  profundidad.connect(osc.frequency)
+  gan.gain.setValueAtTime(0.0001, desde)
+  gan.gain.exponentialRampToValueAtTime(volumen, desde + 0.3)
+  gan.gain.exponentialRampToValueAtTime(0.0001, desde + duracion)
+  osc.connect(gan)
+  gan.connect(c.destination)
+  osc.start(desde)
+  lfo.start(desde)
+  osc.stop(desde + duracion + 0.05)
+  lfo.stop(desde + duracion + 0.05)
+}
+
+/**
+ * Cada canción suena a lo que devuelve a la isla. Antes las cinco disparaban
+ * la misma escala y no había forma de distinguirlas.
+ */
+const CANCIONES: Record<number, (t: number) => void> = {
+  // 1 · DEL MAR — una ola que va y viene, con su espuma
+  1: (t) => {
+    ondular(196.0, t, 2.2, 0.16)
+    ondular(293.66, t + 0.15, 2.0, 0.09)
+    soplo(t, 1.1, { desdeHz: 400, hastaHz: 1500, q: 1.2, volumen: 0.1 })
+    soplo(t + 1.1, 1.1, { desdeHz: 1500, hastaHz: 400, q: 1.2, volumen: 0.08 })
+  },
+
+  // 2 · DEL VIENTO — una ráfaga que pasa de largo. Sin nota: solo aire.
+  2: (t) => {
+    soplo(t, 1.8, { desdeHz: 300, hastaHz: 2600, q: 6, volumen: 0.17 })
+    soplo(t + 0.55, 1.5, { desdeHz: 2200, hastaHz: 500, q: 8, volumen: 0.12 })
+  },
+
+  // 3 · DE LOS PÁJAROS — cuatro trinos agudos, rápidos y desordenados
+  3: (t) => {
+    deslizar(1200, 2100, t, 0.13)
+    deslizar(1500, 2400, t + 0.17, 0.11)
+    deslizar(1050, 1900, t + 0.33, 0.15)
+    deslizar(1750, 2600, t + 0.55, 0.19, 0.13)
+  },
+
+  // 4 · DE LA GENTE — un coro: las voces van entrando una detrás de otra
+  4: (t) => {
+    nota(261.63, t, 1.7, 'triangle', 0.12)
+    nota(329.63, t + 0.2, 1.5, 'triangle', 0.11)
+    nota(392.0, t + 0.4, 1.4, 'triangle', 0.11)
+    nota(523.25, t + 0.6, 1.3, 'sine', 0.1)
+  },
+
+  // 5 · DEL CORAZÓN — dos latidos y una nota que se abre
+  5: (t) => {
+    nota(90, t, 0.2, 'sine', 0.3)
+    nota(90, t + 0.32, 0.24, 'sine', 0.26)
+    nota(440.0, t + 0.62, 0.5, 'triangle', 0.14)
+    nota(659.25, t + 0.88, 1.2, 'sine', 0.15)
+  },
+}
+
+/** Una canción vuelve a la isla. Cada número suena distinto. */
+export function sonarCancion(numero: number): void {
+  const c = contexto()
+  if (!c) return
+  const tocar = CANCIONES[numero] ?? CANCIONES[1]
+  tocar(c.currentTime)
 }
 
 /** Ficha de Valentía gastada: un golpecito de escudo. */

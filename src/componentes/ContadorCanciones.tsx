@@ -20,7 +20,7 @@ export function ContadorCanciones({ rescatadas, onEncender }: Props) {
               className={encendida ? 'cancion cancion--encendida' : 'cancion'}
               onClick={() => {
                 despertarAudio()
-                if (!encendida) sonarCancion()
+                if (!encendida) sonarCancion(c.numero)
                 onEncender(c.numero)
               }}
               aria-label={`Canción ${c.numero}: ${c.nombre}`}
