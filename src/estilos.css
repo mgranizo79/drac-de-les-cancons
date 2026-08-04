@@ -704,10 +704,36 @@ button {
   color: var(--tinta-suave);
 }
 
+.personaje__descripcion {
+  flex: 0 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  margin-top: 0.2rem;
+  padding-top: 0.3rem;
+  border-top: 2px dashed #ddcfae;
+  font-family: var(--ui);
+  font-size: clamp(0.62rem, 1.05vw, 0.8rem);
+  line-height: 1.35;
+  text-align: left;
+  color: var(--tinta-suave);
+}
+
 /* todavía sin descubrir */
 .personaje:not(.personaje--visto) {
   background: rgba(255, 255, 255, 0.45);
   border-style: dashed;
+}
+
+/* Los que ninguna escena presenta todavía (el dragón) van deshabilitados,
+   pero se ven exactamente igual que los demás tapados: que no se note que
+   esa carta es especial. */
+.personaje:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+.personaje:disabled:active {
+  transform: none;
 }
 
 .personaje__tapado {
@@ -1217,6 +1243,94 @@ button {
   text-transform: uppercase;
   opacity: 0.65;
   margin-bottom: 0.15rem;
+}
+
+/* ── referencia plegable: quién es quién ── */
+
+.ref {
+  border-bottom: 1px solid #ddcfae;
+}
+
+.ref:last-child {
+  border-bottom: none;
+}
+
+.ref__titulo {
+  cursor: pointer;
+  padding: 0.35rem 0;
+  font-family: var(--ui);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--tinta);
+  list-style: none;
+}
+
+.ref__titulo::-webkit-details-marker {
+  display: none;
+}
+
+.ref__titulo::before {
+  content: '▸';
+  display: inline-block;
+  width: 1rem;
+  color: var(--marron);
+}
+
+.ref[open] .ref__titulo::before {
+  content: '▾';
+}
+
+.ref__clase {
+  font-weight: 400;
+  font-style: italic;
+  color: var(--tinta-suave);
+}
+
+.ref__cuerpo {
+  padding: 0.1rem 0 0.6rem 1rem;
+  font-family: var(--ui);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--tinta-suave);
+}
+
+.ref__cuerpo p {
+  margin: 0 0 0.5rem;
+}
+
+.ref__poderes {
+  margin: 0 0 0.5rem;
+  padding-left: 1rem;
+}
+
+.ref__poderes li {
+  margin-bottom: 0.45rem;
+}
+
+.ref__poderes strong {
+  color: var(--tinta);
+}
+
+.ref__usos {
+  display: inline-block;
+  margin-left: 0.4rem;
+  padding: 0.05rem 0.4rem;
+  background: var(--oro);
+  border-radius: 6px;
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.ref__combate {
+  padding: 0.35rem 0.5rem;
+  background: #fff;
+  border-left: 3px solid var(--rojo);
+  border-radius: 0 6px 6px 0;
+}
+
+.ref__combate strong {
+  color: var(--rojo);
 }
 
 .arco {

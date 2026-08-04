@@ -87,4 +87,34 @@ export interface Personaje {
   detalle: string
   /** Ruta de la imagen dentro de public/. */
   imagen: string
+  /** Quién es, en dos o tres frases. Para presentarlo en la mesa. */
+  descripcion: string
+  /** Qué hace si hay pelea. Para resolver dudas a mitad de partida. */
+  enCombate: string
+}
+
+export type IdHeroe = 'paula' | 'luca'
+
+export interface Poder {
+  nombre: string
+  efecto: string
+  /** "1 vez por episodio", "3 por episodio"… Omitir si es ilimitado. */
+  usos?: string
+}
+
+export interface Heroe {
+  id: IdHeroe
+  nombre: string
+  clase: string
+  imagen: string
+  /** Quién es. Se lee en voz alta al presentarlo. */
+  quienEs: string
+  poderes: Poder[]
+  enCombate: string
+}
+
+/** El contexto de la campaña: de dónde vienen y por qué. */
+export interface Trasfondo {
+  titulo: string
+  parrafos: string[]
 }

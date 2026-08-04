@@ -1,5 +1,5 @@
 import { useEffect, useMemo } from 'react'
-import { arcoCampana, episodios } from '../datos/campana'
+import { arcoCampana, episodios, heroes, personajes, trasfondo } from '../datos/campana'
 import type { Episodio, Escena } from '../datos/tipos'
 import { useAlmacenLocal } from '../estado/almacenLocal'
 
@@ -172,6 +172,57 @@ export function DM() {
                 ))}
               </ul>
             )}
+          </section>
+
+          {/* Para responder dudas a mitad de partida sin cortar el ritmo.
+              Plegado por defecto: ocupa una línea hasta que hace falta. */}
+          <section className="lateral__caja">
+            <h2 className="lateral__titulo">Quién es quién</h2>
+
+            <details className="ref">
+              <summary className="ref__titulo">{trasfondo.titulo}</summary>
+              <div className="ref__cuerpo">
+                {trasfondo.parrafos.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
+            </details>
+
+            {heroes.map((h) => (
+              <details key={h.id} className="ref">
+                <summary className="ref__titulo">
+                  {h.nombre} <span className="ref__clase">{h.clase}</span>
+                </summary>
+                <div className="ref__cuerpo">
+                  <p>{h.quienEs}</p>
+                  <ul className="ref__poderes">
+                    {h.poderes.map((p, i) => (
+                      <li key={i}>
+                        <strong>{p.nombre}</strong>
+                        {p.usos && <span className="ref__usos">{p.usos}</span>}
+                        <br />
+                        {p.efecto}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="ref__combate">
+                    <strong>En combate:</strong> {h.enCombate}
+                  </p>
+                </div>
+              </details>
+            ))}
+
+            {personajes.map((p) => (
+              <details key={p.id} className="ref">
+                <summary className="ref__titulo">{p.nombre}</summary>
+                <div className="ref__cuerpo">
+                  <p>{p.descripcion}</p>
+                  <p className="ref__combate">
+                    <strong>En combate:</strong> {p.enCombate}
+                  </p>
+                </div>
+              </details>
+            ))}
           </section>
 
           <section className="lateral__caja">
