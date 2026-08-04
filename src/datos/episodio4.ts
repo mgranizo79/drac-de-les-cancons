@@ -86,36 +86,37 @@ export const episodio4: Episodio = {
       leerEnVozAlta: [
         'Dos niñas pequeñas, de unos cinco años, os cogen de la mano una por cada lado y tiran de vosotros sin pedir permiso.',
         'Son hermanas y son gemelas, aunque no se parecen en nada: una tiene el pelo castaño y unos ojos enormes que se fijan en todo, y la otra es rubia y no ha parado de reírse desde que os ha visto. Se llaman Gala y Abril.',
-        'Os llevan detrás de las rocas, y allí hay una cosa que no habíais visto en toda la isla: verde. Un jardín. Pequeñito, en macetas y latas viejas, pero vivo. Lo único vivo que queda.',
-        'Y Gala, la de los ojos grandes, saca de debajo de una piedra un cuaderno gordo lleno de dibujos.',
+        'Os llevan detrás de las rocas, y allí hay una cosa que no habíais visto en toda la isla: verde. Un jardín. Pequeñito, en macetas y latas viejas, pero vivo. Lo único vivo que queda, y lo cuida Gala.',
+        'Y detrás de Abril van siete gatos. Siete. En fila. Se paran cuando ella se para y andan cuando ella anda, y ninguno le hace caso a nadie más.',
       ],
       acotacion:
-        'Gala y Abril son druidas: cuidan de las plantas y las plantas les hacen caso. Hazlas hablar a la vez, interrumpiéndose, terminándose las frases. Y que se peguen a Luca: son las únicas de la isla más o menos de su edad y eso, para él, vale más que todo el resto del episodio.',
+        'Las dos son druidas, pero de cosas distintas: a Gala le hacen caso las plantas y a Abril los animales, sobre todo los gatos. Hazlas hablar a la vez, interrumpiéndose y terminándose las frases. Y que se peguen a Luca: son las únicas de la isla más o menos de su edad, y para él eso vale más que todo el resto del episodio.',
       loQueVen: [
         'Un jardín diminuto en macetas, latas y botas viejas, escondido detrás de las rocas.',
         'Gala pone la oreja en una maceta, escucha, y luego la riega. Sabe cuál tiene sed.',
-        'Abril lleva las dos manos y los dos bolsillos llenos de tierra. Siempre.',
+        'Siete gatos siguiendo a Abril a todas partes, y ella hablándoles como si le contestaran. Le contestan.',
         'El cuaderno de Gala: dibujos de plantas, de nubes, de pájaros, apuntando qué día pasó cada cosa.',
         'Y en la última página, un dibujo repasado tantas veces que ha agujereado el papel: el dragón volando bajito sobre el mar, una ola que sube, y el dragón saliendo disparado hacia arriba, torcido, con la boca abierta.',
       ],
       preguntar: [
         { para: 'paula', texto: '¿Qué está pasando en ese dibujo? ¿Por qué lo habrá repasado tanto?' },
-        { para: 'luca', texto: 'Son casi de tu edad y no te sueltan la mano. ¿Qué quieres enseñarles?' },
+        { para: 'luca', texto: 'Hay siete gatos. ¿Cuál acaricias tú primero?' },
       ],
       tiradas: [
         {
           quien: 'Paula',
           que: 'Entender qué le pasó al dragón en el dibujo de Gala',
           exito:
-            'Lo ve claro: una ola le salpicó y salió huyendo. El agua del mar le hace daño. Gala asiente con la cabeza tan fuerte que casi se marea, y Abril se parte de risa.',
+            'Lo ve claro: una ola le salpicó y salió huyendo. El agua del mar le hace daño. Gala asiente con la cabeza tan fuerte que casi se marea.',
           fallo:
-            'Se queda a medias. Entonces Abril, sin avisar, coge un cubo, lo llena de agua del mar y se lo tira a Luca en los pies gritando «¡ASÍ!». Se entiende perfectamente. Gala le riñe. Abril sigue riéndose.',
-          nota: 'La pista sale con 4+ y con 1-3. Lo único que cambia es quién acaba mojado.',
+            'Se queda a medias. Entonces Abril coge en brazos a un gato viejo y tuerto, se lo pone a Paula en la cara y dice: «¡Cuéntaselo tú, que estabas allí!». El gato maúlla dos veces. Abril traduce: «Dice que el agua le hizo pupa».',
+          nota:
+            'La pista sale con 4+ y con 1-3. Con el fallo sale además el gato tuerto, que es mejor. Si Luca quiere hablar con los gatos, que hable: Abril traduce lo que haga falta.',
         },
       ],
       siSeTuerce: [
         '«Luca, riega tú una planta. Gala te dice cuál tiene sed.»',
-        '«Sir Luca, coge el cubo de agua. ¡Tú serás el que se lo tire al dragón!»',
+        '«Sir Luca, ¿cómo hace el gato? Pregúntale tú qué vio.»',
       ],
     },
 
@@ -169,19 +170,20 @@ export const episodio4: Episodio = {
       leerEnVozAlta: [
         'Abrís el tarro grande. Y salen cientos de voces a la vez, como cuando abres la puerta de un colegio en el patio.',
         'Bajan en espiral por el faro, se meten por las ventanas de las casas, y el pueblo entero empieza a hablar de golpe. Todos a la vez. Nadie escucha a nadie. Es un escándalo maravilloso.',
-        'Mira sube corriendo las escaleras del faro y lo primero que dice con voz, después de tanto tiempo, es: «¡GRACIAS!». Y luego se pone colorada.',
+        'Gala y Abril suben corriendo las escaleras del faro. Lo primero que dicen con voz, después de tanto tiempo, lo dicen las dos a la vez y no se entiende nada. Lo repiten. Sigue sin entenderse. A la tercera sale: «¡GRACIAS!».',
+        'Y detrás de ellas suben los siete gatos, maullando todos a la vez. Ellos también se habían quedado sin voz.',
       ],
       acotacion:
         'Momento de fiesta. Que Luca pegue la cuarta pegatina. Y si quieren quedarse un rato en el pueblo hablando con la gente, déjalos: se lo han ganado, y de ahí saldrán ideas para el final.',
       loQueVen: [
         'Voces por todas partes. Gente abrazándose. Alguien cantando fatal.',
         'Los pescadores dando la vuelta a las barcas: mañana vuelven a salir a pescar.',
-        'Mira, colorada, sin saber qué más decir.',
+        'Gala y Abril hablando a la vez, pisándose, sin ponerse de acuerdo en nada.',
         'Vuestro barco, en la otra punta de la isla, con la vela hinchada. Ya casi está listo.',
         'Y arriba, en la montaña, el humo se ha parado. Ella os ha oído.',
       ],
       preguntar: [
-        { para: 'luca', texto: '¿Qué es lo primero que le dices a Mira ahora que puede contestarte?' },
+        { para: 'luca', texto: '¿Qué es lo primero que les dices a Gala y Abril ahora que pueden contestarte?' },
         { para: 'paula', texto: 'Solo queda una canción. ¿Estás preparada para subir?' },
       ],
       tiradas: [],
@@ -209,7 +211,8 @@ export const episodio4: Episodio = {
         'Su barca, con el nombre borrado por el sol.',
         'Detrás de él, todo el pueblo escuchando en silencio otra vez, pero ahora porque quieren.',
         'Ferran señala unos odres de piel colgados: los que usan para llevar agua.',
-        'Mira ya está llenando uno de agua de mar sin que nadie se lo haya pedido.',
+        'Abril ya está llenando uno de agua de mar sin que nadie se lo haya pedido, y se está poniendo perdida.',
+        'Y Gala, muy seria, saca del jardín una maceta pequeñita con un brote verde y os la pone en las manos.',
       ],
       preguntar: [
         { para: 'paula', texto: '¿Cómo vais a subir agua del mar hasta lo alto de la montaña?' },
@@ -218,10 +221,11 @@ export const episodio4: Episodio = {
       ],
       tiradas: [],
       pistaDelDragon:
-        'SU PUNTO DÉBIL: el AGUA DEL MAR. Una ola le dio en la cara y no ha vuelto a bajar. Por eso el pueblo vive pegado al agua. — Que se lleven odres llenos: es el arma del episodio 5. Apunta qué más deciden llevarse.',
+        'SU PUNTO DÉBIL: el AGUA DEL MAR. Una ola le dio en la cara y no ha vuelto a bajar. Por eso el pueblo vive pegado al agua. — Que se lleven odres llenos: es el arma del episodio 5.\n\nY que NO se dejen la maceta de Gala. Dice que la planten arriba del todo, «donde no crece nada». Es la única cosa viva que se lleva a la montaña, y el rosal del final sale de ahí.',
       siSeTuerce: [
         '«Sir Luca, coge tú un odre y llénalo de agua del mar. ¡Hasta arriba!»',
         '«Luca, ¿pesa mucho? ¡A ver cuánto aguantas!»',
+        '«Luca, lleva tú la maceta de Gala. Con mucho cuidado, que es muy importante.»',
       ],
     },
   ],

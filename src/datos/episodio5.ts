@@ -25,7 +25,7 @@ export const episodio5: Episodio = {
       duracion: '5 min',
       leerEnVozAlta: [
         'Salís del pueblo de madrugada, con los odres llenos de agua de mar a la espalda. Pesan un montón.',
-        'Y no vais solos. Detrás va Mira. Y detrás de Mira, el viejo Ferran. Y detrás, todo el pueblo. Nadie dice nada, pero os siguen hasta el pie de la montaña.',
+        'Y no vais solos. Detrás van Gala y Abril con los siete gatos. Detrás de ellas, el viejo Ferran. Y detrás, todo el pueblo. Nadie dice nada, pero os siguen hasta el pie de la montaña.',
         'Allí se paran. Ellos no pueden subir más. Capitán Migas se posa en el hombro de Luca y Doña Pluma en el de Paula. Ellos sí suben.',
       ],
       acotacion:
@@ -33,6 +33,7 @@ export const episodio5: Episodio = {
       loQueVen: [
         'Un camino de piedras que sube en zigzag, cada vez más caliente.',
         'Los odres de agua salpicando en la espalda a cada paso.',
+        'Y la maceta de Gala, con su brote verde, que hay que llevar sin volcarla.',
         'El pueblo entero al pie de la montaña, mirando hacia arriba sin moverse.',
         'Cuanto más subís, menos plantas hay. Arriba del todo no queda ni una.',
         'Y desde una curva, por fin: la boca de la cueva. Enorme. Y de dentro sale luz dorada.',
@@ -221,12 +222,12 @@ export const episodio5: Episodio = {
       leerEnVozAlta: [
         'Flamarada escucha la canción entera sin moverse. Y cuando acaba, hace una cosa que no ha hecho nunca: intenta repetirla.',
         'Le sale fatal. Espantosa. Es un dragón: los dragones no saben cantar. Pero la está cantando.',
-        'Y entonces se le cae una lágrima, una sola, del tamaño de un puño, que cae al suelo entre las monedas.',
-        'Y de donde toca el suelo, en la piedra pelada de lo alto de una montaña, crece un rosal.',
-        'Rosas rojas, muchísimas, subiendo por las paredes de la cueva y saliendo por la boca hacia fuera, para que se vean desde toda la isla.',
+        'Y entonces se le cae una lágrima, una sola, del tamaño de un puño.',
+        'Y cae justo dentro de la maceta que os dio Gala. En el brote verde que habéis subido con tanto cuidado hasta aquí arriba.',
+        'Del brote sale un rosal. Y crece, y crece, y sale de la maceta y se agarra a la piedra, y sube por las paredes de la cueva y se escapa por la boca hacia fuera, cargado de rosas rojas, hasta que se ve desde toda la isla.',
       ],
       acotacion:
-        'Sí, es Sant Jordi. Sí, es agosto. Les va a dar exactamente igual. Cierra despacio y deja que cada uno coja su rosa: si tienes una rosa de verdad preparada para dársela al acabar, mejor que mejor.',
+        'Que se note que el rosal no sale de la nada: sale de lo que les dieron dos niñas de cinco años el día anterior. Sí, es Sant Jordi. Sí, es agosto. Les va a dar exactamente igual. Cierra despacio y deja que cada uno coja su rosa: si tienes una rosa de verdad preparada para dársela al acabar, mejor que mejor.',
       loQueVen: [
         'Un rosal enorme creciendo de la piedra, cargado de rosas rojas.',
         'Flamarada cantando fatal, feliz, sin parar.',
