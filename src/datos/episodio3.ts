@@ -79,6 +79,7 @@ export const episodio3: Episodio = {
         '«Luca, haz tú de urraca vieja. ¿Cómo anda alguien muy viejo?»',
         '«Sir Luca, ¿te la pones en el hombro? ¡Cuidado, que pesa!»',
       ],
+      presenta: 'pluma',
     },
 
     {

@@ -29,7 +29,7 @@ export interface Tirada {
 export type IdLugar = 'playa' | 'puente' | 'cueva' | 'montana'
 
 /** Personajes que van apareciendo en la historia. Añade aquí los nuevos. */
-export type IdPersonaje = 'migas' | 'kobold' | 'dragon'
+export type IdPersonaje = 'migas' | 'kobold' | 'dragon' | 'pluma' | 'gemelas' | 'ferran'
 
 export interface Escena {
   id: string

@@ -87,20 +87,20 @@ export const episodio4: Episodio = {
         'Dos niñas pequeñas, de unos cinco años, os cogen de la mano una por cada lado y tiran de vosotros sin pedir permiso.',
         'Son hermanas y son gemelas, aunque no se parecen en nada: una tiene el pelo castaño y unos ojos enormes que se fijan en todo, y la otra es rubia y no ha parado de reírse desde que os ha visto. Se llaman Gala y Abril.',
         'Os llevan detrás de las rocas, y allí hay una cosa que no habíais visto en toda la isla: verde. Un jardín. Pequeñito, en macetas y latas viejas, pero vivo. Lo único vivo que queda, y lo cuida Gala.',
-        'Y detrás de Abril van siete gatos. Siete. En fila. Se paran cuando ella se para y andan cuando ella anda, y ninguno le hace caso a nadie más.',
+        'Y detrás de Abril van tres gatos. En fila. Se paran cuando ella se para y andan cuando ella anda, y ninguno le hace caso a nadie más.',
       ],
       acotacion:
         'Las dos son druidas, pero de cosas distintas: a Gala le hacen caso las plantas y a Abril los animales, sobre todo los gatos. Hazlas hablar a la vez, interrumpiéndose y terminándose las frases. Y que se peguen a Luca: son las únicas de la isla más o menos de su edad, y para él eso vale más que todo el resto del episodio.',
       loQueVen: [
         'Un jardín diminuto en macetas, latas y botas viejas, escondido detrás de las rocas.',
         'Gala pone la oreja en una maceta, escucha, y luego la riega. Sabe cuál tiene sed.',
-        'Siete gatos siguiendo a Abril a todas partes, y ella hablándoles como si le contestaran. Le contestan.',
+        'Tres gatos siguiendo a Abril a todas partes, y ella hablándoles como si le contestaran. Le contestan.',
         'El cuaderno de Gala: dibujos de plantas, de nubes, de pájaros, apuntando qué día pasó cada cosa.',
         'Y en la última página, un dibujo repasado tantas veces que ha agujereado el papel: el dragón volando bajito sobre el mar, una ola que sube, y el dragón saliendo disparado hacia arriba, torcido, con la boca abierta.',
       ],
       preguntar: [
         { para: 'paula', texto: '¿Qué está pasando en ese dibujo? ¿Por qué lo habrá repasado tanto?' },
-        { para: 'luca', texto: 'Hay siete gatos. ¿Cuál acaricias tú primero?' },
+        { para: 'luca', texto: 'Hay tres gatos. ¿Cuál acaricias tú primero?' },
       ],
       tiradas: [
         {
@@ -118,6 +118,7 @@ export const episodio4: Episodio = {
         '«Luca, riega tú una planta. Gala te dice cuál tiene sed.»',
         '«Sir Luca, ¿cómo hace el gato? Pregúntale tú qué vio.»',
       ],
+      presenta: 'gemelas',
     },
 
     {
@@ -171,7 +172,7 @@ export const episodio4: Episodio = {
         'Abrís el tarro grande. Y salen cientos de voces a la vez, como cuando abres la puerta de un colegio en el patio.',
         'Bajan en espiral por el faro, se meten por las ventanas de las casas, y el pueblo entero empieza a hablar de golpe. Todos a la vez. Nadie escucha a nadie. Es un escándalo maravilloso.',
         'Gala y Abril suben corriendo las escaleras del faro. Lo primero que dicen con voz, después de tanto tiempo, lo dicen las dos a la vez y no se entiende nada. Lo repiten. Sigue sin entenderse. A la tercera sale: «¡GRACIAS!».',
-        'Y detrás de ellas suben los siete gatos, maullando todos a la vez. Ellos también se habían quedado sin voz.',
+        'Y detrás de ellas suben los tres gatos, maullando todos a la vez. Ellos también se habían quedado sin voz.',
       ],
       acotacion:
         'Momento de fiesta. Que Luca pegue la cuarta pegatina. Y si quieren quedarse un rato en el pueblo hablando con la gente, déjalos: se lo han ganado, y de ahí saldrán ideas para el final.',
@@ -227,6 +228,7 @@ export const episodio4: Episodio = {
         '«Luca, ¿pesa mucho? ¡A ver cuánto aguantas!»',
         '«Luca, lleva tú la maceta de Gala. Con mucho cuidado, que es muy importante.»',
       ],
+      presenta: 'ferran',
     },
   ],
 }

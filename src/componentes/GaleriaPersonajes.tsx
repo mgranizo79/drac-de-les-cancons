@@ -49,10 +49,11 @@ export function GaleriaPersonajes({ encontrados, onTocar, onVerDetalle }: Props)
           >
             {visto ? (
               <>
+                {/* La descripción no cabe aquí desde que son seis: se lee
+                    entera en la ficha grande, que se abre tocando la carta. */}
                 <img className="personaje__imagen" src={p.imagen} alt="" />
                 <span className="personaje__nombre">{p.nombre}</span>
                 <span className="personaje__detalle">{p.detalle}</span>
-                <span className="personaje__descripcion">{p.descripcion}</span>
                 <span className="personaje__lupa" aria-hidden="true">
                   +
                 </span>

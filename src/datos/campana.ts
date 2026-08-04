@@ -73,6 +73,36 @@ export const personajes: Personaje[] = [
       'Roba palabras: con 1-3 os quedáis sin poder decir una palabra durante la escena. Necesitáis 3 aciertos para echarlo. El Grito de Plata acaba con él al instante.',
   },
   {
+    id: 'pluma',
+    nombre: 'DOÑA PLUMA',
+    detalle: 'La más vieja de la isla',
+    imagen: '/imagenes/pluma.png',
+    descripcion:
+      'Una urraca viejísima y muy digna, con una pluma blanca en la cabeza. Vive en el árbol de los mil nidos y conoció a Flamarada cuando era pequeña. Es la única que sabe por qué se llevó las canciones.',
+    enCombate:
+      'No pelea, que para eso está mayor. Lo suyo es saber cosas que no sabe nadie más, y eso resuelve más que una espada.',
+  },
+  {
+    id: 'gemelas',
+    nombre: 'GALA Y ABRIL',
+    detalle: 'Las druidas de la cala',
+    imagen: '/imagenes/gemelas.png',
+    descripcion:
+      'Dos hermanas gemelas de cinco años que no se parecen en nada. A Gala le hacen caso las plantas y cuida el único jardín que queda en la isla. A Abril la siguen los gatos a todas partes, y les entiende cuando maúllan.',
+    enCombate:
+      'Son pequeñas y no pelean. Pero Gala te da lo que hay que plantar y Abril te trae al gato que lo vio todo.',
+  },
+  {
+    id: 'ferran',
+    nombre: 'EL VIEJO FERRAN',
+    detalle: 'Vio lo que pasó en el mar',
+    imagen: '/imagenes/ferran.png',
+    descripcion:
+      'El pescador más viejo de la cala, con las manos llenas de cicatrices de cuerda. Estaba pescando la mañana en que una ola le dio en la cara al dragón, y no se le ha olvidado nunca.',
+    enCombate:
+      'Ya no pelea. Lo que hace es llenaros los odres de agua del mar, que es lo que de verdad gana la última batalla.',
+  },
+  {
     id: 'dragon',
     nombre: 'EL DRAGÓN',
     detalle: 'Os mira desde la montaña',

@@ -25,7 +25,7 @@ export const episodio5: Episodio = {
       duracion: '5 min',
       leerEnVozAlta: [
         'Salís del pueblo de madrugada, con los odres llenos de agua de mar a la espalda. Pesan un montón.',
-        'Y no vais solos. Detrás van Gala y Abril con los siete gatos. Detrás de ellas, el viejo Ferran. Y detrás, todo el pueblo. Nadie dice nada, pero os siguen hasta el pie de la montaña.',
+        'Y no vais solos. Detrás van Gala y Abril con los tres gatos. Detrás de ellas, el viejo Ferran. Y detrás, todo el pueblo. Nadie dice nada, pero os siguen hasta el pie de la montaña.',
         'Allí se paran. Ellos no pueden subir más. Capitán Migas se posa en el hombro de Luca y Doña Pluma en el de Paula. Ellos sí suben.',
       ],
       acotacion:

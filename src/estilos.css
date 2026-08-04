@@ -724,6 +724,9 @@ button {
   min-height: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  /* Las filas se reparten la altura a partes iguales, salgan las que salgan
+     al ir añadiendo personajes. minmax(0,…) es lo que deja encogerlas. */
+  grid-auto-rows: minmax(0, 1fr);
   gap: 0.7rem;
 }
 
