@@ -9,6 +9,9 @@ import type {
 } from './tipos'
 import { episodio1 } from './episodio1'
 import { episodio2 } from './episodio2'
+import { episodio3 } from './episodio3'
+import { episodio4 } from './episodio4'
+import { episodio5 } from './episodio5'
 
 // ─────────────────────────────────────────────────────────────
 //  PARA AÑADIR UN EPISODIO NUEVO:
@@ -18,15 +21,15 @@ import { episodio2 } from './episodio2'
 //  Ya está. No hay que tocar ningún componente.
 // ─────────────────────────────────────────────────────────────
 
-export const episodios: Episodio[] = [episodio1, episodio2]
+export const episodios: Episodio[] = [episodio1, episodio2, episodio3, episodio4, episodio5]
 
 /** El arco completo. Esto es para ti, no para ellos. */
 export const arcoCampana: FilaArco[] = [
   { episodio: 1, cancion: 'Del Mar (las olas)', pista: 'Fuego, escama roja, es hembra' },
   { episodio: 2, cancion: 'Del Viento', pista: 'Su nombre: Flamarada' },
-  { episodio: 3, cancion: 'De los Pájaros', pista: 'Por qué robó las canciones' },
+  { episodio: 3, cancion: 'De los Pájaros', pista: 'Está sola y no sabe cantar' },
   { episodio: 4, cancion: 'De la Gente', pista: 'Su punto débil: el agua del mar' },
-  { episodio: 5, cancion: 'Del Corazón', pista: '— el combate final' },
+  { episodio: 5, cancion: 'Del Corazón', pista: 'La quinta no se rescata: se regala' },
 ]
 
 /** Las cinco canciones, para el contador de /mesa. */
