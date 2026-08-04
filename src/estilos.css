@@ -449,11 +449,10 @@ button {
   height: auto;
   max-width: 100%;
   max-height: 100%;
-  /* Las figuras son PNG con fondo blanco. `contain` evita que se deformen al
-     encajarlas en la caja, y `multiply` funde ese blanco con el pergamino:
-     blanco × fondo = fondo, así que el recuadro desaparece solo. */
+  /* Las figuras son PNG con transparencia real, así que no hace falta
+     mezclarlas con nada: se recortan solas sobre cualquier fondo.
+     `contain` evita que se deformen al encajarlas en la caja. */
   object-fit: contain;
-  mix-blend-mode: multiply;
 }
 
 /* Pista de que se puede tocar para verlo en grande. */
@@ -759,7 +758,6 @@ button {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  mix-blend-mode: multiply;
 }
 
 .personaje__nombre {
@@ -909,7 +907,6 @@ button {
   max-width: 100%;
   max-height: 62vh;
   object-fit: contain;
-  mix-blend-mode: multiply;
 }
 
 .detalle__texto {

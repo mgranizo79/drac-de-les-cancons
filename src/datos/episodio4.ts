@@ -81,40 +81,41 @@ export const episodio4: Episodio = {
 
     {
       id: 'ep4-e3',
-      titulo: 'Los dibujos de Mira',
+      titulo: 'El jardín de Gala y Abril',
       duracion: '7 min',
       leerEnVozAlta: [
-        'Una niña de más o menos vuestra edad os coge de la mano y os lleva a la pared del puerto. Se llama Mira: lo sabéis porque lo lleva escrito en el delantal.',
-        'La pared entera está llena de dibujos suyos, hechos con carbón. Es lo que ha ido pasando en la isla, día por día, desde que llegó el dragón.',
-        'Y en un rincón hay un dibujo distinto de todos los demás. Ese lo ha repasado tantas veces que casi ha agujereado la piedra.',
+        'Dos niñas pequeñas, de unos cinco años, os cogen de la mano una por cada lado y tiran de vosotros sin pedir permiso.',
+        'Son hermanas y son gemelas, aunque no se parecen en nada: una tiene el pelo castaño y unos ojos enormes que se fijan en todo, y la otra es rubia y no ha parado de reírse desde que os ha visto. Se llaman Gala y Abril.',
+        'Os llevan detrás de las rocas, y allí hay una cosa que no habíais visto en toda la isla: verde. Un jardín. Pequeñito, en macetas y latas viejas, pero vivo. Lo único vivo que queda.',
+        'Y Gala, la de los ojos grandes, saca de debajo de una piedra un cuaderno gordo lleno de dibujos.',
       ],
       acotacion:
-        'El dibujo repasado es la pista, pero no lo señales tú. Deja que lo encuentren. Si tardan, que Mira se ponga delante de ese dibujo y no se mueva.',
+        'Gala y Abril son druidas: cuidan de las plantas y las plantas les hacen caso. Hazlas hablar a la vez, interrumpiéndose, terminándose las frases. Y que se peguen a Luca: son las únicas de la isla más o menos de su edad y eso, para él, vale más que todo el resto del episodio.',
       loQueVen: [
-        'Decenas de dibujos a carbón: el dragón llegando, la gente escondiéndose, las barcas guardadas.',
-        'Un dibujo donde el dragón vuela por encima de las casas, muy grande.',
-        'Otro donde el dragón se lleva algo en las garras, y la gente abajo con la boca abierta.',
-        'El dibujo repasado: el dragón volando bajito sobre el mar, una ola que sube… y el dragón saliendo disparado hacia arriba, torcido, con la boca abierta.',
-        'Alrededor de ese dibujo, Mira ha dibujado muchísimas olas. Muchísimas. Como si fuera importante.',
+        'Un jardín diminuto en macetas, latas y botas viejas, escondido detrás de las rocas.',
+        'Gala pone la oreja en una maceta, escucha, y luego la riega. Sabe cuál tiene sed.',
+        'Abril lleva las dos manos y los dos bolsillos llenos de tierra. Siempre.',
+        'El cuaderno de Gala: dibujos de plantas, de nubes, de pájaros, apuntando qué día pasó cada cosa.',
+        'Y en la última página, un dibujo repasado tantas veces que ha agujereado el papel: el dragón volando bajito sobre el mar, una ola que sube, y el dragón saliendo disparado hacia arriba, torcido, con la boca abierta.',
       ],
       preguntar: [
         { para: 'paula', texto: '¿Qué está pasando en ese dibujo? ¿Por qué lo habrá repasado tanto?' },
-        { para: 'luca', texto: '¿Dibujas tú algo en la pared? ¿Qué dibujas?' },
+        { para: 'luca', texto: 'Son casi de tu edad y no te sueltan la mano. ¿Qué quieres enseñarles?' },
       ],
       tiradas: [
         {
           quien: 'Paula',
-          que: 'Entender qué le pasó al dragón en ese dibujo',
+          que: 'Entender qué le pasó al dragón en el dibujo de Gala',
           exito:
-            'Lo ve claro: una ola le salpicó y salió huyendo. El agua del mar le hace daño. Mira asiente con la cabeza tan fuerte que casi se marea.',
+            'Lo ve claro: una ola le salpicó y salió huyendo. El agua del mar le hace daño. Gala asiente con la cabeza tan fuerte que casi se marea, y Abril se parte de risa.',
           fallo:
-            'Se queda a medias: entiende que pasó algo en el mar, pero no qué. Mira, desesperada, coge un cubo, lo llena de agua y hace como que se la tira a un dragón imaginario. Ahora sí.',
-          nota: 'La pista sale con 4+ y con 1-3. Lo único que cambia es lo ridícula que se pone Mira para explicarlo.',
+            'Se queda a medias. Entonces Abril, sin avisar, coge un cubo, lo llena de agua del mar y se lo tira a Luca en los pies gritando «¡ASÍ!». Se entiende perfectamente. Gala le riñe. Abril sigue riéndose.',
+          nota: 'La pista sale con 4+ y con 1-3. Lo único que cambia es quién acaba mojado.',
         },
       ],
       siSeTuerce: [
-        '«Luca, dibuja tú un dragón en la pared. ¡Grande!»',
-        '«Sir Luca, coge el cubo de agua. ¡Tú serás el que se lo tire!»',
+        '«Luca, riega tú una planta. Gala te dice cuál tiene sed.»',
+        '«Sir Luca, coge el cubo de agua. ¡Tú serás el que se lo tire al dragón!»',
       ],
     },
 

@@ -13,15 +13,15 @@
 <!--
   Formato tarjeta + peana con ranura.
 
-  El formato anterior (standee plegado, la figura repetida en espejo) funcionaba
-  con los dibujos SVG porque tenían silueta. Con estos PNG no: llevan fondo
-  blanco, así que en espejo se vería un rectángulo blanco en vez de la figura.
-  La tarjeta enmarca el fondo blanco en lugar de pelearse con él.
+  El formato anterior (standee plegado, la figura repetida en espejo) se
+  descartó porque las ilustraciones venían con fondo blanco y en espejo se
+  veía un rectángulo. Ahora las imágenes ya tienen transparencia, pero el
+  formato tarjeta se queda: aguanta mucho mejor el uso de un niño de tres años
+  que un papel doblado por la mitad.
 
-  Las imágenes son las mismas de public/imagenes/, reescaladas a 750 px de ancho
-  y en JPEG (ver material-mesa/imagenes/tarjetas/). A 300 DPI una tarjeta de
-  52 mm necesita ~614 px, así que sobra resolución; con los PNG originales el
-  PDF pesaba 7,4 MB y así se queda en menos de 1 MB.
+  Las imágenes son las mismas de public/imagenes/, reescaladas a 750 px de
+  ancho (ver material-mesa/imagenes/tarjetas/). A 300 DPI una tarjeta de 52 mm
+  necesita ~614 px, así que sobra resolución.
 
   Para regenerar el PDF hace falta --allow-file-access-from-files, o Chrome no
   carga las imágenes locales:
@@ -62,7 +62,7 @@
   <g>
     <path d="M120,470 Q120,440 150,440 L670,440 Q700,440 700,470 L700,1320 L525,1320 L525,1450 L295,1450 L295,1320 L120,1320 Z"
           fill="#FFFFFF" stroke="#7B5EA7" stroke-width="10" stroke-linejoin="round"/>
-    <g clip-path="url(#im1)"><image href="../imagenes/tarjetas/paula.jpg" x="150" y="490" width="520" height="700" preserveAspectRatio="xMidYMid slice"/></g>
+    <g clip-path="url(#im1)"><image href="../imagenes/tarjetas/paula.png" x="150" y="490" width="520" height="700" preserveAspectRatio="xMidYMid slice"/></g>
     <rect x="150" y="490" width="520" height="700" rx="18" fill="none" stroke="#D8CCE8" stroke-width="5"/>
     <text x="410" y="1272" font-family="Trebuchet MS, sans-serif" font-size="62" font-weight="bold"
           fill="#7B5EA7" text-anchor="middle">PAULA</text>
@@ -73,7 +73,7 @@
   <g>
     <path d="M760,470 Q760,440 790,440 L1310,440 Q1340,440 1340,470 L1340,1320 L1165,1320 L1165,1450 L935,1450 L935,1320 L760,1320 Z"
           fill="#FFFFFF" stroke="#C1272D" stroke-width="10" stroke-linejoin="round"/>
-    <g clip-path="url(#im2)"><image href="../imagenes/tarjetas/luca.jpg" x="790" y="490" width="520" height="700" preserveAspectRatio="xMidYMid slice"/></g>
+    <g clip-path="url(#im2)"><image href="../imagenes/tarjetas/luca.png" x="790" y="490" width="520" height="700" preserveAspectRatio="xMidYMid slice"/></g>
     <rect x="790" y="490" width="520" height="700" rx="18" fill="none" stroke="#EFCFD0" stroke-width="5"/>
     <text x="1050" y="1272" font-family="Trebuchet MS, sans-serif" font-size="62" font-weight="bold"
           fill="#C1272D" text-anchor="middle">SIR LUCA</text>
@@ -84,7 +84,7 @@
   <g>
     <path d="M1400,470 Q1400,440 1430,440 L1950,440 Q1980,440 1980,470 L1980,1320 L1805,1320 L1805,1450 L1575,1450 L1575,1320 L1400,1320 Z"
           fill="#FFFFFF" stroke="#2E7D8C" stroke-width="10" stroke-linejoin="round"/>
-    <g clip-path="url(#im3)"><image href="../imagenes/tarjetas/migas.jpg" x="1430" y="490" width="520" height="700" preserveAspectRatio="xMidYMid slice"/></g>
+    <g clip-path="url(#im3)"><image href="../imagenes/tarjetas/migas.png" x="1430" y="490" width="520" height="700" preserveAspectRatio="xMidYMid slice"/></g>
     <rect x="1430" y="490" width="520" height="700" rx="18" fill="none" stroke="#C4DCE2" stroke-width="5"/>
     <text x="1690" y="1272" font-family="Trebuchet MS, sans-serif" font-size="54" font-weight="bold"
           fill="#2E7D8C" text-anchor="middle">CAPITÁN MIGAS</text>
@@ -97,7 +97,7 @@
   <g>
     <path d="M440,1570 Q440,1540 470,1540 L990,1540 Q1020,1540 1020,1570 L1020,2420 L845,2420 L845,2550 L615,2550 L615,2420 L440,2420 Z"
           fill="#FFFFFF" stroke="#4A8C46" stroke-width="10" stroke-linejoin="round"/>
-    <g clip-path="url(#im4)"><image href="../imagenes/tarjetas/kobold.jpg" x="470" y="1590" width="520" height="700" preserveAspectRatio="xMidYMid slice"/></g>
+    <g clip-path="url(#im4)"><image href="../imagenes/tarjetas/kobold.png" x="470" y="1590" width="520" height="700" preserveAspectRatio="xMidYMid slice"/></g>
     <rect x="470" y="1590" width="520" height="700" rx="18" fill="none" stroke="#C9DEC5" stroke-width="5"/>
     <text x="730" y="2372" font-family="Trebuchet MS, sans-serif" font-size="62" font-weight="bold"
           fill="#3B7A38" text-anchor="middle">EL KOBOLD</text>
@@ -108,7 +108,7 @@
   <g>
     <path d="M1080,1570 Q1080,1540 1110,1540 L1630,1540 Q1660,1540 1660,1570 L1660,2420 L1485,2420 L1485,2550 L1255,2550 L1255,2420 L1080,2420 Z"
           fill="#FFFFFF" stroke="#8A2820" stroke-width="10" stroke-linejoin="round"/>
-    <g clip-path="url(#im5)"><image href="../imagenes/tarjetas/dragon.jpg" x="1110" y="1590" width="520" height="700" preserveAspectRatio="xMidYMid slice"/></g>
+    <g clip-path="url(#im5)"><image href="../imagenes/tarjetas/dragon.png" x="1110" y="1590" width="520" height="700" preserveAspectRatio="xMidYMid slice"/></g>
     <rect x="1110" y="1590" width="520" height="700" rx="18" fill="none" stroke="#E2C4C2" stroke-width="5"/>
     <text x="1370" y="2372" font-family="Trebuchet MS, sans-serif" font-size="62" font-weight="bold"
           fill="#8A2820" text-anchor="middle">EL DRAGÓN</text>
