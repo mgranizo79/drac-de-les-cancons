@@ -53,7 +53,7 @@ export const personajes: Personaje[] = [
     id: 'migas',
     nombre: 'CAPITÁN MIGAS',
     detalle: 'No le sale ni un sonido',
-    imagen: '/imagenes/migas.png',
+    imagen: '/imagenes/migas.jpg',
     descripcion:
       'Una gaviota gorda y de muy mal genio. Vive en la isla desde siempre y se la conoce piedra a piedra. El dragón le robó la voz, así que se explica a base de gestos, alas y pataditas en la arena.',
     enCombate:
@@ -63,7 +63,7 @@ export const personajes: Personaje[] = [
     id: 'kobold',
     nombre: 'EL KOBOLD',
     detalle: 'Trabaja para el dragón',
-    imagen: '/imagenes/kobold.png',
+    imagen: '/imagenes/kobold.jpg',
     descripcion:
       'Un bicho verde y escamoso del tamaño de un perro pequeño, con cuernecitos y ojos amarillos. Recorre la isla metiendo canciones en tarros de cristal para su ama. Está más asustado que enfadado.',
     enCombate:
@@ -73,7 +73,7 @@ export const personajes: Personaje[] = [
     id: 'dragon',
     nombre: 'EL DRAGÓN',
     detalle: 'Os mira desde la montaña',
-    imagen: '/imagenes/dragon.png',
+    imagen: '/imagenes/dragon.jpg',
     descripcion:
       'Nadie lo ha visto todavía. Vive en una cueva en lo alto de la montaña, llena de monedas de oro con una canción atrapada dentro de cada una. Los demás dragones acumulan tesoros; este acumula canciones.',
     enCombate:
@@ -103,7 +103,7 @@ export const heroes: Heroe[] = [
     id: 'paula',
     nombre: 'PAULA',
     clase: 'Cazadragones de la Luna',
-    imagen: '/imagenes/paula.png',
+    imagen: '/imagenes/paula.jpg',
     quienEs:
       'Sabe de dragones más que nadie: se los ha estudiado todos, uno por uno. No caza con espada, caza cantando: su voz es su arma. Lleva la luna en la frente porque los dragones se ven mejor de noche, y un diapasón de plata colgado del cinturón que le regaló la luna cuando era pequeña.',
     poderes: [
@@ -131,7 +131,7 @@ export const heroes: Heroe[] = [
     id: 'luca',
     nombre: 'SIR LUCA',
     clase: 'Caballero Pirata',
-    imagen: '/imagenes/luca.png',
+    imagen: '/imagenes/luca.jpg',
     quienEs:
       'Es el más pequeño de la tripulación y el que va primero. Lleva el Escudo de Sant Jordi, blanco con la cruz roja, que le viene de familia. No le tiene miedo a nada, y eso a veces es un problema.',
     poderes: [

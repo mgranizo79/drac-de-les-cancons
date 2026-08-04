@@ -28,7 +28,7 @@ export function FichaLuca({ valentia, onGastar, onVerDetalle }: PropsLuca) {
           onClick={onVerDetalle}
           aria-label="Ver la ficha de Sir Luca en grande"
         >
-          <img className="ficha__figura" src="/imagenes/luca.png" alt="Sir Luca, caballero pirata" />
+          <img className="ficha__figura" src="/imagenes/luca.jpg" alt="Sir Luca, caballero pirata" />
           <span className="ficha__lupa" aria-hidden="true">
             +
           </span>
@@ -84,7 +84,7 @@ export function FichaPaula({ gritoUsado, onGrito, onVerDetalle }: PropsPaula) {
         >
           <img
             className="ficha__figura"
-            src="/imagenes/paula.png"
+            src="/imagenes/paula.jpg"
             alt="Paula, cazadragones de la Luna"
           />
           <span className="ficha__lupa" aria-hidden="true">
