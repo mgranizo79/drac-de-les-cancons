@@ -425,13 +425,30 @@ button {
   gap: 0.35rem;
 }
 
-.ficha__figura {
+/* El retrato es un botón: abre la ficha en grande. */
+.ficha__retrato {
+  position: relative;
   flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: none;
+  border: none;
+  transition: transform 0.12s ease;
+}
+
+.ficha__retrato:active {
+  transform: scale(0.95);
+}
+
+.ficha__figura {
   width: auto;
   height: auto;
   max-width: 100%;
   max-height: 100%;
-  min-height: 0;
   /* Las figuras son PNG con fondo blanco. `contain` evita que se deformen al
      encajarlas en la caja, y `multiply` funde ese blanco con el pergamino:
      blanco × fondo = fondo, así que el recuadro desaparece solo. */
@@ -439,9 +456,28 @@ button {
   mix-blend-mode: multiply;
 }
 
+/* Pista de que se puede tocar para verlo en grande. */
+.ficha__lupa,
+.personaje__lupa {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--tinta);
+  color: var(--pergamino-claro);
+  font-family: var(--ui);
+  font-size: 1rem;
+  font-weight: 700;
+  opacity: 0.7;
+}
+
 .ficha__escudo,
 .ficha__poderes {
-  flex: 0 0 auto;
+  flex: 0 1 auto;
   width: 100%;
   min-width: 0;
   display: flex;
@@ -450,9 +486,17 @@ button {
   gap: 0.4rem;
 }
 
+/* Con la pantalla baja el escudo no se encogía y se comía el sitio del
+   personaje, que acababa más pequeño que él. Ahora cede espacio igual. */
+.ficha__escudo {
+  max-height: 42%;
+}
+
 .ficha__escudo svg {
-  width: 100%;
+  width: auto;
+  height: auto;
   max-width: 84px;
+  max-height: 100%;
 }
 
 .ficha__poder {
@@ -653,6 +697,7 @@ button {
 }
 
 .personaje {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -742,6 +787,209 @@ button {
   font-weight: 700;
   color: var(--marron);
   opacity: 0.55;
+}
+
+/* ── la ficha en grande ── */
+
+.detalle-fondo {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 1.2rem;
+  background: rgba(42, 33, 25, 0.72);
+  animation: fundir 0.2s ease;
+}
+
+@keyframes fundir {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.detalle {
+  position: relative;
+  display: flex;
+  gap: 1.4rem;
+  width: min(100%, 900px);
+  max-height: 100%;
+  padding: 1.4rem;
+  background: var(--pergamino-claro);
+  border: 5px solid var(--tinta);
+  border-radius: 26px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.4);
+  animation: entrar 0.28s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+
+@keyframes entrar {
+  from {
+    transform: scale(0.85) translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.detalle--rojo {
+  border-color: var(--rojo);
+}
+
+.detalle--azul {
+  border-color: var(--azul);
+}
+
+.detalle__cerrar {
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  width: 3.1rem;
+  height: 3.1rem;
+  display: grid;
+  place-items: center;
+  background: var(--rojo);
+  border: 4px solid var(--pergamino-claro);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 700;
+  transition: transform 0.12s ease;
+}
+
+.detalle__cerrar:active {
+  transform: scale(0.9);
+}
+
+.detalle__retrato {
+  flex: 0 0 36%;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detalle__retrato img {
+  max-width: 100%;
+  max-height: 62vh;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.detalle__texto {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+}
+
+.detalle__nombre {
+  margin: 0;
+  font-family: var(--titulo);
+  font-size: clamp(1.5rem, 3.2vw, 2.3rem);
+  line-height: 1.1;
+}
+
+.detalle--rojo .detalle__nombre {
+  color: var(--rojo);
+}
+
+.detalle--azul .detalle__nombre {
+  color: var(--azul);
+}
+
+.detalle__subtitulo {
+  margin: 0.1rem 0 0.7rem;
+  font-family: var(--mano);
+  font-size: 1.05rem;
+  color: var(--tinta-suave);
+}
+
+.detalle__quien {
+  margin: 0 0 0.9rem;
+  font-family: var(--texto);
+  font-size: clamp(0.95rem, 1.6vw, 1.12rem);
+  line-height: 1.5;
+}
+
+.detalle__poderes {
+  list-style: none;
+  margin: 0 0 0.9rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.detalle__poderes li {
+  padding: 0.6rem 0.8rem;
+  background: #fff;
+  border: 2px solid var(--oro);
+  border-radius: 12px;
+}
+
+.detalle__poder-nombre {
+  font-family: var(--mano);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--oro-oscuro);
+}
+
+.detalle__usos {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0.1rem 0.45rem;
+  background: var(--oro);
+  border-radius: 7px;
+  color: #fff;
+  font-family: var(--ui);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.detalle__poder-efecto {
+  display: block;
+  margin-top: 0.25rem;
+  font-family: var(--ui);
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--tinta-suave);
+}
+
+.detalle__combate {
+  margin: 0;
+  padding: 0.6rem 0.8rem;
+  background: var(--rojo-palido);
+  border-left: 5px solid var(--rojo);
+  border-radius: 0 10px 10px 0;
+  font-family: var(--ui);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.detalle__combate strong {
+  color: var(--rojo);
+}
+
+.detalle__tapar {
+  margin-top: 0.8rem;
+  padding: 0.5rem 1rem;
+  background: none;
+  border: 2px dashed var(--marron);
+  border-radius: 10px;
+  font-family: var(--ui);
+  font-size: 0.85rem;
+  color: var(--tinta-suave);
+}
+
+/* pantallas muy bajas: el retrato encima del texto */
+@media (max-height: 560px) {
+  .detalle__retrato {
+    flex: 0 0 28%;
+  }
 }
 
 /* ── cuaderno de pistas ── */

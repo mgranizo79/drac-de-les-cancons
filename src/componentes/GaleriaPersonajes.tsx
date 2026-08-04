@@ -6,6 +6,7 @@ import { despertarAudio, sonarPersonaje } from '../audio/sonidos'
 interface Props {
   encontrados: IdPersonaje[]
   onTocar: (id: IdPersonaje) => void
+  onVerDetalle: (id: IdPersonaje) => void
 }
 
 // Misma idea que el mapa: todos empiezan tapados con una interrogación y
@@ -17,12 +18,18 @@ interface Props {
 // que su carta no se abre por mucho que la toquen. Si se abriera, la niña le
 // vería el color y se acabaría la deducción de qué tipo de dragón es.
 
-export function GaleriaPersonajes({ encontrados, onTocar }: Props) {
+export function GaleriaPersonajes({ encontrados, onTocar, onVerDetalle }: Props) {
   const presentables = useMemo(() => personajesPresentables(), [])
 
+  // Tapado: el toque lo destapa. Ya destapado: el toque abre la ficha en
+  // grande. Volver a taparlo se hace desde el botón de dentro de la ficha.
   const tocar = (id: IdPersonaje, visto: boolean) => {
     despertarAudio()
-    if (!visto) sonarPersonaje()
+    if (visto) {
+      onVerDetalle(id)
+      return
+    }
+    sonarPersonaje()
     onTocar(id)
   }
 
@@ -38,7 +45,7 @@ export function GaleriaPersonajes({ encontrados, onTocar }: Props) {
             className={visto ? 'personaje personaje--visto' : 'personaje'}
             onClick={() => tocar(p.id, visto)}
             disabled={!sePuedeAbrir}
-            aria-label={visto ? p.nombre : 'Personaje todavía no descubierto'}
+            aria-label={visto ? `Ver la ficha de ${p.nombre}` : 'Personaje todavía no descubierto'}
           >
             {visto ? (
               <>
@@ -46,6 +53,9 @@ export function GaleriaPersonajes({ encontrados, onTocar }: Props) {
                 <span className="personaje__nombre">{p.nombre}</span>
                 <span className="personaje__detalle">{p.detalle}</span>
                 <span className="personaje__descripcion">{p.descripcion}</span>
+                <span className="personaje__lupa" aria-hidden="true">
+                  +
+                </span>
               </>
             ) : (
               <span className="personaje__tapado" aria-hidden="true">

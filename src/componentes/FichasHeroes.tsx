@@ -4,9 +4,10 @@ import { despertarAudio, sonarValentia } from '../audio/sonidos'
 interface PropsLuca {
   valentia: [boolean, boolean, boolean]
   onGastar: (indice: number) => void
+  onVerDetalle: () => void
 }
 
-export function FichaLuca({ valentia, onGastar }: PropsLuca) {
+export function FichaLuca({ valentia, onGastar, onVerDetalle }: PropsLuca) {
   const gastar = (i: number) => {
     despertarAudio()
     if (!valentia[i]) sonarValentia()
@@ -21,7 +22,17 @@ export function FichaLuca({ valentia, onGastar }: PropsLuca) {
       </header>
 
       <div className="ficha__cuerpo">
-        <img className="ficha__figura" src="/imagenes/luca.png" alt="Sir Luca, caballero pirata" />
+        <button
+          type="button"
+          className="ficha__retrato"
+          onClick={onVerDetalle}
+          aria-label="Ver la ficha de Sir Luca en grande"
+        >
+          <img className="ficha__figura" src="/imagenes/luca.png" alt="Sir Luca, caballero pirata" />
+          <span className="ficha__lupa" aria-hidden="true">
+            +
+          </span>
+        </button>
         <div className="ficha__escudo">
           <EscudoSantJordi />
           <p className="ficha__poder">¡NADA LO ATRAVIESA!</p>
@@ -53,9 +64,10 @@ export function FichaLuca({ valentia, onGastar }: PropsLuca) {
 interface PropsPaula {
   gritoUsado: boolean
   onGrito: () => void
+  onVerDetalle: () => void
 }
 
-export function FichaPaula({ gritoUsado, onGrito }: PropsPaula) {
+export function FichaPaula({ gritoUsado, onGrito, onVerDetalle }: PropsPaula) {
   return (
     <article className="ficha ficha--paula">
       <header className="ficha__cabecera">
@@ -64,11 +76,21 @@ export function FichaPaula({ gritoUsado, onGrito }: PropsPaula) {
       </header>
 
       <div className="ficha__cuerpo">
-        <img
-          className="ficha__figura"
-          src="/imagenes/paula.png"
-          alt="Paula, cazadragones de la Luna"
-        />
+        <button
+          type="button"
+          className="ficha__retrato"
+          onClick={onVerDetalle}
+          aria-label="Ver la ficha de Paula en grande"
+        >
+          <img
+            className="ficha__figura"
+            src="/imagenes/paula.png"
+            alt="Paula, cazadragones de la Luna"
+          />
+          <span className="ficha__lupa" aria-hidden="true">
+            +
+          </span>
+        </button>
         <div className="ficha__poderes">
           <button
             type="button"

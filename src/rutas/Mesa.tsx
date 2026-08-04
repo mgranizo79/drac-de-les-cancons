@@ -4,7 +4,15 @@ import { FichaLuca, FichaPaula } from '../componentes/FichasHeroes'
 import { ContadorCanciones } from '../componentes/ContadorCanciones'
 import { CuadernoPistas } from '../componentes/CuadernoPistas'
 import { GaleriaPersonajes } from '../componentes/GaleriaPersonajes'
+import {
+  FichaDetalle,
+  detalleDeHeroe,
+  detalleDePersonaje,
+  type Detalle,
+} from '../componentes/FichaDetalle'
 import { MapaIsla } from '../componentes/arte/MapaIsla'
+import { heroes, personajes } from '../datos/campana'
+import type { IdPersonaje } from '../datos/tipos'
 import { usePartida } from '../estado/usePartida'
 
 type Pestana = 'heroes' | 'mapa' | 'personajes' | 'pistas'
@@ -29,10 +37,21 @@ export function Mesa() {
   } = usePartida()
 
   const [pestana, setPestana] = useState<Pestana>('heroes')
+  const [detalle, setDetalle] = useState<Detalle | null>(null)
 
   useEffect(() => {
     document.title = 'El Drac de les Cançons'
   }, [])
+
+  const verHeroe = (id: 'paula' | 'luca') => {
+    const h = heroes.find((x) => x.id === id)
+    if (h) setDetalle(detalleDeHeroe(h))
+  }
+
+  const verPersonaje = (id: IdPersonaje) => {
+    const p = personajes.find((x) => x.id === id)
+    if (p) setDetalle(detalleDePersonaje(p, () => alternarPersonaje(id)))
+  }
 
   return (
     <div className="mesa">
@@ -65,8 +84,16 @@ export function Mesa() {
           <div className="panel">
             {pestana === 'heroes' && (
               <div className="panel__heroes">
-                <FichaLuca valentia={estado.valentia} onGastar={gastarValentia} />
-                <FichaPaula gritoUsado={estado.gritoUsado} onGrito={alternarGrito} />
+                <FichaLuca
+                  valentia={estado.valentia}
+                  onGastar={gastarValentia}
+                  onVerDetalle={() => verHeroe('luca')}
+                />
+                <FichaPaula
+                  gritoUsado={estado.gritoUsado}
+                  onGrito={alternarGrito}
+                  onVerDetalle={() => verHeroe('paula')}
+                />
               </div>
             )}
 
@@ -80,7 +107,11 @@ export function Mesa() {
             {pestana === 'personajes' && (
               <div className="panel__personajes">
                 <p className="panel__ayuda">Toca a alguien cuando lo hayáis conocido</p>
-                <GaleriaPersonajes encontrados={estado.personajes} onTocar={alternarPersonaje} />
+                <GaleriaPersonajes
+                  encontrados={estado.personajes}
+                  onTocar={alternarPersonaje}
+                  onVerDetalle={verPersonaje}
+                />
               </div>
             )}
 
@@ -95,6 +126,8 @@ export function Mesa() {
           </div>
         </section>
       </main>
+
+      <FichaDetalle detalle={detalle} onCerrar={() => setDetalle(null)} />
     </div>
   )
 }
