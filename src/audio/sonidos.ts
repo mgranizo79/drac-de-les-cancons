@@ -162,82 +162,164 @@ function deslizar(desdeHz: number, hastaHz: number, desde: number, duracion: num
   osc.stop(desde + duracion + 0.05)
 }
 
-/** Nota con vaivén lento, como el oleaje. */
-function ondular(frecuencia: number, desde: number, duracion: number, volumen = 0.16): void {
-  const c = contexto()
-  if (!c) return
+// ─────────────────────────────────────────────────────────────
+//  LAS CINCO CANCIONES
+//
+//  La primera versión de esto eran efectos de sonido: ruido filtrado para el
+//  viento, glissandos para los pájaros. Sonaban a efecto, no a canción que
+//  vuelve a la isla, que es lo que son en la historia.
+//
+//  Ahora son melodías de verdad: notas de una escala, con bajo debajo y un
+//  eco que les da sitio. Siguen generándose en el navegador, así que no hay
+//  ni un fichero de audio que descargar.
+// ─────────────────────────────────────────────────────────────
+
+/** Las notas que se usan, por nombre, para que las melodías se lean. */
+const N = {
+  do3: 130.81, fa3: 174.61, sol3: 196.0, la3: 220.0,
+  do4: 261.63, re4: 293.66, mi4: 329.63, fa4: 349.23, sol4: 392.0, la4: 440.0, si4: 493.88,
+  do5: 523.25, re5: 587.33, mi5: 659.25, fa5: 698.46, sol5: 783.99, la5: 880.0, si5: 987.77,
+  do6: 1046.5,
+}
+
+/** [nota, cuándo empieza, cuánto dura, volumen opcional] */
+type Nota = [number, number, number, number?]
+
+/** Eco corto: es lo que hace que cuatro notas sueltas suenen a música. */
+function crearEco(c: AudioContext): DelayNode {
+  const retardo = c.createDelay(1)
+  retardo.delayTime.value = 0.26
+  const realimentacion = c.createGain()
+  realimentacion.gain.value = 0.28
+  const filtro = c.createBiquadFilter()
+  filtro.type = 'lowpass'
+  filtro.frequency.value = 2200
+  const salida = c.createGain()
+  salida.gain.value = 0.5
+  retardo.connect(realimentacion)
+  realimentacion.connect(filtro)
+  filtro.connect(retardo)
+  retardo.connect(salida)
+  salida.connect(c.destination)
+  return retardo
+}
+
+/** Una nota con envolvente de caja de música: ataque suave y cola larga. */
+function voz(
+  c: AudioContext,
+  eco: DelayNode,
+  hz: number,
+  desde: number,
+  duracion: number,
+  volumen: number,
+  tipo: OscillatorType,
+): void {
   const osc = c.createOscillator()
-  const lfo = c.createOscillator()
-  const profundidad = c.createGain()
   const gan = c.createGain()
-  osc.type = 'sine'
-  osc.frequency.value = frecuencia
-  lfo.type = 'sine'
-  lfo.frequency.value = 1.5
-  profundidad.gain.value = frecuencia * 0.05
-  lfo.connect(profundidad)
-  profundidad.connect(osc.frequency)
+  osc.type = tipo
+  osc.frequency.value = hz
   gan.gain.setValueAtTime(0.0001, desde)
-  gan.gain.exponentialRampToValueAtTime(volumen, desde + 0.3)
+  gan.gain.exponentialRampToValueAtTime(volumen, desde + 0.035)
   gan.gain.exponentialRampToValueAtTime(0.0001, desde + duracion)
   osc.connect(gan)
   gan.connect(c.destination)
+  gan.connect(eco)
   osc.start(desde)
-  lfo.start(desde)
   osc.stop(desde + duracion + 0.05)
-  lfo.stop(desde + duracion + 0.05)
 }
 
-/**
- * Cada canción suena a lo que devuelve a la isla. Antes las cinco disparaban
- * la misma escala y no había forma de distinguirlas.
- */
-const CANCIONES: Record<number, (t: number) => void> = {
-  // 1 · DEL MAR — una ola que va y viene, con su espuma
-  1: (t) => {
-    ondular(196.0, t, 2.2, 0.16)
-    ondular(293.66, t + 0.15, 2.0, 0.09)
-    soplo(t, 1.1, { desdeHz: 400, hastaHz: 1500, q: 1.2, volumen: 0.1 })
-    soplo(t + 1.1, 1.1, { desdeHz: 1500, hastaHz: 400, q: 1.2, volumen: 0.08 })
-  },
-
-  // 2 · DEL VIENTO — una ráfaga que pasa de largo. Sin nota: solo aire.
-  2: (t) => {
-    soplo(t, 1.8, { desdeHz: 300, hastaHz: 2600, q: 6, volumen: 0.17 })
-    soplo(t + 0.55, 1.5, { desdeHz: 2200, hastaHz: 500, q: 8, volumen: 0.12 })
-  },
-
-  // 3 · DE LOS PÁJAROS — cuatro trinos agudos, rápidos y desordenados
-  3: (t) => {
-    deslizar(1200, 2100, t, 0.13)
-    deslizar(1500, 2400, t + 0.17, 0.11)
-    deslizar(1050, 1900, t + 0.33, 0.15)
-    deslizar(1750, 2600, t + 0.55, 0.19, 0.13)
-  },
-
-  // 4 · DE LA GENTE — un coro: las voces van entrando una detrás de otra
-  4: (t) => {
-    nota(261.63, t, 1.7, 'triangle', 0.12)
-    nota(329.63, t + 0.2, 1.5, 'triangle', 0.11)
-    nota(392.0, t + 0.4, 1.4, 'triangle', 0.11)
-    nota(523.25, t + 0.6, 1.3, 'sine', 0.1)
-  },
-
-  // 5 · DEL CORAZÓN — dos latidos y una nota que se abre
-  5: (t) => {
-    nota(90, t, 0.2, 'sine', 0.3)
-    nota(90, t + 0.32, 0.24, 'sine', 0.26)
-    nota(440.0, t + 0.62, 0.5, 'triangle', 0.14)
-    nota(659.25, t + 0.88, 1.2, 'sine', 0.15)
-  },
+function tocar(
+  melodia: Nota[],
+  bajo: Nota[],
+  volumenMelodia = 0.15,
+  tipoMelodia: OscillatorType = 'triangle',
+): void {
+  const c = contexto()
+  if (!c) return
+  const t = c.currentTime
+  const eco = crearEco(c)
+  melodia.forEach(([hz, cuando, dura, vol]) =>
+    voz(c, eco, hz, t + cuando, dura, vol ?? volumenMelodia, tipoMelodia),
+  )
+  // El bajo no va al eco: enturbiaría la mezcla.
+  bajo.forEach(([hz, cuando, dura, vol]) => nota(hz, t + cuando, dura, 'sine', vol ?? 0.1))
 }
 
-/** Una canción vuelve a la isla. Cada número suena distinto. */
+const CANCIONES: Record<number, () => void> = {
+  // 1 · DEL MAR — sube y baja como una ola, sin prisa. Do mayor.
+  1: () =>
+    tocar(
+      [
+        [N.sol4, 0, 0.55], [N.la4, 0.3, 0.55], [N.do5, 0.6, 0.7],
+        [N.la4, 1.0, 0.55], [N.sol4, 1.3, 0.55], [N.mi4, 1.6, 0.6],
+        [N.do4, 1.95, 1.3],
+      ],
+      [[N.do3, 0, 2.4, 0.1], [N.sol3, 1.2, 1.7, 0.08]],
+    ),
+
+  // 2 · DEL VIENTO — escala pentatónica que sube y se escapa. Ligera y rápida.
+  2: () =>
+    tocar(
+      [
+        [N.do5, 0, 0.3], [N.re5, 0.16, 0.3], [N.mi5, 0.32, 0.3],
+        [N.sol5, 0.48, 0.32], [N.la5, 0.64, 0.36], [N.do6, 0.82, 0.9],
+        [N.sol5, 1.05, 0.7, 0.09],
+      ],
+      [[N.sol3, 0, 1.6, 0.07]],
+    ),
+
+  // 3 · DE LOS PÁJAROS — saltos agudos y alegres, como quien no para quieto.
+  3: () =>
+    tocar(
+      [
+        [N.sol5, 0, 0.22], [N.do6, 0.13, 0.22], [N.si5, 0.26, 0.22],
+        [N.sol5, 0.39, 0.26], [N.la5, 0.56, 0.22], [N.do6, 0.69, 0.24],
+        [N.mi5, 0.85, 0.6],
+      ],
+      [[N.do4, 0, 1.2, 0.06]],
+      0.13,
+    ),
+
+  // 4 · DE LA GENTE — cuatro acordes, como un coro entrando por voces.
+  4: () => {
+    const acorde = (notas: number[], cuando: number, dura: number): Nota[] =>
+      notas.map((hz, i) => [hz, cuando + i * 0.05, dura, 0.09] as Nota)
+    tocar(
+      [
+        ...acorde([N.do4, N.mi4, N.sol4], 0, 1.0),
+        ...acorde([N.fa4, N.la4, N.do5], 0.7, 1.0),
+        ...acorde([N.sol4, N.si4, N.re5], 1.4, 1.0),
+        ...acorde([N.do5, N.mi5, N.sol5], 2.1, 1.6),
+      ],
+      [
+        [N.do3, 0, 0.8, 0.1], [N.fa3, 0.7, 0.8, 0.1],
+        [N.sol3, 1.4, 0.8, 0.1], [N.do3, 2.1, 1.6, 0.1],
+      ],
+    )
+  },
+
+  // 5 · DEL CORAZÓN — empieza en menor, se pone triste y acaba resolviendo
+  //     en mayor. Es la que le regalan a ella: tenía que sonar a eso.
+  5: () =>
+    tocar(
+      [
+        [N.la4, 0, 0.55], [N.do5, 0.35, 0.55], [N.mi5, 0.7, 0.65],
+        [N.re5, 1.1, 0.55], [N.do5, 1.45, 0.75],
+        [N.la4, 1.9, 0.5], [N.sol4, 2.2, 0.5],
+        [N.do5, 2.5, 1.6], [N.mi5, 2.62, 1.5, 0.1],
+      ],
+      [
+        [N.la3, 0, 1.0, 0.1], [N.fa3, 1.0, 0.9, 0.1],
+        [N.sol3, 1.9, 0.6, 0.1], [N.do3, 2.5, 1.8, 0.11],
+      ],
+    ),
+}
+
+/** Una canción vuelve a la isla. Cada número tiene su melodía. */
 export function sonarCancion(numero: number): void {
   const c = contexto()
   if (!c) return
-  const tocar = CANCIONES[numero] ?? CANCIONES[1]
-  tocar(c.currentTime)
+  ;(CANCIONES[numero] ?? CANCIONES[1])()
 }
 
 /** El Rayo de Luna: el diapasón carga y la luz sale disparada. */
