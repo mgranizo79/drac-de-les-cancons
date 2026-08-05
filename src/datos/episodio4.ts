@@ -142,6 +142,7 @@ export const episodio4: Episodio = {
       preguntar: [
         { para: 'luca', texto: 'Todo el pueblo te está mirando. ¿Qué gritas antes de atacar?' },
         { para: 'paula', texto: '¿Rayo de Luna, canción, o guardas el Grito de Plata para el final?' },
+        { para: 'mesa', texto: 'Gala y Abril están aquí. ¿Les pedís ayuda? ¿A cuál de las dos?' },
       ],
       tiradas: [
         {
@@ -151,7 +152,7 @@ export const episodio4: Episodio = {
           fallo:
             'Os da un palazo al tarro y se escapan tres o cuatro voces sueltas por la ventana. Abajo, en el pueblo, tres personas se ponen a hablar de golpe y se echan a llorar de la emoción.',
           nota:
-            'Cuatro aciertos, no tres: es el último combate. Si alguien se acuerda de que el kobold le tiene miedo al mar y propone empujarlo hacia la ventana o mojarlo, dale la victoria directamente. Eso es exactamente lo que quieres que aprendan hoy.',
+            'Cuatro aciertos, no tres: es el último combate antes del final. Si alguien se acuerda de que el kobold le tiene miedo al mar y propone empujarlo hacia la ventana o mojarlo, dale la victoria directamente: eso es lo que quieres que aprendan hoy.\n\nY Gala y Abril han subido con vosotros. Si se lo pedís, una vez cada una: GALA hace crecer enredaderas por la escalera y el kobold se enreda (su siguiente ataque falla). ABRIL le lanza un gato a la cara (cuenta como un acierto, sin dado). Que sean ellos los que se acuerden de pedírselo.',
         },
       ],
       pistaDelDragon:

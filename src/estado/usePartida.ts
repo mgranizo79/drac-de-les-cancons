@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react'
 import { useAlmacenLocal } from './almacenLocal'
-import type { IdLugar, IdPersonaje } from '../datos/tipos'
+import type { ControlDM, IdLugar, IdPersonaje } from '../datos/tipos'
 
 export interface EstadoPartida {
   /** true = ficha de Valentía ya gastada. */
@@ -17,6 +17,8 @@ export interface EstadoPartida {
   lugares: IdLugar[]
   /** Personajes que ya han aparecido en la historia. */
   personajes: IdPersonaje[]
+  /** Lo que el DM ha forzado a mano desde el panel oculto. */
+  control: ControlDM
 }
 
 const ESTADO_INICIAL: EstadoPartida = {
@@ -27,6 +29,7 @@ const ESTADO_INICIAL: EstadoPartida = {
   apuesta: '',
   lugares: [],
   personajes: [],
+  control: {},
 }
 
 export function usePartida() {
@@ -104,6 +107,22 @@ export function usePartida() {
     [setEstado],
   )
 
+  /**
+   * El DM fuerza que un personaje se vea o no se vea, desde el panel oculto.
+   * Pasar `undefined` devuelve la carta a la regla automática de canciones.
+   */
+  const controlarPersonaje = useCallback(
+    (id: IdPersonaje, visible: boolean | undefined) => {
+      setEstado((e) => {
+        const control = { ...(e.control ?? {}) }
+        if (visible === undefined) delete control[id]
+        else control[id] = visible
+        return { ...e, control }
+      })
+    },
+    [setEstado],
+  )
+
   /** Nuevo episodio: se recuperan la Valentía y el Grito, se conserva todo lo demás. */
   const nuevoEpisodio = useCallback(() => {
     setEstado((e) => ({ ...e, valentia: [false, false, false], gritoUsado: false }))
@@ -118,6 +137,7 @@ export function usePartida() {
     escribirApuesta,
     alternarLugar,
     alternarPersonaje,
+    controlarPersonaje,
     nuevoEpisodio,
     reiniciarTodo: reiniciar,
   }

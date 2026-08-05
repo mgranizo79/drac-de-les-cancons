@@ -4,6 +4,7 @@ import { FichaLuca, FichaPaula } from '../componentes/FichasHeroes'
 import { ContadorCanciones } from '../componentes/ContadorCanciones'
 import { CuadernoPistas } from '../componentes/CuadernoPistas'
 import { GaleriaPersonajes } from '../componentes/GaleriaPersonajes'
+import { PanelDM } from '../componentes/PanelDM'
 import {
   FichaDetalle,
   detalleDeHeroe,
@@ -34,10 +35,12 @@ export function Mesa() {
     escribirApuesta,
     alternarLugar,
     alternarPersonaje,
+    controlarPersonaje,
   } = usePartida()
 
   const [pestana, setPestana] = useState<Pestana>('heroes')
   const [detalle, setDetalle] = useState<Detalle | null>(null)
+  const [panelDM, setPanelDM] = useState(false)
 
   useEffect(() => {
     document.title = 'El Drac de les Cançons'
@@ -56,7 +59,11 @@ export function Mesa() {
   return (
     <div className="mesa">
       <header className="mesa__barra">
-        <ContadorCanciones rescatadas={estado.canciones} onEncender={encenderCancion} />
+        <ContadorCanciones
+          rescatadas={estado.canciones}
+          onEncender={encenderCancion}
+          onPulsacionLarga={() => setPanelDM(true)}
+        />
       </header>
 
       <main className="mesa__cuerpo">
@@ -110,6 +117,7 @@ export function Mesa() {
                 <GaleriaPersonajes
                   encontrados={estado.personajes}
                   cancionesRescatadas={estado.canciones}
+                  control={estado.control ?? {}}
                   onTocar={alternarPersonaje}
                   onVerDetalle={verPersonaje}
                 />
@@ -129,6 +137,14 @@ export function Mesa() {
       </main>
 
       <FichaDetalle detalle={detalle} onCerrar={() => setDetalle(null)} />
+
+      <PanelDM
+        abierto={panelDM}
+        cancionesRescatadas={estado.canciones}
+        control={estado.control ?? {}}
+        onControlar={controlarPersonaje}
+        onCerrar={() => setPanelDM(false)}
+      />
     </div>
   )
 }

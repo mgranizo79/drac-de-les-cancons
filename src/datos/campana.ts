@@ -1,4 +1,6 @@
 import type {
+  Bando,
+  ControlDM,
   Episodio,
   FilaArco,
   Heroe,
@@ -54,6 +56,7 @@ export const lugares: Lugar[] = [
 export const personajes: Personaje[] = [
   {
     id: 'migas',
+    bando: 'aliado',
     nombre: 'CAPITÁN MIGAS',
     detalle: 'No le sale ni un sonido',
     imagen: '/imagenes/migas.png',
@@ -64,6 +67,7 @@ export const personajes: Personaje[] = [
   },
   {
     id: 'kobold',
+    bando: 'enemigo',
     nombre: 'EL KOBOLD',
     detalle: 'Trabaja para el dragón',
     imagen: '/imagenes/kobold.png',
@@ -74,6 +78,7 @@ export const personajes: Personaje[] = [
   },
   {
     id: 'pluma',
+    bando: 'aliado',
     nombre: 'DOÑA PLUMA',
     detalle: 'La más vieja de la isla',
     imagen: '/imagenes/pluma.png',
@@ -85,17 +90,19 @@ export const personajes: Personaje[] = [
   },
   {
     id: 'gemelas',
+    bando: 'aliado',
     nombre: 'GALA Y ABRIL',
     detalle: 'Las druidas de la cala',
     imagen: '/imagenes/gemelas.png',
     descripcion:
-      'Dos hermanas gemelas de cinco años que no se parecen en nada. A Gala le hacen caso las plantas y cuida el único jardín que queda en la isla. A Abril la siguen los gatos a todas partes, y les entiende cuando maúllan.',
+      'Dos hermanas gemelas de cinco años que no se parecen en nada. A Gala le hacen caso las plantas y cuida el único jardín que queda en la isla. A Abril la siguen los gatos a todas partes, y les entiende cuando maúllan. Son pequeñas, pero cuando hay pelea os echan una mano.',
     enCombate:
-      'Son pequeñas y no pelean. Pero Gala te da lo que hay que plantar y Abril te trae al gato que lo vio todo.',
+      'Pelean, y a su manera son temibles. GALA hace crecer enredaderas del suelo que agarran al enemigo por los pies: el siguiente ataque que os lance, falla. ABRIL lanza gatos: coge uno, lo tira contra el enemigo y el gato hace el resto. Cuenta como un acierto, sin tirar dado. Cada una puede hacerlo una vez por combate, y hay que pedírselo.',
     requiereCanciones: 3,
   },
   {
     id: 'ferran',
+    bando: 'aliado',
     nombre: 'EL VIEJO FERRAN',
     detalle: 'Vio lo que pasó en el mar',
     imagen: '/imagenes/ferran.png',
@@ -107,6 +114,7 @@ export const personajes: Personaje[] = [
   },
   {
     id: 'dragon',
+    bando: 'enemigo',
     nombre: 'EL DRAGÓN',
     detalle: 'Os mira desde la montaña',
     imagen: '/imagenes/dragon.png',
@@ -135,7 +143,10 @@ export const personajes: Personaje[] = [
  * La segunda condición sí sigue el ritmo real de la partida, porque el
  * contador de canciones lo llevan ellos en el propio iPad.
  */
-export function personajesPresentables(cancionesRescatadas: number): IdPersonaje[] {
+export function personajesPresentables(
+  cancionesRescatadas: number,
+  control: ControlDM = {},
+): IdPersonaje[] {
   const presentados = new Set<IdPersonaje>()
   episodios.forEach((ep) =>
     ep.escenas.forEach((es) => {
@@ -143,8 +154,18 @@ export function personajesPresentables(cancionesRescatadas: number): IdPersonaje
     }),
   )
   return personajes
-    .filter((p) => presentados.has(p.id) && (p.requiereCanciones ?? 0) <= cancionesRescatadas)
+    .filter((p) => {
+      // Lo que haya decidido el DM a mano manda sobre todo lo demás.
+      const manual = control[p.id]
+      if (manual !== undefined) return manual
+      return presentados.has(p.id) && (p.requiereCanciones ?? 0) <= cancionesRescatadas
+    })
     .map((p) => p.id)
+}
+
+/** Los personajes de un bando, en el orden en que aparecen en la historia. */
+export function personajesDelBando(bando: Bando): Personaje[] {
+  return personajes.filter((p) => p.bando === bando)
 }
 
 export const heroes: Heroe[] = [

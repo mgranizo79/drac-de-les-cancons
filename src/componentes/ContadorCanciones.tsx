@@ -1,15 +1,40 @@
+import { useRef } from 'react'
 import { canciones } from '../datos/campana'
 import { despertarAudio, sonarCancion } from '../audio/sonidos'
 
 interface Props {
   rescatadas: number
   onEncender: (numero: number) => void
+  /** Dedo 1,5 s sobre el título: abre el panel del DM. Ningún niño lo hace sin querer. */
+  onPulsacionLarga: () => void
 }
 
-export function ContadorCanciones({ rescatadas, onEncender }: Props) {
+const MS_PULSACION_LARGA = 1500
+
+export function ContadorCanciones({ rescatadas, onEncender, onPulsacionLarga }: Props) {
+  const temporizador = useRef<number | null>(null)
+
+  const empezar = () => {
+    temporizador.current = window.setTimeout(onPulsacionLarga, MS_PULSACION_LARGA)
+  }
+  const cancelar = () => {
+    if (temporizador.current !== null) {
+      window.clearTimeout(temporizador.current)
+      temporizador.current = null
+    }
+  }
+
   return (
     <div className="canciones">
-      <span className="canciones__titulo">LAS CINCO CANCIONES</span>
+      <span
+        className="canciones__titulo"
+        onPointerDown={empezar}
+        onPointerUp={cancelar}
+        onPointerLeave={cancelar}
+        onPointerCancel={cancelar}
+      >
+        LAS CINCO CANCIONES
+      </span>
       <div className="canciones__lista">
         {canciones.map((c) => {
           const encendida = c.numero <= rescatadas

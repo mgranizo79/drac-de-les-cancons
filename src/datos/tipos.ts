@@ -79,8 +79,18 @@ export interface Lugar {
   detalle: string
 }
 
+/** De qué lado está. Divide la galería en dos grupos. */
+export type Bando = 'aliado' | 'enemigo'
+
+/**
+ * Lo que el DM ha decidido a mano para cada personaje, desde el panel oculto
+ * de /mesa. Si hay entrada, manda sobre la regla automática de canciones.
+ */
+export type ControlDM = Partial<Record<IdPersonaje, boolean>>
+
 export interface Personaje {
   id: IdPersonaje
+  bando: Bando
   /** Cuidado con los spoilers: esto lo leen ellos. */
   nombre: string
   /** Se muestra bajo el nombre cuando ya ha aparecido. */

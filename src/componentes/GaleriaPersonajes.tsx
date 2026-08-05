@@ -1,38 +1,43 @@
 import { useMemo } from 'react'
-import { personajes, personajesPresentables } from '../datos/campana'
-import type { IdPersonaje } from '../datos/tipos'
+import { personajesDelBando, personajesPresentables } from '../datos/campana'
+import type { Bando, ControlDM, IdPersonaje, Personaje } from '../datos/tipos'
 import { despertarAudio, sonarPersonaje } from '../audio/sonidos'
 
 interface Props {
   encontrados: IdPersonaje[]
   /** Marca por dónde va la partida: cada carta se abre al llegar su episodio. */
   cancionesRescatadas: number
+  /** Lo que el DM haya forzado a mano desde el panel oculto. */
+  control: ControlDM
   onTocar: (id: IdPersonaje) => void
   onVerDetalle: (id: IdPersonaje) => void
 }
 
+const GRUPOS: Array<{ bando: Bando; titulo: string; icono: string }> = [
+  { bando: 'aliado', titulo: 'Los que nos ayudan', icono: '🤝' },
+  { bando: 'enemigo', titulo: 'Los que van a por nosotros', icono: '⚔️' },
+]
+
 // Misma idea que el mapa: todos empiezan tapados con una interrogación y
-// se destapan cuando un dedo los toca. Volver a tocarlos los vuelve a tapar,
-// por si alguien se adelanta sin querer.
+// se destapan cuando un dedo los toca. Volver a tocarlos abre su ficha grande.
 //
-// Con una excepción importante: solo se pueden destapar los personajes que
-// alguna escena ya escrita presenta. El dragón no lo presenta ninguna, así
-// que su carta no se abre por mucho que la toquen. Si se abriera, la niña le
-// vería el color y se acabaría la deducción de qué tipo de dragón es.
+// Con una excepción importante: solo se pueden destapar los personajes cuyo
+// episodio ya ha llegado (o los que el DM haya abierto a mano). Si el dragón
+// se pudiera abrir el primer día, la niña le vería el color y se acabaría la
+// deducción de qué tipo de dragón es.
 
 export function GaleriaPersonajes({
   encontrados,
   cancionesRescatadas,
+  control,
   onTocar,
   onVerDetalle,
 }: Props) {
   const presentables = useMemo(
-    () => personajesPresentables(cancionesRescatadas),
-    [cancionesRescatadas],
+    () => personajesPresentables(cancionesRescatadas, control),
+    [cancionesRescatadas, control],
   )
 
-  // Tapado: el toque lo destapa. Ya destapado: el toque abre la ficha en
-  // grande. Volver a taparlo se hace desde el botón de dentro de la ficha.
   const tocar = (id: IdPersonaje, visto: boolean) => {
     despertarAudio()
     if (visto) {
@@ -43,39 +48,48 @@ export function GaleriaPersonajes({
     onTocar(id)
   }
 
+  const carta = (p: Personaje) => {
+    const sePuedeAbrir = presentables.includes(p.id)
+    const visto = sePuedeAbrir && encontrados.includes(p.id)
+    return (
+      <button
+        key={p.id}
+        type="button"
+        className={visto ? 'personaje personaje--visto' : 'personaje'}
+        onClick={() => tocar(p.id, visto)}
+        disabled={!sePuedeAbrir}
+        aria-label={visto ? `Ver la ficha de ${p.nombre}` : 'Personaje todavía no descubierto'}
+      >
+        {visto ? (
+          <>
+            {/* La descripción no cabe aquí desde que son seis: se lee
+                entera en la ficha grande, que se abre tocando la carta. */}
+            <img className="personaje__imagen" src={p.imagen} alt="" />
+            <span className="personaje__nombre">{p.nombre}</span>
+            <span className="personaje__detalle">{p.detalle}</span>
+            <span className="personaje__lupa" aria-hidden="true">
+              +
+            </span>
+          </>
+        ) : (
+          <span className="personaje__tapado" aria-hidden="true">
+            ?
+          </span>
+        )}
+      </button>
+    )
+  }
+
   return (
     <div className="galeria">
-      {personajes.map((p) => {
-        const sePuedeAbrir = presentables.includes(p.id)
-        const visto = sePuedeAbrir && encontrados.includes(p.id)
-        return (
-          <button
-            key={p.id}
-            type="button"
-            className={visto ? 'personaje personaje--visto' : 'personaje'}
-            onClick={() => tocar(p.id, visto)}
-            disabled={!sePuedeAbrir}
-            aria-label={visto ? `Ver la ficha de ${p.nombre}` : 'Personaje todavía no descubierto'}
-          >
-            {visto ? (
-              <>
-                {/* La descripción no cabe aquí desde que son seis: se lee
-                    entera en la ficha grande, que se abre tocando la carta. */}
-                <img className="personaje__imagen" src={p.imagen} alt="" />
-                <span className="personaje__nombre">{p.nombre}</span>
-                <span className="personaje__detalle">{p.detalle}</span>
-                <span className="personaje__lupa" aria-hidden="true">
-                  +
-                </span>
-              </>
-            ) : (
-              <span className="personaje__tapado" aria-hidden="true">
-                ?
-              </span>
-            )}
-          </button>
-        )
-      })}
+      {GRUPOS.map((g) => (
+        <section key={g.bando} className={`grupo grupo--${g.bando}`}>
+          <h3 className="grupo__titulo">
+            <span aria-hidden="true">{g.icono}</span> {g.titulo}
+          </h3>
+          <div className="grupo__cartas">{personajesDelBando(g.bando).map(carta)}</div>
+        </section>
+      ))}
     </div>
   )
 }

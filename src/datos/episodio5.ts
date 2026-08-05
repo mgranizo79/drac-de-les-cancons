@@ -26,7 +26,8 @@ export const episodio5: Episodio = {
       leerEnVozAlta: [
         'Salís del pueblo de madrugada, con los odres llenos de agua de mar a la espalda. Pesan un montón.',
         'Y no vais solos. Detrás van Gala y Abril con los tres gatos. Detrás de ellas, el viejo Ferran. Y detrás, todo el pueblo. Nadie dice nada, pero os siguen hasta el pie de la montaña.',
-        'Allí se paran. Ellos no pueden subir más. Capitán Migas se posa en el hombro de Luca y Doña Pluma en el de Paula. Ellos sí suben.',
+        'Allí se paran todos. El pueblo no puede subir más.',
+        'Todos menos cuatro. Capitán Migas se posa en el hombro de Luca y Doña Pluma en el de Paula. Y Gala y Abril, que son pequeñas pero tienen muy mal genio cuando quieren, se ponen delante de vosotros en el camino y dicen que ellas suben. No hay manera de convencerlas de lo contrario.',
       ],
       acotacion:
         'Empieza el último episodio como lo que es: una despedida. El pueblo entero acompañándoos hasta el pie de la montaña y quedándose ahí mirando. No corras esta escena aunque no pase nada en ella.',
@@ -132,7 +133,7 @@ export const episodio5: Episodio = {
         'Y os echa fuego.',
       ],
       acotacion:
-        'El combate tiene tres partes y cada una la gana una cosa que se han ganado ellos. No lo lleves con dados sueltos: lleva las tres partes en orden. Y en cada una, di en voz alta qué canción están usando, para que se note que todo lo de estos días servía para algo.',
+        'El combate tiene cuatro partes y cada una la gana alguien distinto: Luca aguanta, las gemelas la sujetan, los dos la mojan y Paula la tumba. Llévalas en orden, sin dados sueltos. Y en cada una di en voz alta qué canción están usando, para que se note que todo lo de estos días servía para algo. Nadie se queda sin su momento.',
       loQueVen: [
         'Una bocanada de fuego que llena la cueva entera.',
         'Las monedas del suelo se ponen al rojo vivo y suenan todas a la vez.',
@@ -155,18 +156,28 @@ export const episodio5: Episodio = {
             'ÉXITO AUTOMÁTICO si Luca se levanta y pone el escudo. Aquí no se tira. Y mientras aguanta, la Canción del Mar que llevan encima apaga las llamas que caen al suelo.',
         },
         {
-          quien: 'Los dos',
-          que: 'SEGUNDA PARTE — Mojarla con el agua del mar',
+          quien: 'Gala y Abril',
+          que: 'SEGUNDA PARTE — Sujetarla para que no se mueva',
           exito:
-            'El agua le da de lleno. Flamarada grita, se echa atrás y se le apaga el fuego de dentro: ya no puede escupir más. Se queda temblando.',
+            'Gala clava las manos en el suelo de la cueva y de entre las monedas salen enredaderas gruesas como brazos, que trepan por las patas de Flamarada y la sujetan. No la hacen daño: solo no la dejan moverse. Y Abril, mientras tanto, le lanza gatos a la cara. Uno detrás de otro. Un dragón de veinte metros no sabe qué hacer con un gato en el morro.',
           fallo:
-            'El agua le cae al lado y salpica poco. Pero ese poco basta para que retroceda hasta el fondo, asustada. Volved a intentarlo: nadie os lo impide.',
+            'No hay fallo. Son dos niñas de cinco años y hoy están muy motivadas.',
+          nota:
+            'Sin dado. Esto se lo tienen que PEDIR: si no se acuerdan, que Gala tire de la manga a Luca. Y que dure lo justo, porque las enredaderas no aguantarán mucho: es la ventana para el agua.',
+        },
+        {
+          quien: 'Los dos',
+          que: 'TERCERA PARTE — Mojarla con el agua del mar',
+          exito:
+            'Con Flamarada sujeta por las enredaderas, el agua le da de lleno. Grita, se echa atrás y se le apaga el fuego de dentro: ya no puede escupir más. Se queda temblando.',
+          fallo:
+            'El agua le cae al lado y salpica poco. Pero ese poco basta para que retroceda hasta el fondo, asustada. Volved a intentarlo: las enredaderas todavía aguantan.',
           nota:
             'Si en la subida se derramó un odre, solo tienen un intento. Si no, los que hagan falta. La Canción del Viento les ayuda a lanzarla más lejos.',
         },
         {
           quien: 'Paula',
-          que: 'TERCERA PARTE — El Grito de Plata',
+          que: 'CUARTA PARTE — El Grito de Plata',
           exito:
             'Paula canta la nota. Y Flamarada, que es la criatura más grande de la isla, se queda quieta del todo y se le doblan las patas. Cae de rodillas sobre las monedas.',
           fallo: 'No hay fallo: el Grito de Plata nunca falla. Nunca ha fallado.',
