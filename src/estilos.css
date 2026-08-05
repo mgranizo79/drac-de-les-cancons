@@ -653,6 +653,19 @@ button {
   width: 100%;
 }
 
+.hito__numero {
+  font-family: var(--titulo);
+  font-size: 54px;
+  font-weight: 700;
+}
+
+.hito__nombre {
+  font-family: var(--titulo);
+  font-size: 40px;
+  font-weight: 700;
+  fill: #5c4426;
+}
+
 .lugar {
   cursor: pointer;
 }

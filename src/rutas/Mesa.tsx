@@ -106,8 +106,8 @@ export function Mesa() {
 
             {pestana === 'mapa' && (
               <div className="panel__mapa">
-                <p className="panel__ayuda">Toca un sitio cuando lleguéis allí</p>
-                <MapaIsla desbloqueados={estado.lugares} onTocar={alternarLugar} />
+                <p className="panel__ayuda">Toda la isla, y por dónde vamos pasando</p>
+                <MapaIsla />
               </div>
             )}
 
