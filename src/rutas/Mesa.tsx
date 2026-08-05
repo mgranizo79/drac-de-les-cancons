@@ -15,6 +15,7 @@ import { MapaIsla } from '../componentes/arte/MapaIsla'
 import { heroes, personajes } from '../datos/campana'
 import type { IdPersonaje } from '../datos/tipos'
 import { usePartida } from '../estado/usePartida'
+import { useEscucharControl } from '../estado/controlRemoto'
 
 type Pestana = 'heroes' | 'mapa' | 'personajes' | 'pistas'
 
@@ -36,7 +37,11 @@ export function Mesa() {
     alternarLugar,
     alternarPersonaje,
     controlarPersonaje,
+    aplicarControlRemoto,
   } = usePartida()
+
+  // Lo que decida el DM desde su portátil llega aquí en 3 segundos.
+  useEscucharControl(aplicarControlRemoto)
 
   const [pestana, setPestana] = useState<Pestana>('heroes')
   const [detalle, setDetalle] = useState<Detalle | null>(null)

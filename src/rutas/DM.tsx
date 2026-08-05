@@ -2,6 +2,7 @@ import { useEffect, useMemo } from 'react'
 import { arcoCampana, episodios, heroes, personajes, trasfondo } from '../datos/campana'
 import type { Episodio, Escena } from '../datos/tipos'
 import { useAlmacenLocal } from '../estado/almacenLocal'
+import { ControlMesa } from '../componentes/ControlMesa'
 
 interface EntradaGuion {
   episodio: Episodio
@@ -186,6 +187,8 @@ export function DM() {
               </ul>
             )}
           </section>
+
+          <ControlMesa />
 
           {/* Para responder dudas a mitad de partida sin cortar el ritmo.
               Plegado por defecto: ocupa una línea hasta que hace falta. */}

@@ -123,6 +123,12 @@ export function usePartida() {
     [setEstado],
   )
 
+  /** Lo que llega del portátil del DM: reemplaza el control entero. */
+  const aplicarControlRemoto = useCallback(
+    (control: ControlDM) => setEstado((e) => ({ ...e, control })),
+    [setEstado],
+  )
+
   /** Nuevo episodio: se recuperan la Valentía y el Grito, se conserva todo lo demás. */
   const nuevoEpisodio = useCallback(() => {
     setEstado((e) => ({ ...e, valentia: [false, false, false], gritoUsado: false }))
@@ -138,6 +144,7 @@ export function usePartida() {
     alternarLugar,
     alternarPersonaje,
     controlarPersonaje,
+    aplicarControlRemoto,
     nuevoEpisodio,
     reiniciarTodo: reiniciar,
   }
