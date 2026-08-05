@@ -66,9 +66,15 @@ seis bloques de la pantalla del DM:
 }
 ```
 
-Para añadir lugares nuevos al mapa: amplía el tipo `IdLugar` en `tipos.ts`,
-añade su entrada en `lugares` (`campana.ts`) y dibuja el `<g>` correspondiente
-en `src/componentes/arte/MapaIsla.tsx`.
+Para añadir un sitio al mapa: mételo en el array `LUGARES` de
+`src/componentes/arte/MapaIsla.tsx`, con sus coordenadas sobre la ilustración
+(el `viewBox` son sus medidas: 1600 × 2400). El sitio tiene que salir ya
+dibujado en la ilustración, porque el mapa dejó de dibujarse en código.
+Tampoco hay ya zonas que se desbloqueen tocándolas, así que no hace falta
+tocar `IdLugar` ni `lugares`.
+
+Si el sitio tiene que salir también en el póster de pared, añádelo en
+`material-mesa/html/3-mapa-isla.html` y regenera su PDF.
 
 ---
 
@@ -93,7 +99,7 @@ En `material-mesa/` hay cinco PDF A4 a color, listos para la impresora:
 |---------|--------|
 | `pdf/1-ficha-luca.pdf` | Ficha de Sir Luca: escudo de Sant Jordi y 3 huecos para las fichas de Valentía |
 | `pdf/2-ficha-paula.pdf` | Ficha de Paula: sus tres poderes y el cuaderno de pistas sobre el dragón |
-| `pdf/3-mapa-isla.pdf` | Mapa de la isla, con círculos para ir marcando por dónde han pasado |
+| `pdf/3-mapa-isla.pdf` | Póster de la isla con los ocho sitios de la campaña, numerados por episodio |
 | `pdf/4-tokens.pdf` | Figuras recortables que se tienen de pie |
 | `pdf/5-tracker-canciones.pdf` | Tracker de las 5 canciones, para la pared |
 | `pdf/0-material-completo-episodio-1.pdf` | Los cinco anteriores en un solo archivo |
@@ -110,6 +116,16 @@ figuras llevan ilustraciones: sin él Chrome no carga las imágenes locales y
 salen los huecos en blanco. Las imágenes de impresión están en
 `material-mesa/imagenes/tarjetas/` (las mismas de `public/imagenes/`,
 reescaladas a 750 px y en JPEG para que los PDF no pesen 7 MB).
+
+El mapa es la ilustración `material-mesa/imagenes/mapa-isla.jpg` con los ocho
+sitios encima, la misma que se ve en `/mesa` (ahí, reescalada a 1200 px en
+`public/imagenes/`). El mapa que se dibujaba a mano en SVG ya no se usa en
+ningún sitio: se queda en el historial de git. Al tocar el imprimible hay que
+rehacer también el archivo completo, que lleva dentro su página:
+
+```bash
+python -c "from pypdf import PdfWriter; w=PdfWriter(); [w.append(f) for f in ['1-ficha-luca.pdf','2-ficha-paula.pdf','3-mapa-isla.pdf','4-tokens.pdf','5-tracker-canciones.pdf']]; w.write('0-material-completo-episodio-1.pdf')"
+```
 
 ---
 

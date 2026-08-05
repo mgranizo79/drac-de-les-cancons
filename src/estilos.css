@@ -653,15 +653,18 @@ button {
   width: 100%;
 }
 
+/* En unidades del viewBox del mapa (1600 × 2400), no en píxeles de pantalla:
+   la ilustración es más estrecha que el mapa dibujado que había antes, así
+   que los números se subieron para que se sigan leyendo igual de grandes. */
 .hito__numero {
   font-family: var(--titulo);
-  font-size: 54px;
+  font-size: 60px;
   font-weight: 700;
 }
 
 .hito__nombre {
   font-family: var(--titulo);
-  font-size: 40px;
+  font-size: 45px;
   font-weight: 700;
   fill: #5c4426;
 }
