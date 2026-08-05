@@ -33,7 +33,10 @@ export default async (req: Request, _context: Context) => {
   }
 
   try {
-    const almacen = getStore('control-dm')
+    // Consistencia fuerte a propósito: por defecto Blobs es eventual, y una
+    // lectura justo después de escribir devolvía vacío. Con la mesa
+    // preguntando cada 3 segundos, eso significaba perder cambios del DM.
+    const almacen = getStore({ name: 'control-dm', consistency: 'strong' })
 
     if (req.method === 'POST') {
       const cuerpo = (await req.json()) as { control?: Record<string, boolean> }
