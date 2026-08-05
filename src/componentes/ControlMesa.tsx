@@ -15,7 +15,7 @@ const AVISO: Record<string, string> = {
   quieto: '',
   enviando: 'enviando…',
   enviado: '✓ la mesa ya lo tiene',
-  error: '✗ sin conexión: usa el panel del iPad',
+  error: '✗ no ha llegado: usa el panel del iPad',
 }
 
 export function ControlMesa() {

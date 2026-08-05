@@ -67,7 +67,13 @@ export function useMandarControl() {
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ control }),
       })
-      setEstado(respuesta.ok ? 'enviado' : 'error')
+      // Mirar el status no basta: si el almacén falla, la función contesta 200
+      // a propósito para no llevarse la partida por delante, y entonces esto
+      // cantaba «la mesa ya lo tiene» sin haber guardado nada. Lo que de
+      // verdad dice si quedó guardado es la marca de tiempo que devuelve.
+      const datos = (await respuesta.json().catch(() => null)) as { ts?: number } | null
+      const quedoGuardado = respuesta.ok && typeof datos?.ts === 'number' && datos.ts > 0
+      setEstado(quedoGuardado ? 'enviado' : 'error')
     } catch {
       setEstado('error')
     }
