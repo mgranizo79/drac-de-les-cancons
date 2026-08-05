@@ -121,6 +121,10 @@ export const episodio5: Episodio = {
         '«Luca, haz tú la voz del dragón. ¿Cómo habla un dragón enorme?»',
       ],
       presenta: 'dragon',
+      ilustracion: {
+        imagen: '/imagenes/escenas/flamarada-tamano.jpg',
+        pie: 'Gira el portátil y enséñasela justo al leer «y es enorme». Que se fijen en las garras: cada una es más grande que Luca entero. Es la única vez en toda la campaña que se ve lo pequeños que son.',
+      },
     },
 
     {

@@ -88,6 +88,19 @@ export function DM() {
             {actual.escena.acotacion && <p className="bloque__acotacion">{actual.escena.acotacion}</p>}
           </section>
 
+          {/* Ilustración de la escena: para girar el portátil y enseñarla. */}
+          {actual.escena.ilustracion && (
+            <section className="bloque bloque--ilustracion">
+              <h2 className="bloque__titulo">Enséñales esto</h2>
+              <img
+                className="bloque__ilustracion"
+                src={actual.escena.ilustracion.imagen}
+                alt=""
+              />
+              <p className="bloque__acotacion">{actual.escena.ilustracion.pie}</p>
+            </section>
+          )}
+
           {/* 2 · LO QUE VEN */}
           <section className="bloque bloque--ven">
             <h2 className="bloque__titulo">Lo que ven</h2>

@@ -52,6 +52,15 @@ export interface Escena {
   desbloquea?: IdLugar
   /** Personaje que esta escena presenta en /mesa. */
   presenta?: IdPersonaje
+  /**
+   * Ilustración de la escena, para girar el portátil y enseñársela.
+   * Distinta de los retratos: aquí importa lo que se ve, no quién sale.
+   */
+  ilustracion?: {
+    imagen: string
+    /** Qué decir mientras la miran. */
+    pie: string
+  }
   /** Número de canción (1-5) que se rescata al terminar la escena. */
   rescataCancion?: number
 }
